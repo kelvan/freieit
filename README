@@ -1,0 +1,7 @@
+
+
+development quick guide:
+
+  $ make         # copies templates to /tmp/freieit_templates; syncs db
+
+

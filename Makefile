@@ -7,15 +7,16 @@ MANAGE_SCRIPT = $(PYTHON) manage.py
 
 
 
-all: syncdb
+all: syncdb copy_templates
 
 run:
 	$(MANAGE_SCRIPT) runserver
 
-
 syncdb:
 	$(MANAGE_SCRIPT) syncdb #--noinput
 
+copy_templates: clean-templates
+	cp -r templates /tmp/freieit_templates
 
 .PHONY: clean clean-db clean-media clean-static
 
@@ -29,3 +30,6 @@ clean-media:
 
 clean-static:
 	rm -rf /tmp/freieit_static
+
+clean-templates:
+	rm -rf /tmp/freieit_templates

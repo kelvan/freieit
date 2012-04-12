@@ -9,6 +9,8 @@ urlpatterns = patterns('',
     # url(r'^$', 'freieit.views.home', name='home'),
     # url(r'^freieit/', include('freieit.foo.urls')),
 
+    url(r'^terms_of_business', 'freieit.views.terms_of_business'),
+
     # Uncomment the admin/doc line below to enable admin documentation:
     url(r'^admin/doc/', include('django.contrib.admindocs.urls')),
 
