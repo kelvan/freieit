@@ -2,6 +2,17 @@
 
 development quick guide:
 
-  $ make         # copies templates to /tmp/freieit_templates; syncs db
+  * copies templates to /tmp/freieit_templates; syncs db
+    will ask you to create a admin for the software
+
+    $ make
 
 
+  * run (http://localhost:8000)
+
+    $ make run     # runs the server
+
+
+  * clean /tmp from development files
+
+    $ make clean
