@@ -15,12 +15,15 @@ run:
 syncdb:
 	$(MANAGE_SCRIPT) syncdb #--noinput
 
+create_media_dir:
+	mkdir /tmp/freieit_media
+
 copy_templates: clean-templates
 	cp -r templates /tmp/freieit_templates
 
 .PHONY: clean clean-db clean-media clean-static
 
-clean: clean-db clean-media clean-static
+clean: clean-db clean-media clean-static clean-templates clean-media-dir
 
 clean-db:
 	rm -f /tmp/freieit.db
@@ -33,3 +36,6 @@ clean-static:
 
 clean-templates:
 	rm -rf /tmp/freieit_templates
+
+clean-media-dir:
+	rm -rf /tmp/freieit_media
