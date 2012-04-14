@@ -7,25 +7,30 @@ MANAGE_SCRIPT = $(PYTHON) manage.py
 
 
 
-all: syncdb
+all: fixtures
 
 run:
 	$(MANAGE_SCRIPT) runserver
 
 syncdb:
-	$(MANAGE_SCRIPT) syncdb #--noinput
+	$(MANAGE_SCRIPT) syncdb --noinput
 
+fixtures: fixtures-db fixtures-media
+
+fixtures-db: syncdb
+	$(MANAGE_SCRIPT) loaddata dev-fixtures/fixture.json
+
+fixtures-media: clean-media
+	cp -r dev-fixtures/media ./_media
 
 .PHONY: clean clean-db
 
-clean: clean-db clean-media clean-static
+clean: clean-db clean-media
 
 clean-db:
-	rm -f freieit.db
+	rm -f _freieit.db
 
 clean-media:
 	rm -rf _media
 
-clean-static:
-	rm -rf _static
-
+clean-fixtures: clean-db clean-media
