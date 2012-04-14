@@ -2,8 +2,7 @@
 
 development quick guide:
 
-* copies templates to /tmp/freieit_templates; syncs db
-  will ask you to create a admin for the software
+* syncs db (will ask you to create a admin for the software)
 
   $ make
 
@@ -13,6 +12,6 @@ development quick guide:
   $ make run
 
 
-* clean /tmp from development files
+* remove content, from the test environment
 
   $ make clean
