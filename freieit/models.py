@@ -4,6 +4,9 @@ from django.contrib.auth.models import User
 class Tag(models.Model):
   tag = models.CharField(max_length=512)
 
+  def __str__(self):
+    return str(self.tag) + ' [' + str(self.id) + ']'
+
 class ExpertProfile(models.Model):
 
   # the user this expert profile is associated with
@@ -33,6 +36,6 @@ class ExpertProfile(models.Model):
   # tags for this expert
   keywords = models.ManyToManyField(Tag)
 
-
-
+  def __str__(self):
+    return str(self.name) + ' [' + str(self.id) + ']'
 
