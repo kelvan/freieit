@@ -1,4 +1,16 @@
+                          
+ _                            XXXX
+| |           o              X o  XXXX 
+| |  ,_    _      _         X    _|_  XX
+|/  /  |  |/  |  |/        X   |  |   X
+|__/   |_/|__/|_/|__/  o  XXX  |_/|_/X
+|\                           XXXX   X
+|/                               XXX
 
+
+dependencies:
+* python 2.7
+* django 1.4
 
 development quick guide:
 
