@@ -22,10 +22,11 @@
   <body>
     <article>
       <header>
-        <div class="logo"><img src="{% static "freie.it.png" %}" alt="free.it: Free Software Support"/></div>
-        <h1>Professionelle Unterstützung<br />für <a href="#frei" title="Wieso Freie Software?">Freie Software</a> finden.</h1>
+        <div class="logo"><a href="."><img src="{% static "freie.it.png" %}" alt="free.it: Free Software Support"/></a></div>
+        <h1>Professionelle Unterstützung<br />für <a href="free_software" title="Wieso Freie Software?">Freie Software</a> finden.</h1>
       </header>
 
+      {% block content %}
       <section>
         <header>
           <h2>78 Expert_innen gefunden</h2>
@@ -35,7 +36,6 @@
           </form>
         </header>
 
-        {% block content %}
         <div>
           <div>
             <img src="{% get_media_prefix %}expert_images/b1.png" alt="Foto von Herrmann Kopic"/>
@@ -66,61 +66,25 @@
             <dd>HTML CSS PHP MySQL JavaScript Usability SEO Inkscape Gimp</dd>
           </dl>
         </div>
-        {% endblock content %}
-
-
-<!--
-				<div>
-					<div>
-						<img src="fg.jpg" alt="Foto von Herrmann Kopic"/>
-						<table>
-							<tr>
-								<th>Aufträge</th>
-								<td>19</td>
-							</tr>
-							<tr>
-								<th>Wertung</th>
-								<td>+26</td>
-							</tr>
-						</table>
-					</div>
-					<header>
-						<h2><a href="mailto:r.fiedler@fit-system.at" title="E-Mail senden">Robert Fiedler</a> 0660 766 09 12</h2>
-					</header>
-					<dl>
-						<dt>Angebot</dt>
-						<dd><strong>Konfiguration und Administration von GNU/Linux Computern, Problemlösungs-Hotline und online Support</strong></dd>
-						<dt>Dienstort</dt>
-						<dd>Bezirk Salzburg</dd>
-						<dt>Zeit</dt>
-						<dd>Montag - Freitag 10-18 Uhr</dd>
-						<dt>Kosten</dt>
-						<dd>EUR 70/h plus Anfahrt (EUR 0,5 pro Kilometer)</dd>
-						<dt>Schlagworte</dt>
-						<dd>Debian Ubuntu Suse RedHat Systemadministration Office Server Internet WLAN Peripherie Drucker Scanner</dd>
-					</dl>
-				</div>
--->
-
-
-
 
         <nav><a href="#">&lt;</a> Seite 6/44 <a href="#">&gt;</a></nav>
       </section>
+
+      {% endblock content %}
 			
       <footer>
         <div>
           <ul>
-            <li><a href="#">Login / registrieren</a></li>
-            <li><a href="#">Geschäftsbedingungen</a></li>
-            <li><a href="#">freie.it Expert_in werden</a></li>
-            <li><a href="#">Kontakt</a></li>
+            <li><a href="login">Login</a> / <a href="register"> registrieren</a></li>
+            <li><a href="terms_of_business">Geschäftsbedingungen</a></li>
+            <li><a href="become_expert">freie.it Expert_in werden</a></li>
+            <li><a href="contact">Kontakt</a></li>
           </ul>
           <ul>
-            <li><a href="#">Definition: Freie Software</a></li>
-            <li><a href="#">Tipps & Tricks</a></li>
-            <li><a href="#">Links</a></li>
-            <li><a href="#">FAQ</a></li>
+            <li><a href="free_software">Definition: Freie Software</a></li>
+            <li><a href="tips_and_tricks">Tipps & Tricks</a></li>
+            <li><a href="links">Links</a></li>
+            <li><a href="faq">FAQ</a></li>
           </ul>
         </div>
 

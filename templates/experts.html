@@ -2,41 +2,57 @@
 {% load static %}
 
 
+
 {% block content %}
-{% for e in experts %}
 
-<div>
-  <div>
-    <!--img src="{% get_media_prefix %}expert_images/b1.png" alt="Foto von Herrmann Kopic"/-->
-    <img src="{{e.image.url}}" alt="Foto von {{e.name}}"/>
-    <table>
-      <tr>
-        <th>Aufträge</th>
-        <td>23</td>
-      </tr>
-      <tr>
-        <th>Wertung</th>
-        <td>+32</td>
-      </tr>
-    </table>
-  </div>
+<section>
+
   <header>
-    <h2><a href="mailto:{{e.user.email}}" title="E-Mail senden">{{e.name}}</a> {{e.phone}}</h2>
+    <h2>78 Expert_innen gefunden</h2>
+    <form action="#" enctype="text/plain" method="post">
+      <input type="text" name="suche" placeholder="Ergebnis über Schlagworte einschränken" value=""/>
+      <input type="submit" value="&gt;"/>
+    </form>
   </header>
-  <dl>
-    <dt>Angebot</dt>
-    <dd><strong>{{e.services}}</strong></dd>
-    <dt>Dienstort</dt>
-    <dd>{{e.location}}</dd>
-    <dt>Zeit</dt>
-    <dd>{{e.time}}</dd>
-    <dt>Kosten</dt>
-    <dd>{{e.charges}}</dd>
-    <dt>Schlagworte</dt>
-    <dd>{{ e.keywords.all|join:" " }}</dd>
-  </dl>
-</div>
 
-{% endfor %}
+  {% for e in experts %}
+
+  <div>
+    <div>
+    <!--img src="{% get_media_prefix %}expert_images/b1.png" alt="Foto von Herrmann Kopic"/-->
+      <img src="{{e.image.url}}" alt="Foto von {{e.name}}"/>
+      <table>
+        <tr>
+          <th>Aufträge</th>
+          <td>23</td>
+        </tr>
+        <tr>
+          <th>Wertung</th>
+          <td>+32</td>
+        </tr>
+      </table>
+    </div>
+    <header>
+      <h2><a href="mailto:{{e.user.email}}" title="E-Mail senden">{{e.name}}</a> {{e.phone}}</h2>
+    </header>
+    <dl>
+      <dt>Angebot</dt>
+      <dd><strong>{{e.services}}</strong></dd>
+      <dt>Dienstort</dt>
+      <dd>{{e.location}}</dd>
+      <dt>Zeit</dt>
+      <dd>{{e.time}}</dd>
+      <dt>Kosten</dt>
+      <dd>{{e.charges}}</dd>
+      <dt>Schlagworte</dt>
+      <dd>{{ e.keywords.all|join:" " }}</dd>
+    </dl>
+  </div>
+
+  {% endfor %}
+
+  <nav><a href="#">&lt;</a> Seite 6/44 <a href="#">&gt;</a></nav>
+
+</section>
+
 {% endblock content %}
-
