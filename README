@@ -1,20 +1,26 @@
-                          
- _                            XXXX
-| |           o              X o  XXXX 
-| |  ,_    _      _         X    _|_  XXX
-|/  /  |  |/  |  |/        X   |  |    X
-|__/   |_/|__/|_/|__/  o  XXX  |_/|_/ X
-|\                           XXXX    X
-|/                               XXXX
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
+              _                            XXXX
+             | |           o              X o  XXXX 
+             | |  ,_    _      _         X    _|_  XXX
+             |/  /  |  |/  |  |/        X   |  |    X
+             |__/   |_/|__/|_/|__/  o  XXX  |_/|_/ X
+             |\                           XXXX    X
+             |/                               XXXX
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 dependencies:
 * python 2.7
 * django 1.4
 
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
 development quick guide:
 
 * initialize database and deploy some fixtures
+  default username: admin
+  default password: admin
 
   $ make
 

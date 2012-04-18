@@ -1,6 +1,42 @@
-<!--img src="{{ STATIC_URL }}/freie.it.png" /-->
-<img src="{{ STATIC_URL }}static/freie.it.png" />
+{% extends "base.html" %}
+{% load static %}
 
 
-your mom
+{% block content %}
+{% for e in experts %}
+
+<div>
+  <div>
+    <!--img src="{% get_media_prefix %}expert_images/b1.png" alt="Foto von Herrmann Kopic"/-->
+    <img src="{{e.image.url}}" alt="Foto von {{e.name}}"/>
+    <table>
+      <tr>
+        <th>Aufträge</th>
+        <td>23</td>
+      </tr>
+      <tr>
+        <th>Wertung</th>
+        <td>+32</td>
+      </tr>
+    </table>
+  </div>
+  <header>
+    <h2><a href="mailto:{{e.user.email}}" title="E-Mail senden">{{e.name}}</a> 0668 201 83 25</h2>
+  </header>
+  <dl>
+    <dt>Angebot</dt>
+    <dd><strong>{{e.services}}</strong></dd>
+    <dt>Dienstort</dt>
+    <dd>{{e.location}}</dd>
+    <dt>Zeit</dt>
+    <dd>{{e.time}}</dd>
+    <dt>Kosten</dt>
+    <dd>{{e.charges}}</dd>
+    <dt>Schlagworte</dt>
+    <dd>HTML CSS PHP MySQL JavaScript Usability SEO Inkscape Gimp</dd>
+  </dl>
+</div>
+
+{% endfor %}
+{% endblock content %}
 
