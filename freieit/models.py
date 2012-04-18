@@ -5,7 +5,7 @@ class Tag(models.Model):
   tag = models.CharField(max_length=512)
 
   def __str__(self):
-    return str(self.tag) + ' [' + str(self.id) + ']'
+    return self.tag
 
 class ExpertProfile(models.Model):
 

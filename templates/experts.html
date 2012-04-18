@@ -21,7 +21,7 @@
     </table>
   </div>
   <header>
-    <h2><a href="mailto:{{e.user.email}}" title="E-Mail senden">{{e.name}}</a> 0668 201 83 25</h2>
+    <h2><a href="mailto:{{e.user.email}}" title="E-Mail senden">{{e.name}}</a> {{e.phone}}</h2>
   </header>
   <dl>
     <dt>Angebot</dt>
@@ -33,7 +33,7 @@
     <dt>Kosten</dt>
     <dd>{{e.charges}}</dd>
     <dt>Schlagworte</dt>
-    <dd>HTML CSS PHP MySQL JavaScript Usability SEO Inkscape Gimp</dd>
+    <dd>{{ e.keywords.all|join:" " }}</dd>
   </dl>
 </div>
 
