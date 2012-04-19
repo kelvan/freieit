@@ -1,8 +1,5 @@
-from freieit.models import ExpertProfile, Tag
-
 from django.contrib import admin
+from models import *
 
-
-
-admin.site.register(Tag)
-admin.site.register(ExpertProfile)
+admin.site.register(Tag, TagAdmin)
+admin.site.register(ExpertProfile, ExpertProfileAdmin)
