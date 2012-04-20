@@ -23,6 +23,7 @@ urlpatterns = patterns('',
   url(r'^tips_and_tricks',   'freieit.views.tips_and_tricks.show'),
   url(r'^faq',               'freieit.views.faq.show'),
   url(r'^links',             'freieit.views.links.show'),
+  url(r'^tag/(?P<tag>\w+)',  'freieit.views.tag.show'),
 
   # Uncomment the admin/doc line below to enable admin documentation:
   url(r'^admin/doc/', include('django.contrib.admindocs.urls')),

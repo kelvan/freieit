@@ -7,7 +7,7 @@
 <section>
 
   <header>
-    <h2>78 Expert_innen gefunden</h2>
+    <h2>{{ experts|length }} ExpertIn{{ experts|length|pluralize:"nen" }} gefunden</h2>
     <form action="#" enctype="text/plain" method="post">
       <input type="text" name="suche" placeholder="Ergebnis über Schlagworte einschränken" value=""/>
       <input type="submit" value="&gt;"/>

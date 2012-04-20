@@ -24,7 +24,7 @@ class ExpertProfile(models.Model):
   user = models.ForeignKey(User, unique=True)
 
   # the experts name
-  name = models.CharField(max_length=512)
+  name = models.CharField(max_length=512, null=True, blank=True)
 
   # experts image
   image = models.ImageField(upload_to="expert_images")
