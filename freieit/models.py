@@ -58,5 +58,5 @@ class ExpertProfile(models.Model):
 
 class ExpertProfileAdmin(admin.ModelAdmin):
     list_display = ('user', 'name', 'phone', 'location')
-    list_filter = ('location',)
+    list_filter = ('location', 'keywords')
     search_fields = ('name', 'location', 'services')
