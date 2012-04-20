@@ -6,8 +6,8 @@
 
 <section>
 
+    <h2>{{ experts|length }} ExpertIn{{ experts|length|pluralize:"nen" }} {% if tag %}mit Schlagwort "{{ tag }}"{% endif %} gefunden</h2>
   <header>
-    <h2>{{ experts|length }} ExpertIn{{ experts|length|pluralize:"nen" }} gefunden</h2>
     <form action="#" enctype="text/plain" method="post">
       <input type="text" name="suche" placeholder="Ergebnis über Schlagworte einschränken" value=""/>
       <input type="submit" value="&gt;"/>
@@ -44,7 +44,9 @@
       <dt>Kosten</dt>
       <dd>{{e.charges}}</dd>
       <dt>Schlagworte</dt>
-      <dd>{{ e.keywords.all|join:" " }}</dd>
+      <dd>{% for tag in e.keywords.all %}
+      <a href=/tag/{{ tag }}>{{ tag }}</a> 
+      {% endfor %}</dd>
     </dl>
   </div>
 
