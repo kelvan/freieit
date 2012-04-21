@@ -13,7 +13,8 @@ urlpatterns = patterns('',
   # url(r'^freieit/', include('freieit.foo.urls')),
 
   #url(r'^', 'freieit.views.'),
-  url(r'^$',                  'freieit.views.experts.show'),
+  #url(r'^$',                  'freieit.views.experts.show'),
+  url(r'^(?P<page_num>\d+)?$',                'freieit.views.experts.show'),
   url(r'^login$',             'freieit.views.login.show'),
   #url(r'^do_login$',          'freieit.views.login.do_login'),
   url(r'^logout$',            'freieit.views.login.do_logout'),
@@ -25,7 +26,9 @@ urlpatterns = patterns('',
   url(r'^tips_and_tricks$',   'freieit.views.tips_and_tricks.show'),
   url(r'^faq$',               'freieit.views.faq.show'),
   url(r'^links$',             'freieit.views.links.show'),
-  url(r'^tag/(?P<tag>\w+)$',  'freieit.views.tag.show'),
+  # FIXME merge next 2 regex
+  #url(r'^tag/(?P<tag>\w+)',                   'freieit.views.tag.show'),
+  url(r'^tag/(?P<tag>\w+)/(?P<page_num>\d+)?', 'freieit.views.tag.show'),
 
   # Uncomment the admin/doc line below to enable admin documentation:
   url(r'^admin/doc/$', include('django.contrib.admindocs.urls')),

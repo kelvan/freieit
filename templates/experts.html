@@ -1,5 +1,6 @@
 {% extends "base.html" %}
 {% load static %}
+{% load url from future %}
 
 
 {% block content %}
@@ -52,7 +53,7 @@
 
   {% endfor %}
 
-  <nav><a href="#">&lt;</a> Seite 6/44 <a href="#">&gt;</a></nav>
+  <nav>{% if page.current > 1 %}<a href="/{{ page.current|add:-1 }}">&lt;</a>{% endif %} Seite {{ page.current }}/{{ page.last }} {% if page.current < page.last %}<a href="/{{ page.current|add:1 }}">&gt;</a>{% endif %}</nav>
 
 </section>
 
