@@ -5,9 +5,12 @@ from freieit.models import ExpertProfile
 
 def show(request):
 
-  expert_selection = ExpertProfile.objects.all()
+  state = {'experts': ExpertProfile.objects.all() }
 
-  return render_to_response('experts.html',{'experts': expert_selection})
+  if request.user.is_authenticated():
+    state.update( {'user': request.user} )
+
+  return render_to_response('experts.html',state)
   #return render_to_response('base.html')
 
 

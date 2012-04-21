@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+{% load static %}
+
+
+{% block content %}
+
+<section>
+
+  <header>
+    <h2>Anmelden</h2>
+  </header>
+
+  <div>
+
+    {% if login_error %}
+      Benutzername und Passwort stimmen nicht überein. Bitte versuchen sie es erneut.<br /><br />
+    {% endif %}
+
+    <form method="post" action="{% url freieit.views.login.show %}">
+      {% csrf_token %}
+      Benutzername: <input name="username"><br />
+      Passwort: <input type="password" name="password"><br />
+      <input type="submit" value="anmelden">
+    </form>
+    Falls Sie noch kein Benutzerkonto haben können sie sich <a href="{% url freieit.views.register.show %}">hier registieren</a>.
+  </div>
+
+</section>
+
+{% endblock content %}
+

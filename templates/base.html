@@ -33,8 +33,12 @@
         <div>
           <ul>
             <li>
-              <a href="{% url freieit.views.login.show %}">Login</a> /
-              <a href="{% url freieit.views.register.show %}"> registrieren</a></li>
+              {% if user %}
+                <a href="{% url freieit.views.login.do_logout %}">logout {{ user.username }}</a>
+              {% else %}
+                <a href="{% url freieit.views.login.show %}">Login</a> /
+                <a href="{% url freieit.views.register.show %}">registrieren</a></li>
+              {% endif %}
             <li><a href="{% url freieit.views.terms_of_business.show %}">Geschäftsbedingungen</a></li>
             <li><a href="{% url freieit.views.become_expert.show %}">freie.it Expert_in werden</a></li>
             <li><a href="{% url freieit.views.contact.show %}">Kontakt</a></li>
