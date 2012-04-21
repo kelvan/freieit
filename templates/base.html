@@ -23,7 +23,7 @@
     <article>
       <header>
         <div class="logo"><a href="/"><img src="{% static "freie.it.png" %}" alt="free.it: Free Software Support"/></a></div>
-        <h1>Professionelle Unterstützung<br />für <a href="free_software" title="Wieso Freie Software?">Freie Software</a> finden.</h1>
+        <h1>Professionelle Unterstützung<br />für <a href="{% url freieit.views.free_software.show %}" title="Wieso Freie Software?">Freie Software</a> finden.</h1>
       </header>
 
       {% block content %}
