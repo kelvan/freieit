@@ -1,7 +1,8 @@
 from django.http import HttpResponse
 from django.shortcuts import render_to_response
+from django.contrib.auth.decorators import login_required
 
-
+@login_required(login_url='login')
 def show(request):
 
   state = {}
