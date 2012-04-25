@@ -33,7 +33,7 @@
         <div>
           <ul>
             <li>
-              {% if user %}
+              {% if user.is_authenticated %}
                 <a href="{% url freieit.views.login.do_logout %}">logout {{ user.username }}</a>
               {% else %}
                 <a href="{% url freieit.views.login.show %}">Login</a> /

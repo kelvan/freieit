@@ -53,10 +53,13 @@ class ExpertProfile(models.Model):
       verbose_name_plural = _('Expert Profiles')
       ordering = ['name']
 
-  def __str__(self):
-    return self.name
+  def __unicode__(self):
+    if self.name:
+      return self.name
+    else:
+      return self.user.get_full_name()
 
 class ExpertProfileAdmin(admin.ModelAdmin):
-    list_display = ('user', 'name', 'phone', 'location')
-    list_filter = ('location', 'keywords')
-    search_fields = ('name', 'location', 'services')
+  list_display = ('user', 'name', 'phone', 'location')
+  list_filter = ('location', 'keywords')
+  search_fields = ('name', 'location', 'services')
