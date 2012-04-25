@@ -31,10 +31,10 @@ urlpatterns = patterns('',
   url(r'^tag/(?P<tag>\w+)/(?P<page_num>\d+)?', 'freieit.views.tag.show'),
 
   # Uncomment the admin/doc line below to enable admin documentation:
-  url(r'^admin/doc/$', include('django.contrib.admindocs.urls')),
+  url(r'^admin/doc/', include('django.contrib.admindocs.urls')),
 
   # Uncomment the next line to enable the admin:
-  url(r'^admin/$', include(admin.site.urls)),
+  url(r'^admin/', include(admin.site.urls)),
 )
 
 if settings.DEBUG:
