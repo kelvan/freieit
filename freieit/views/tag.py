@@ -14,7 +14,7 @@ def show(request, tag, page_num=1):
   if not page_num:
     page_num=1
   
-  expert_selection = ExpertProfile.objects.filter(keywords__tag=tag)
+  expert_selection = ExpertProfile.objects.filter(keywords__slug=tag)
   p = Paginator(expert_selection, experts_per_page)
   
   state.update({'experts': p.page(page_num), 'tag': tag,})

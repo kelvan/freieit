@@ -45,7 +45,7 @@
       <dd>{{e.charges}}</dd>
       <dt>Schlagworte</dt>
       <dd>{% for tag in e.keywords.all %}
-      <a href=/tag/{{ tag }}>{{ tag }}</a> 
+      <a href=/tag/{{ tag.slug }}>{{ tag }}</a> 
       {% endfor %}</dd>
     </dl>
   </div>

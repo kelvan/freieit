@@ -2,21 +2,7 @@ from django.db import models
 from django.contrib.auth.models import User
 from django.contrib import admin
 from django.utils.translation import ugettext_lazy as _
-
-class Tag(models.Model):
-  tag = models.CharField(max_length=512)
-
-  class Meta:
-      verbose_name = _('Tag')
-      verbose_name_plural = _('Tags')
-      ordering = ['tag']
-
-  def __str__(self):
-    return self.tag
-
-class TagAdmin(admin.ModelAdmin):
-    list_display = ('tag',)
-    search_fields = ('tag',)
+from taggit.managers import TaggableManager
 
 class ExpertProfile(models.Model):
 
@@ -45,7 +31,7 @@ class ExpertProfile(models.Model):
   charges = models.CharField(max_length=2048)
 
   # tags for this expert
-  keywords = models.ManyToManyField(Tag)
+  keywords = TaggableManager()
 
   class Meta:
       #unique_together = (("user", "name"),)
@@ -61,5 +47,5 @@ class ExpertProfile(models.Model):
 
 class ExpertProfileAdmin(admin.ModelAdmin):
   list_display = ('user', 'name', 'phone', 'location')
-  list_filter = ('location', 'keywords')
+  list_filter = ('location', 'keywords__name')
   search_fields = ('name', 'location', 'services')

@@ -28,7 +28,7 @@ urlpatterns = patterns('',
   url(r'^links$',             'freieit.views.links.show'),
   # FIXME merge next 2 regex
   #url(r'^tag/(?P<tag>\w+)',                   'freieit.views.tag.show'),
-  url(r'^tag/(?P<tag>\w+)/(?P<page_num>\d+)?', 'freieit.views.tag.show'),
+  url(r'^tag/(?P<tag>[\w_\-]+)/(?P<page_num>\d+)?', 'freieit.views.tag.show'),
 
   # Uncomment the admin/doc line below to enable admin documentation:
   url(r'^admin/doc/', include('django.contrib.admindocs.urls')),
