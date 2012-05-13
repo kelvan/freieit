@@ -1,7 +1,7 @@
 
 
 SHELL = /bin/sh
-PYTHON = /usr/bin/env python2.7
+PYTHON = /usr/bin/env python2.6
 
 MANAGE_SCRIPT = $(PYTHON) manage.py
 
@@ -12,13 +12,15 @@ all: fixtures
 run:
 	$(MANAGE_SCRIPT) runserver
 
-syncdb:
-	$(MANAGE_SCRIPT) syncdb --noinput
+#syncdb:
+#	$(MANAGE_SCRIPT) syncdb --noinput
 
 fixtures: fixtures-db fixtures-media
 
-fixtures-db: syncdb
-	$(MANAGE_SCRIPT) loaddata dev-fixtures/fixture.json
+fixtures-db:
+	#$(MANAGE_SCRIPT) loaddata dev-fixtures/fixture.json
+	cp dev-fixtures/freieit.db _freieit.db
+	$(MANAGE_SCRIPT) syncdb --noinput
 
 fixtures-media: clean-media
 	cp -r dev-fixtures/media ./_media
