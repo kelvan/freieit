@@ -25,9 +25,11 @@ fixtures-db:
 fixtures-media: clean-media
 	cp -r dev-fixtures/media ./_media
 
-.PHONY: clean clean-db
+.PHONY: clean clean-db clean-media clean-fixtures
 
 clean: clean-db clean-media
+	rm -f `find . -name '*.pyc'`
+	rm -f `find . -name '*.pyo'`
 
 clean-db:
 	rm -f _freieit.db
