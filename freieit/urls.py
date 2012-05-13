@@ -24,7 +24,6 @@ urlpatterns = patterns('',
   url(r'^contact$',           'freieit.views.contact.show'),
   url(r'^free_software$',     'freieit.views.free_software.show'),
   url(r'^tips_and_tricks$',   'freieit.views.tips_and_tricks.show'),
-  url(r'^faq$',               'freieit.views.faq.show'),
   url(r'^links$',             'freieit.views.links.show'),
   # FIXME merge next 2 regex
   #url(r'^tag/(?P<tag>\w+)',                   'freieit.views.tag.show'),
