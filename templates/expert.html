@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<p><h1><b>{{ expert }}</b></h1></p>
+<p>{{ expert.user }}</p>
+<p>{{ expert.services }}</p>
+<p>{{ expert.location }}</p>
+<p>{{ expert.time }}</p>
+<p>{{ expert.charges }}</p>
+<p>{{ expert.phone }}</p>
+<p>{{ expert.user.email }}</p>
+
+{% endblock content %}

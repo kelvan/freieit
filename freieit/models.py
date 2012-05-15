@@ -45,6 +45,9 @@ class ExpertProfile(models.Model):
     else:
       return self.user.get_full_name()
 
+  def get_absolute_url(self):
+    return "/expert/%s" % self.user.username
+
 class ExpertProfileAdmin(admin.ModelAdmin):
   list_display = ('user', 'name', 'phone', 'location')
   list_filter = ('location', 'keywords__name')
