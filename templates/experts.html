@@ -15,7 +15,7 @@
     </form>
   </header>
 
-  {% for e in experts %}
+  {% for e in page %}
 
   <div>
     <div>
@@ -57,7 +57,7 @@
     {% endcomment %}
   {% endfor %}
 
-  <nav>{% if page.current > 1 %}<a href="/{{ page.current|add:-1 }}">&lt;</a>{% endif %} Seite {{ page.current }}/{{ page.last }} {% if page.current < page.last %}<a href="/{{ page.current|add:1 }}">&gt;</a>{% endif %}</nav>
+  <nav>{% if page.has_previous %}<a href="/{{ page.previous_page_number }}">&lt;</a>{% endif %} Seite {{ page.number }}/{{ page.paginator.num_pages }} {% if page.has_next %}<a href="/{{ page.next_page_number }}">&gt;</a>{% endif %}</nav>
 
 </section>
 

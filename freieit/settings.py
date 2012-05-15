@@ -132,6 +132,7 @@ INSTALLED_APPS = (
     'django.contrib.admindocs',
     'django.contrib.flatpages',
     'taggit',
+    'haystack',
     'freieit',
 )
 
@@ -162,4 +163,10 @@ LOGGING = {
             'propagate': True,
         },
     }
+}
+
+HAYSTACK_CONNECTIONS = {
+    'default': {
+        'ENGINE': 'haystack.backends.simple_backend.SimpleEngine',
+    },
 }

@@ -12,6 +12,8 @@ urlpatterns = patterns('',
   # url(r'^$', 'freieit.views.home', name='home'),
   # url(r'^freieit/', include('freieit.foo.urls')),
 
+  (r'^search/', include('haystack.urls')),
+
   #url(r'^', 'freieit.views.'),
   #url(r'^$',                  'freieit.views.experts.show'),
   url(r'^(?P<page_num>\d+)?$',                'freieit.views.experts.show'),
