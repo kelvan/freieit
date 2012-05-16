@@ -1,0 +1,57 @@
+{% extends "base.html" %}
+{% load static %}
+
+
+{% block content %}
+
+<section>
+
+  <header>
+    <h2>Map</h2>
+  </header>
+
+  <div class="the_expert_map_super_div">
+    <div id="the_expert_map"></div>
+  </div>
+
+  <script type="text/javascript">
+    function init_the_expert_map(){
+
+      map = new OpenLayers.Map('the_expert_map',
+        {controls:[
+          new OpenLayers.Control.Attribution(),
+          new OpenLayers.Control.KeyboardDefaults(),
+          new OpenLayers.Control.Navigation(
+                    {dragPanOptions:{enableKinetic:true}}),
+          new OpenLayers.Control.PanZoom()
+        ]}
+      );
+      map.addLayer( new OpenLayers.Layer.OSM('osm') );
+      map.setCenter(
+        new OpenLayers.LonLat(12.7,47.7).transform(
+          new OpenLayers.Projection("EPSG:4326"),
+            map.getProjectionObject()
+        ), 6
+      );
+
+      /*
+      map.addLayer(new OpenLayers.Layer.GeoRSS('georss','georss.xml',
+        {
+          icon:new OpenLayers.Icon("img/south-mini.png")
+        }
+      ));
+      */
+
+    }
+
+    init_the_expert_map();
+
+  </script>
+
+
+</section>
+
+{% endblock content %}
+
+
+
