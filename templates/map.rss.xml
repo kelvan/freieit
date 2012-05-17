@@ -16,7 +16,7 @@
     <items>
       <rdf:Seq>
       {% for e in experts %}
-        <rdf:li resource="/expert/{{e.user.name}}"/><!-- TODO: make url absolute! -->
+        <rdf:li resource="/expert/{{e.user.username}}"/><!-- TODO: make url absolute! -->
       {% endfor %}
       </rdf:Seq>
     </items>
@@ -24,12 +24,30 @@
   </channel>
 
   {% for e in experts %}
-  <item rdf:about="/expert/{{e.user.name}}"><!-- TODO: make url absolute! -->
-    <link>/map/rrs.xml</link><!-- TODO: make url absolute! -->
+  <item rdf:about="/expert/{{e.user.username}}"><!-- TODO: make url absolute! -->
+    <link>/expert/{{e.user.username}}</link><!-- TODO: make url absolute! -->
     <title>{{ e }}</title>
-    <description><![CDATA[TODO <i>TODO</i> TODO]]></description>
+    <description><![CDATA[<header>
+  <h2><a href="mailto:{{ e.user.email }}" title="E-Mail senden">{{ e }}</a> {{ e.phone }}</h2>
+</header>
+<dl>
+  <dt>Angebot</dt>
+  <dd><strong>{{e.services}}</strong></dd>
+  <dt>Dienstort</dt>
+  <dd>{{e.location}}</dd>
+  <dt>Zeit</dt>
+  <dd>{{e.time}}</dd>
+  <dt>Kosten</dt>
+  <dd>{{e.charges}}</dd>
+  <dt>Schlagworte</dt>
+  <dd>
+  {% for tag in e.keywords.all %}
+    <a href="/tag/{{ tag.slug }}">{{ tag }}</a>
+  {% endfor %}
+  </dd>
+</dl>]]></description>
     <georss:point>48.2 16.39</georss:point><!-- TODO: get coordinates form model! -->
-    <dc:creator>{{e.user.name}}</dc:creator>
+    <dc:creator>{{e.user.username}}</dc:creator>
     <dc:date>{{ e.datetime_modified|date:"c" }}</dc:date>
   </item>
   {% endfor %}
