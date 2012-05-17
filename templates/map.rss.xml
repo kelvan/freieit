@@ -7,10 +7,10 @@
 
   <docs>This is a RSS file.</docs>
 
-  <channel rdf:about="http://platial.com">
+  <channel rdf:about="http://freie.it"><!-- TODO supply the urly from the model -->
 
-    <link>http://platial.com</link>
-    <title>Crschmidt's Places At Platial</title>
+    <link>http://freie.it</link><!-- TODO supply the urly from the model -->
+    <title>Freie.it GeoRSS Feed</title>
     <description></description>
 
     <items>
@@ -30,7 +30,7 @@
     <description><![CDATA[TODO <i>TODO</i> TODO]]></description>
     <georss:point>48.2 16.39</georss:point><!-- TODO: get coordinates form model! -->
     <dc:creator>{{e.user.name}}</dc:creator>
-    <dc:date>2012-05-17T02:08:23.243132+00:01</dc:date><!-- TODO: get last modified time -->
+    <dc:date>{{ e.datetime_modified|date:"c" }}</dc:date>
   </item>
   {% endfor %}
 

@@ -3,8 +3,9 @@ from django.contrib.auth.models import User
 from django.contrib import admin
 from django.utils.translation import ugettext_lazy as _
 from taggit.managers import TaggableManager
+from audited_models.models import AuditedModel
 
-class ExpertProfile(models.Model):
+class ExpertProfile(AuditedModel):
 
   # the user this expert profile is associated with
   user = models.ForeignKey(User, unique=True)
