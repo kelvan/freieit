@@ -7,3 +7,8 @@ from freieit.models import ExpertProfile
 def show(request):
 
   return render_to_response('map.html', RequestContext(request))
+
+def rss(request):
+
+  experts = ExpertProfile.objects.all()
+  return render_to_response('map.rss.xml', RequestContext(request,{'experts':experts}))

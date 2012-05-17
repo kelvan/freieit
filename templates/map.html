@@ -34,13 +34,11 @@
         ), 6
       );
 
-      /*
-      map.addLayer(new OpenLayers.Layer.GeoRSS('georss','georss.xml',
+      map.addLayer(new OpenLayers.Layer.GeoRSS('georss','{% url freieit.views.map.rss %}',
         {
-          icon:new OpenLayers.Icon("img/south-mini.png")
+          icon:new OpenLayers.Icon("{% static "img/south-mini.png" %}")
         }
       ));
-      */
 
     }
 
