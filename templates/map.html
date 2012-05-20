@@ -1,6 +1,10 @@
 {% extends "base.html" %}
 {% load static %}
 
+{% block html_header %}
+<link rel="alternate" type="application/rss+xml"
+   title="RSS" href="{% url freieit.views.map.rss %}" />
+{% endblock html_header %}
 
 {% block content %}
 
