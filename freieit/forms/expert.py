@@ -4,4 +4,4 @@ from freieit.models import ExpertProfile
 class ExpertProfileForm(ModelForm):
     class Meta:
         model = ExpertProfile
-        exclude = ('user',)
+        exclude = ('user', 'editor')
