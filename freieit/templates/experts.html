@@ -31,7 +31,7 @@
       </table>
     </div>
     <header>
-      <h2><a href="mailto:{{ e.user.email }}" title="E-Mail senden">{{ e }}</a> {{ e.phone }}</h2>
+      <h2><a href="{% url "freieit.views.expert.show" e.user.username %}" title="E-Mail senden">{{ e }}</a> {{ e.phone }}</h2>
     </header>
     <dl>
       <dt>Angebot</dt>
