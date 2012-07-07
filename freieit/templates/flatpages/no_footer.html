@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+{% load static %}
+
+
+{% block content %}
+
+<section>
+
+  <header>
+    <h2>{{ flatpage.title }}</h2>
+  </header>
+
+  <div>
+    {{ flatpage.content }}
+  </div>
+
+</section>
+
+{% endblock content %}
+
+{% block footer %}
+{% endblock footer %}
+

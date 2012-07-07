@@ -16,7 +16,7 @@ urlpatterns = patterns('',
 
   #url(r'^', 'freieit.views.'),
   #url(r'^$',                  'freieit.views.experts.show'),
-  url(r'^(?P<page_num>\d+)?$',                'freieit.views.experts.show'),
+  #url(r'^(?P<page_num>\d+)?$',                'freieit.views.experts.show'),
   url(r'^login$',             'freieit.views.login.show'),
   url(r'^logout$',            'freieit.views.login.do_logout'),
   url(r'^register$',          'freieit.views.register.show'),
