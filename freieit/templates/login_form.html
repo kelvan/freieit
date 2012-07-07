@@ -22,7 +22,12 @@
       Passwort: <input type="password" name="password"><br />
       <input type="submit" value="anmelden">
     </form>
-    Falls Sie noch kein Benutzerkonto haben können sie sich <a href="/accounts/register">hier registieren</a>.
+    
+    {% if INVITE_ONLY %}
+        Um einen neuen Account anzulegen benötigen sie eine Einladung eines Mitglieds.
+    {% else %}
+        Falls Sie noch kein Benutzerkonto haben können sie sich <a href="/accounts/register">hier registieren</a>.
+    {% endif %}
   </div>
 
 </section>
