@@ -1,6 +1,7 @@
 from registration.backends.default import DefaultBackend
 from invitation.models import InvitationKey
 
+
 class InvitationBackend(DefaultBackend):
 
     def post_registration_redirect(self, request, user, *args, **kwargs):

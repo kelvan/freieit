@@ -15,6 +15,7 @@ from invitation.backends import InvitationBackend
 is_key_valid = InvitationKey.objects.is_key_valid
 remaining_invitations_for_user = InvitationKey.objects.remaining_invitations_for_user
 
+
 def invited(request, invitation_key=None, extra_context=None):
     if getattr(settings, 'INVITE_MODE', False):
         if invitation_key and is_key_valid(invitation_key):
@@ -26,6 +27,7 @@ def invited(request, invitation_key=None, extra_context=None):
         return direct_to_template(request, template_name, extra_context)
     else:
         return HttpResponseRedirect(reverse('registration_register'))
+
 
 def register(request, backend, success_url=None,
             form_class=RegistrationForm,
@@ -51,6 +53,7 @@ def register(request, backend, success_url=None,
     else:
         return registration_register(request, backend, success_url, form_class,
                                      disallowed_url, template_name, extra_context)
+
 
 def invite(request, success_url=None,
             form_class=InvitationKeyForm,

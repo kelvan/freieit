@@ -1,6 +1,7 @@
 from django.http import HttpResponse
 from django.shortcuts import render_to_response
 from django.contrib.auth import authenticate, login, logout
+from freieit import settings
 
 from django.core.context_processors import csrf
 
@@ -22,7 +23,9 @@ def show(request):
       content.update({'login_error': True})
       return render_to_response('login_form.html',content)
 
-  return render_to_response('login_form.html',csrf(request))
+  content = csrf(request)
+  content['INVITE_ONLY'] = settings.INVITE_MODE
+  return render_to_response('login_form.html', content)
 
 def do_logout(request):
   logout(request)
