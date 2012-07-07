@@ -11,6 +11,10 @@ ADMINS = (
 
 MANAGERS = ADMINS
 
+INVITE_MODE = True
+INVITATIONS_PER_USER = 999
+ACCOUNT_ACTIVATION_DAYS = 14
+
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3', # Add 'postgresql_psycopg2',
@@ -134,6 +138,8 @@ INSTALLED_APPS = (
     'django.contrib.flatpages',
     'taggit',
     'haystack',
+    'registration',
+    'invitation',
     'freieit',
 )
 
