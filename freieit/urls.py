@@ -1,6 +1,7 @@
 from django.conf import settings
 from django.conf.urls import patterns, include, url
 from invitation.views import register
+from django.contrib.auth.views import login, logout
 from registration.forms import RegistrationFormTermsOfService
 
 from django.contrib.staticfiles.urls import staticfiles_urlpatterns
@@ -41,7 +42,10 @@ urlpatterns += patterns('',
 
   url(r'^$', 'freieit.views.home.show'),
   url(r'^login$',                       'freieit.views.login.show'),
-  url(r'^logout$',                      'freieit.views.login.do_logout'),
+  url(r'^login$',                       login, name='login'),
+  url(r'^accounts/login/$',             login),
+  url(r'^logout$',                      logout, name='logout'),
+  url(r'^accounts/logout/$',            logout),
   #url(r'^register$',                    'freieit.views.register.show'),
   url(r'^profile$',                     'freieit.views.profile.show'),
   url(r'^expert/(?P<expert>[\w_\-]+)$', 'freieit.views.expert.show'),
