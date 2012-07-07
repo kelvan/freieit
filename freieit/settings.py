@@ -134,6 +134,8 @@ INSTALLED_APPS = (
     'django.contrib.flatpages',
     'taggit',
     'haystack',
+    'registration',
+    'invitation',
     'freieit',
 )
 
@@ -171,3 +173,13 @@ HAYSTACK_CONNECTIONS = {
         'ENGINE': 'haystack.backends.simple_backend.SimpleEngine',
     },
 }
+
+EMAIL_HOST = 'localhost'
+EMAIL_PORT = 2525
+EMAIL_USE_TLS = True
+DEFAULT_FROM_EMAIL = "freie.it <freie-it@logic.at>"
+
+INVITE_MODE = True
+ACCOUNT_INVITATION_DAYS = 14
+ACCOUNT_ACTIVATION_DAYS = 14
+INVITATIONS_PER_USER = 999

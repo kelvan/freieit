@@ -3,6 +3,7 @@ from django.shortcuts import render_to_response
 
 
 def show(request):
-  return render_to_response('register.html')
+    return render_to_response('register.html')
 
-
+def invite(request):
+    return render_to_response('invite.html')

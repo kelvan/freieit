@@ -1,0 +1,10 @@
+{% load i18n %}
+{% trans "Just one more step to activate your account on" %} {{ site }}.
+
+{% trans "Go to" %}
+http://{{site.domain}}{% url registration_activate activation_key=activation_key %}
+{% trans "to activate!" %}
+
+{% blocktrans with site.name as sitename %}All the best,
+
+The {{ sitename }} Team{% endblocktrans %}

@@ -37,10 +37,11 @@
           <ul>
             <li>
               {% if user.is_authenticated %}
-                <a href="{% url freieit.views.login.do_logout %}">logout {{ user.username }}</a>
+                <a href="{% url invitation.views.invite %}">Invite an expert</a> /
+                <a href="{% url logout %}">logout {{ user.username }}</a>
               {% else %}
-                <a href="{% url freieit.views.login.show %}">Login</a> /
-                <a href="{% url freieit.views.register.show %}">registrieren</a></li>
+                <a href="{% url login %}">Login</a>
+                {# / <a href="/accounts/register">registrieren</a></li> #}
               {% endif %}
             <li><a href="/terms_of_business">Geschäftsbedingungen</a></li>
             <li><a href="/become_expert">freie.it Expert_in werden</a></li>
