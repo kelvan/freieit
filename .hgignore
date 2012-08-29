@@ -8,3 +8,5 @@
 ^_media.*$
 ^_static.*$
 ^_freieit.db$
+
+^_dev_venv/.*$

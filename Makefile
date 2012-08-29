@@ -2,6 +2,7 @@
 SHELL = /bin/sh
 
 PY_EXISTS = $(shell test -x "/usr/bin/python2.7"; echo $$?)
+DJANGO_ADMIN = $(shell django-admin.py 2>/dev/null 1>/dev/null; if [ "$$?" -eq "0" ] ; then echo "django-admin.py" ; else "django-admin" ; fi)
 
 ifeq ($(PY_EXISTS),0)
     PYTHON=/usr/bin/env python2.7
@@ -28,6 +29,9 @@ fixtures-media: clean-media
 
 rebuild-index:
 	$(MANAGE_SCRIPT) rebuild_index
+
+i18n:
+	cd freieit ; $(DJANGO_ADMIN) makemessages -a
 
 .PHONY: clean clean-db clean-media clean-fixtures
 

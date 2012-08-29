@@ -1,13 +1,14 @@
 {% load static %}
+{% load i18n %}
 
 <!DOCTYPE html>
 <html lang="de">
   <head>
     <meta charset="utf-8" />
     <link rel="shortcut icon" type="image/x-icon" href="{% static "fit-icon.png" %}"/>
-    <title>free.it &ndash; Übersicht</title>
-    <meta name="description" content="Startseite: Das bietet der clc."/>
-    <meta name="keywords" lang="de" content="Freie Software Support Hilfe Experten Open Source FOSS FLOSS Endanwender privat vor Ort Besuch"/>
+    <title>{% trans "free.it &ndash; Übersicht" %}</title>
+    <meta name="description" content="{% trans "Startseite: Das bietet der clc." %}"/>
+    <meta name="keywords" lang="de" content="{% trans "Freie Software Support Hilfe Experten Open Source FOSS FLOSS Endanwender privat vor Ort Besuch" %}"/>
     <!--[if lt IE 9]>
       <script language="JavaScript">
         var e = ("abbr,article,aside,audio,canvas,datalist,details,figure,footer,header,hgroup,mark,menu,meter,nav,output,progress,section,time,video").split(',');
@@ -24,8 +25,8 @@
   <body>
     <article>
       <header>
-        <div class="logo"><a href="/"><img src="{% static "freie.it.png" %}" alt="free.it: Free Software Support"/></a></div>
-        <h1>Professionelle Unterstützung<br />für <a href="/free_software" title="Wieso Freie Software?">Freie Software</a> finden.</h1>
+        <div class="logo"><a href="/"><img src="{% static "freie.it.png" %}" alt="{% trans "freie.it: Free Software Support" %}"/></a></div>
+        <h1>{% trans "Professionelle Unterstützung" %}<br />{% trans "für" %} <a href="/free_software" title="{% trans "Wieso Freie Software?" %}">{% trans "Freie Software" %}</a> {% trans "finden." %}</h1>
       </header>
 
       {% block content %}
@@ -37,26 +38,26 @@
           <ul>
             <li>
               {% if user.is_authenticated %}
-                <a href="{% url invitation.views.invite %}">Invite an expert</a> /
-                <a href="{% url logout %}">logout {{ user.username }}</a>
+                <a href="{% url invitation.views.invite %}">{% trans "Invite an expert" %}</a> /
+                <a href="{% url logout %}">{% trans "logout" %} {{ user.username }}</a>
               {% else %}
                 <a href="{% url login %}">Login</a>
-                {# / <a href="/accounts/register">registrieren</a></li> #}
+                {# / <a href="/accounts/register">{% trans "registrieren" %}</a></li> #}
               {% endif %}
-            <li><a href="/terms_of_business">Geschäftsbedingungen</a></li>
-            <li><a href="/become_expert">freie.it Expert_in werden</a></li>
-            <li><a href="/contact">Kontakt</a></li>
+            <li><a href="/terms_of_business">{% trans "Geschäftsbedingungen" %}</a></li>
+            <li><a href="/become_expert">{% trans "freie.it Expert_in werden" %}</a></li>
+            <li><a href="/contact">{% trans "Kontakt" %}</a></li>
           </ul>
           <ul>
-            <li><a href="/free_software">Definition: Freie Software</a></li>
-            <li><a href="/tips_and_tricks">Tipps & Tricks</a></li>
-            <li><a href="/links">Links</a></li>
-            <li><a href="/faq">FAQ</a></li>
+            <li><a href="/free_software">{% trans "Definition: Freie Software" %}</a></li>
+            <li><a href="/tips_and_tricks">{% trans "Tipps & Tricks" %}</a></li>
+            <li><a href="/links">{% trans "Links" %}</a></li>
+            <li><a href="/faq">{% trans "FAQ" %}</a></li>
           </ul>
         </div>
 
-        <p id="dat">Zuletzt aktualisiert am: <time datetime="2012-04-13">13. April 2012</time></p>
-        <p><a href="http://validator.w3.org/check?uri=referer" title="Validierung des HTML5 Web-Standards" lang="en" hreflang="en"><abbr title="Extenisble Hypertext Markup Language, Version 5">HTML5</abbr></a> &bull; <a href="http://jigsaw.w3.org/css-validator/check/referer" title="Validierung der Design-Auszeichnungssprache-Standards" lang="en" hreflang="en"><abbr title="Cascading Stylesheets, Version 3">CSS3</abbr></a> &bull; <a href="http://www.w3.org/WAI/WCAG20/glance/" title="Erklärung von Web-Zugansoptimierungsrichtlinien" lang="en" hreflang="en"><abbr title="Web Content Accessibility Guidelines, Version 2">WCAG 2</abbr></a></p>
+        <p id="dat">{% trans "Zuletzt aktualisiert am: "%}<time datetime="2012-04-13">13. April 2012</time></p>
+        <p><a href="http://validator.w3.org/check?uri=referer" title="{% trans "Validierung des HTML5 Web-Standards" %}" lang="en" hreflang="en"><abbr title="Extenisble Hypertext Markup Language, Version 5">HTML5</abbr></a> &bull; <a href="http://jigsaw.w3.org/css-validator/check/referer" title="{% trans "Validierung der Design-Auszeichnungssprache-Standards" %}" lang="en" hreflang="en"><abbr title="Cascading Stylesheets, Version 3">CSS3</abbr></a> &bull; <a href="http://www.w3.org/WAI/WCAG20/glance/" title="{% trans "Erklärung von Web-Zugansoptimierungsrichtlinien" %}" lang="en" hreflang="en"><abbr title="Web Content Accessibility Guidelines, Version 2">WCAG 2</abbr></a></p>
         {% endblock footer %}
       </footer>
     </article>
