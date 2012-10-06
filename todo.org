@@ -49,4 +49,4 @@
   fab file
 ** Installation Server
 ** Datenbank
-   postgresql
+   postgresql (später auch postgis)
