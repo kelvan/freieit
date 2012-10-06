@@ -15,4 +15,4 @@ def show(request, page_num=1):
   expert_selection = ExpertProfile.objects.all()
   p = Paginator(expert_selection, experts_per_page)
 
-  return render_to_response('experts.html', RequestContext(request, {'page': p.page(page_num)}))
+  return render_to_response('experts.html', context_instance=RequestContext(request, {'page': p.page(page_num)}))

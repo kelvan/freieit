@@ -25,7 +25,7 @@
 
 * Controller / View
 ** Tagfilter							     :kelvan:
-** Suche :gregor:						     :albert:
+** Suche 						      :albert:gregor:
 ** [#B] Erweiterte Suche
    Schieberegler 
 ** [#C] Kalenderintegration
