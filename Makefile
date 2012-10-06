@@ -28,7 +28,7 @@ fixtures-media: clean-media
 	cp -r dev-fixtures/media ./_media
 
 rebuild-index:
-	$(MANAGE_SCRIPT) rebuild_index
+	$(MANAGE_SCRIPT) rebuild_index --noinput
 
 i18n:
 	cd freieit ; $(DJANGO_ADMIN) makemessages -a
