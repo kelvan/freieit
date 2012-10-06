@@ -1,0 +1,52 @@
+* Model								     :kelvan:
+** Umstellen auf Postgresql für Entwicklung			      :michi:
+** Experten 
+   gibt es mehrer Adressen werden mehrere Experten angelegt
+*** Stundensatz numerisch,  freie Eingabe für Nebenkosten, Kommentare, Pauschale etc.
+    0 = ehrenamtlich, Null = Unbekannt (nach Vereinbarung)
+*** Location
+    - Strasse, Hausnummer, Ort, PLZ, Land
+    - [#B] Geokoord
+    freies Textfeld weg
+*** Verfügbarkeit als Textfeld
+*** Links: MultipleJoin auf Links
+ 
+** Links
+*** Experte: ForeignKey
+*** Typ (www, Jabber, Xing, Linkedin, email, Tel, Mobil, Fax, GPG)
+*** Url
+
+* Templates
+** Base Template 						:franz:michi:
+   bootstrap?
+** zukünftige Startseite					      :franz:
+   Franz macht statische Prototyp HTML Seite
+** [#B] Experte eintragen
+
+* Controller / View
+** Tagfilter							     :kelvan:
+** Suche :gregor:						     :albert:
+** [#B] Erweiterte Suche
+   Schieberegler 
+** [#C] Kalenderintegration
+
+* Client / Javascript
+** [#B] Map - OpenLayers
+*** [#B] Locationsuche 
+** [#B] Chat XMMP Jabber
+
+* Grafik / Layout
+** Basecamp evaluieren
+** [#B] Photos?
+
+* Texte
+** Impressum / Haftungsauschluss				   :wolfgang:
+** Über uns							   :wolfgang:
+** [#B] Tipps & Tricks 						      :franz:
+** Expertenseitentext 				      :franz:wolfgang:gregor:
+   
+* Deployment							     :kelvan:
+  fab file
+** Installation Server
+** Datenbank
+   postgresql
