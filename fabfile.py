@@ -29,7 +29,7 @@ def lvirtualenv(command):
 def make_venv():
     dev()
     with lcd(env.directory):
-        local('virtualenv-2.7 env')
+        local('virtualenv-2.7 -p python2.7 env')
 
 def install_req():
     dev()
