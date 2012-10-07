@@ -5,37 +5,33 @@ from django.contrib.auth import authenticate, login, logout
 from django.core.context_processors import csrf
 
 from haystack.views import SearchView
+from copy import copy
 
 class IndexSearchView(SearchView):
+  def build_form(self, form_kwargs=None):
+    """
+    Instantiates the form the class should use to process the search query.
+    """
+    data = None
+    kwargs = {
+      'load_all': self.load_all,
+      }
+    if form_kwargs:
+      kwargs.update(form_kwargs)
+      
+    if len(self.request.GET):
+      data = self.request.GET.copy()
+      tag = data['tagname']
+      if not tag in data['q']:
+        data['q'] = data['q'] + " " + tag 
+        
+    if self.searchqueryset is not None:
+      kwargs['searchqueryset'] = self.searchqueryset
+          
+    return self.form_class(data, **kwargs)
 
-  # def __call__(self, request):
-  #       """
-  #       Generates the actual response to the search.
 
-  #       Relies on internal, overridable methods to construct the response.
-  #       """
-  #       self.request = request
 
-  #       self.form = self.build_form()
-  #       self.query = self.get_query()
-  #       self.results = self.get_results()
-
-  #       return self.create_response()
-
-  def get_query(self):
-      """
-      Returns the query provided by the user.
-
-      Returns an empty string if the query is invalid.
-      """
-      if self.form.is_valid():
-        import pdb; pdb.set_trace()
-        # TODO wird das mehrmals aufgerufen?
-        self.form.cleaned_data['q'] = self.form.cleaned_data['q'] + self.request.GET.get('tagname', '')
-        return self.form.cleaned_data['q']
-
-    
-#SearchView
 
 def show(request):
   return render_to_response('home.html')
