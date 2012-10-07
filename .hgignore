@@ -10,3 +10,4 @@
 ^_freieit.db$
 
 ^_dev_venv/.*$
+^env/.*$
