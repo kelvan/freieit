@@ -1,4 +1,11 @@
 {{ object.name }}
 {{ object.user.get_full_name }}
-{{ object.location }}
 {{ object.services }}
+{{ object.street }}
+{{ object.city }}
+{{ object.postcode }}
+{{ object.country }}
+{{ object.services }}
+{{ object.time }}
+{% for tag in object.keywords.all %}{{ tag.name }} {% endfor %}
+

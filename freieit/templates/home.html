@@ -17,11 +17,14 @@
             {{ form.as_table }}
             <tr>
                 <td>&nbsp;</td>
-		<td><input type="submit" value="tag1" name="tagname"></td>
-		<td><input type="submit" value="tag2" name="tagname"></td>
-                <td>
+		
+		
+		<td>
                     <input type="submit" value="Search" name="search">
                 </td>
+		{% for tag in tags %}
+		<td><input type="submit" value="{{tag}}" name="tagname"></td>
+                {% endfor %}
             </tr>
         </table>
 
