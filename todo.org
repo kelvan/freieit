@@ -1,32 +1,42 @@
 * Model								     :kelvan:
-** Umstellen auf Postgresql für Entwicklung			      :michi:
+** [#B] Umstellen auf Postgresql für Entwicklung 		      :michi:
 ** Experten 
    gibt es mehrer Adressen werden mehrere Experten angelegt
-*** Stundensatz numerisch,  freie Eingabe für Nebenkosten, Kommentare, Pauschale etc.
+*** TODO Referenzen
+    freies Textfeld
+*** TODO Kurztext
+    max. 160 Zeichen 
+*** TODO Langtext
+*** DONE Stundensatz numerisch,  freie Eingabe für Nebenkosten, Kommentare, Pauschale etc.
     0 = ehrenamtlich, Null = Unbekannt (nach Vereinbarung)
 *** Location
-    - Strasse, Hausnummer, Ort, PLZ, Land
-    - [#B] Geokoord
-    freies Textfeld weg
-*** Verfügbarkeit als Textfeld
-*** Links: MultipleJoin auf Links
+**** DONE Strasse, Hausnummer, Ort, PLZ, Land
+     freies Textfeld weg
+**** [#B] Geokoord
+    
+*** DONE Verfügbarkeit als Textfeld
+*** DONE Links: MultipleJoin auf Links
  
-** Links
+** DONE Links
 *** Experte: ForeignKey
 *** Typ (www, Jabber, Xing, Linkedin, email, Tel, Mobil, Fax, GPG)
-*** Url
+*** TODO Url
+    validator
+
+** TODO Hierarchische Tags					     :kelvan:
 
 * Templates
 ** Base Template 						:franz:michi:
    bootstrap?
-** zukünftige Startseite					      :franz:
-   Franz macht statische Prototyp HTML Seite
-** Kontaktforumlar						      :franz:
+** DONE zukünftige Startseite 					      :franz:
+   Franz macht statische Prototyp Inkscape Seite
+** TODO Startseite als Tenplate
+** TODO Kontaktformular 					      :franz:
 ** [#B] Experte eintragen
 
 * Controller / View
-** Tagfilter							     :kelvan:
-** Suche 						      :albert:gregor:
+** DONE Tagfilter						     :kelvan:
+** DONE Suche						      :albert:gregor:
 ** [#B] Erweiterte Suche
    Schieberegler 
 ** [#C] Kalenderintegration
@@ -37,17 +47,20 @@
 ** [#B] Chat XMMP Jabber
 
 * Grafik / Layout
-** Basecamp evaluieren
+** Bootstrap evaluieren
 ** [#B] Photos?
 
 * Texte
-** Impressum / Haftungsauschluss				   :wolfgang:
-** Über uns							   :wolfgang:
+** DONE Impressum / Haftungsauschluss				   :wolfgang:
+** DONE Über uns						   :wolfgang:
 ** [#B] Tipps & Tricks 						      :franz:
-** Expertenseitentext 				      :franz:wolfgang:gregor:
+** DONE Expertenseitentext			      :franz:wolfgang:gregor:
    
-* Deployment							     :kelvan:
-  fab file
+   
+* Deployment 							     :kelvan:
+** DONE fab file
 ** Installation Server
 ** Datenbank
    postgresql (später auch postgis)
+* Rechtliches
+** DVR Nummer beantragen					     :gregor:
