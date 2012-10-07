@@ -1,0 +1,6 @@
+django>=1.4
+#pysqlite
+#pil
+haystack
+whoosh
+south
