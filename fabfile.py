@@ -1,16 +1,19 @@
 from fabric.api import *
-from fabric.contrib import django
+#from fabric.contrib import django
+
+#django.project('freieit')
+#from freieit.models import ExpertProfile
 
 def production():
     env.hosts = ['freie.it']
     env.directory = 'freieit'
     env.user = 'kelvan'
     env.deploy_user = 'kelvan'
-    env.activate = 'source /home/kelvan/.virtualenvs/freieit/bin/activate'
+    env.activate = '. /home/kelvan/.virtualenvs/freieit/bin/activate'
 
 def dev():
     env.directory = '.'
-    env.activate = 'source env/bin/activate'
+    env.activate = '. env/bin/activate'
 
 def vars():
     env.app= 'freieit'
@@ -23,16 +26,33 @@ def lvirtualenv(command):
     with lcd(env.directory):
         local(env.activate + '&&' + command)
 
-def pip_install_req():
-    virtualenv('pip install -U -r freieit/requirements.txt')
+def make_venv():
+    dev()
+    with lcd(env.directory):
+        local('virtualenv --system-site-packages -p python2.7 env')
+
+def install_req():
+    dev()
+    lvirtualenv('pip install -U -r requirements.txt')
 
 def runserver():
     dev()
     lvirtualenv('python manage.py runserver')
 
 def syncdb():
+    dev()
     lvirtualenv('python manage.py syncdb')
     lvirtualenv('python manage.py migrate freieit')
+
+def clean():
+    dev()
+    with lvd(env.directory):
+        local('rm -f _freieit.db')
+        local('rm -rf _media/')
+
+def fixtures():
+    dev()
+    print ExpertProfile.objects.all()[0]
 
 def prepare_migration():
     dev()
@@ -50,5 +70,5 @@ def pull_update():
 
 def deploy():
     pull_update()
-    virtualenv('python manage.py syncdb')
+    virtualenv('python manage.py syncdb --noinput')
     virtualenv('python manage.py migrate freieit')
