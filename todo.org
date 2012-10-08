@@ -30,7 +30,7 @@
    bootstrap?
 ** DONE zukünftige Startseite 					      :franz:
    Franz macht statische Prototyp Inkscape Seite
-** TODO Startseite als Tenplate
+** TODO Startseite als Template
 ** TODO Kontaktformular 					      :franz:
 ** [#B] Experte eintragen
 
