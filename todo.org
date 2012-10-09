@@ -45,6 +45,9 @@
 ** [#B] Map - OpenLayers
 *** [#B] Locationsuche 
 ** [#B] Chat XMMP Jabber
+   z.B 
+   http://raphael.kallensee.name/journal/prodromus-ein-minimaler-javascript-xmpp-client/
+   http://candy-chat.github.com/candy/
 
 * Grafik / Layout
 ** Bootstrap evaluieren
