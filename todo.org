@@ -20,7 +20,7 @@
 ** DONE Links
 *** Experte: ForeignKey
 *** Typ (www, Jabber, Xing, Linkedin, email, Tel, Mobil, Fax, GPG)
-*** TODO Url
+*** TODO Url							     :albert:
     validator
 
 ** TODO Hierarchische Tags					     :kelvan:
