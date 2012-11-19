@@ -59,8 +59,11 @@
 ** [#B] Tipps & Tricks 						      :franz:
 ** DONE Expertenseitentext			      :franz:wolfgang:gregor:
    
-   
+* Weitere Features
+** Sichtbarkeit
+   Einschränkung Experte ist nur von Experten sichtbar
 * Deployment 							     :kelvan:
+** Für die geschlossene Betaphase statischer Login über htaccess
 ** DONE fab file
 ** Installation Server
 ** Datenbank
