@@ -1,7 +1,10 @@
 * Model								     :kelvan:
 ** [#B] Umstellen auf Postgresql für Entwicklung 		      :michi:
-** Experten 
+   serverseitig ok
+   Installsripte?
+** Experten
    gibt es mehrer Adressen werden mehrere Experten angelegt
+*** TODO Flag derzeit nicht verfügbar
 *** TODO Referenzen
     freies Textfeld
 *** TODO Kurztext
@@ -38,7 +41,7 @@
 ** DONE Tagfilter					      :albert:gregor:
 ** DONE Suche						      :albert:gregor:
 ** [#B] Erweiterte Suche
-   Schieberegler 
+   Schieberegler von bis Preis 
 ** [#C] Kalenderintegration
 
 * Client / Javascript
@@ -51,7 +54,7 @@
 
 * Grafik / Layout
 ** Bootstrap evaluieren
-** [#B] Photos?
+** [#B] Stockimages??
 
 * Texte
 ** DONE Impressum / Haftungsauschluss				   :wolfgang:
@@ -66,7 +69,8 @@
 ** Für die geschlossene Betaphase statischer Login über htaccess
 ** DONE fab file
 ** Installation Server
-** Datenbank
+** DONE Datenbank
    postgresql (später auch postgis)
 * Rechtliches
 ** DVR Nummer beantragen					     :gregor:
+** Domain -> Verein						      :franz:
