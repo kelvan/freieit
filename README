@@ -13,6 +13,7 @@
 dependencies:
 * python 2.7
 * fabric
+* virtualenv
 * django-taggit 0.9.3 (will be distributed within our software)
 * see requirements.txt
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
