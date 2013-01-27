@@ -46,7 +46,7 @@ def syncdb():
 
 def clean():
     dev()
-    with lvd(env.directory):
+    with lcd(env.directory):
         local('rm -f _freieit.db')
         local('rm -rf _media/')
 
@@ -72,3 +72,7 @@ def deploy():
     pull_update()
     virtualenv('python manage.py syncdb --noinput')
     virtualenv('python manage.py migrate freieit')
+
+def shell():
+    dev()
+    lvirtualenv('python manage.py shell')

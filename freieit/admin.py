@@ -3,3 +3,4 @@ from models import *
 
 admin.site.register(ExpertProfile, ExpertProfileAdmin)
 admin.site.register(Link, LinkAdmin)
+admin.site.register(Tag, TagAdmin)

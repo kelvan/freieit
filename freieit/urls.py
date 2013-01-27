@@ -3,7 +3,7 @@ from django.conf.urls import patterns, include, url
 from invitation.views import register
 from django.contrib.auth.views import login, logout
 from registration.forms import RegistrationFormTermsOfService
-
+from django.views.generic.simple import direct_to_template
 from django.contrib.staticfiles.urls import staticfiles_urlpatterns
 from views.home import IndexSearchView
 from haystack.forms import SearchForm
@@ -55,6 +55,15 @@ urlpatterns += patterns('',
   url(r'^map$',                         'freieit.views.map.show'),
   url(r'^map/rss.xml$',                 'freieit.views.map.rss'),
   url(r'^tag/(?P<tag>[\w_\-]+)/(?P<page_num>\d+)?', 'freieit.views.tag.show'),
+)
+
+# static templates
+urlpatterns += patterns('',
+  url(r'^about/$', direct_to_template, {'template': 'about.htm'}),
+  url(r'^dienste/$', direct_to_template, {'template': 'dienste.htm'}),
+  url(r'^tipps/$', direct_to_template, {'template': 'tipps.htm'}),
+  url(r'^statuten/$', direct_to_template, {'template': 'statuten.htm'}),
+  url(r'^impressum/$', direct_to_template, {'template': 'impressum.htm'})
 )
 
 if settings.DEBUG:

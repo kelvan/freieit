@@ -6,6 +6,13 @@ from taggit.managers import TaggableManager
 from audited_models.models import AuditedModel
 from choices import LABELS, COUNTRIES, CURRENCIES
 
+class Tag(models.Model):
+    name = models.CharField(max_length=50, unique=True)
+    parent = models.ManyToManyField('self', null=True, blank=True, related_name='children')
+
+    def __unicode__(self):
+        return self.name
+
 class ExpertProfile(AuditedModel):
     # the user this expert profile is associated with
     user = models.ForeignKey(User)
@@ -27,15 +34,15 @@ class ExpertProfile(AuditedModel):
     country = models.CharField(max_length=2, choices=COUNTRIES)
 
     # time when the services can be offered
-    time = models.CharField(max_length=1024)
+    time = models.CharField(max_length=1024, help_text=_('"opening hours"'))
 
     # charges for this expert
-    charges = models.PositiveIntegerField(null=True, blank=True)
+    charges = models.PositiveIntegerField(null=True, blank=True, help_text=_('per hout incl. VAT'))
     currency = models.CharField(max_length=3, choices=CURRENCIES, null=True, blank=True)
     charges_details = models.TextField(null=True, blank=True)
 
     # tags for this expert
-    keywords = TaggableManager()
+    keywords = models.ManyToManyField(Tag, null=True, blank=True)
 
     class Meta:
             #unique_together = (("user", "name"),)
@@ -64,6 +71,10 @@ class Link(AuditedModel):
     expert = models.ForeignKey(ExpertProfile)
     label = models.CharField(max_length=20, choices=LABELS)
     url = models.CharField(max_length=200)
+
+class TagAdmin(admin.ModelAdmin):
+    list_display = ['name']
+    list_filter = ['parent__name']
 
 class LinkInline(admin.TabularInline):
     model = Link

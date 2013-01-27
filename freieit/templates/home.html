@@ -3,150 +3,148 @@
 
 {% block content %}
 
+<form id="suche" action="." method="get">
+{#{{ form.as_p }}#}
+<input id="suchfeld" name="suche" placeholder="Wobei brauchen Sie Hilfe?" type="text">
+	<a href="#" id="suchpfeil" onclick="tags();" title="Suchvorschläge ein-/ausblenden"></a>
+	<button type="submit" title="jetzt suchen"><img src="{% static "img/fit/lupe.png" %}" alt=""></button>
+	<div>
+		<strong>Suchvorschläge:</strong>
+		<a onclick="dazu(this);">Internet</a>
+		<a onclick="dazu(this);">Email</a>
+		<a onclick="dazu(this);">Text</a>
+		<a onclick="dazu(this);">Tabelle</a>
+		<a onclick="dazu(this);">Bild</a>
+		<a onclick="dazu(this);">Video</a>
+		<a onclick="dazu(this);">Ton</a>
+		<a onclick="dazu(this);">Buchhaltung</a>
+		<a onclick="dazu(this);">Animation</a>
+		<a onclick="dazu(this);">Spiele</a>
+		<a onclick="dazu(this);">Chat</a>
+		<a onclick="dazu(this);">Administration</a>
+		{% for tag in tags %}
+			<a onclick="dazu({{ tag }});">{{tag}}</a>
+		{% endfor %}
+	</div>
+</form>
+<header>
+	<h2><strong>5</strong> Passende Fachkräfte:</h2>
+</header>
+<p class="nav">
+	<span>Treffer/Seite: <strong id="anzahl">50</strong></span>
+	<a id="adown" class="bdown" onclick="zahl(false);" title="weniger Treffer pro Seite zeigen"><img src="{% static "img/fit/pfeil-weiss.png" %}" alt=""></a>
+	<a id="aup" class="bup" onclick="zahl(true);" title="mehr Treffer pro Seite zeigen"><img src="{% static "img/fit/pfeil-weiss.png" %}" alt=""></a>
+</p>
 <section>
-  <form action="." method="get">
-    <table>
-      {{ form.as_table }}
-      <tr>
-        <td>&nbsp;</td>	
-	<td>
-          <input type="submit" value="Search" name="search">
-        </td>
-	{% for tag in tags %}
-	<td><input type="submit" value="{{tag}}" name="tagname"></td>
-        {% endfor %}
-      </tr>
-    </table>
-    <input id="suchfeld" name="suche" placeholder="Wobei brauchen Sie Hilfe?" type="text">
-				<a href="#" id="suchpfeil" onclick="tags();" title="Suchvorschläge ein-/ausblenden"></a>
-				<button type="submit" title="jetzt suchen"><img src="freie.it%20%E2%80%93%20Support%20f%C3%BCr%20Freie%20Software%20finden-Dateien/lupe.png" alt=""></button>
-				<div>
-					<strong>Suchvorschläge:</strong>
-					<a onclick="dazu(this);">Internet</a>
-					<a onclick="dazu(this);">Email</a>
-					<a onclick="dazu(this);">Text</a>
-					<a onclick="dazu(this);">Tabelle</a>
-					<a onclick="dazu(this);">Bild</a>
-					<a onclick="dazu(this);">Video</a>
-					<a onclick="dazu(this);">Ton</a>
-					<a onclick="dazu(this);">Buchhaltung</a>
-					<a onclick="dazu(this);">Animation</a>
-					<a onclick="dazu(this);">Spiele</a>
-					<a onclick="dazu(this);">Chat</a>
-					<a onclick="dazu(this);">Administration</a>
-				</div>
-			</form>
-			<header>
-				<h2><strong>5</strong> Passende Fachkräfte:</h2>
-			</header>
-			<p class="nav">
-				<span>Treffer/Seite: <strong id="anzahl">50</strong></span>
-				<a id="adown" class="bdown" onclick="zahl(false);" title="weniger Treffer pro Seite zeigen"><img src="freie.it%20%E2%80%93%20Support%20f%C3%BCr%20Freie%20Software%20finden-Dateien/pfeil-weiss.png" alt=""></a>
-				<a id="aup" class="bup" onclick="zahl(true);" title="mehr Treffer pro Seite zeigen"><img src="freie.it%20%E2%80%93%20Support%20f%C3%BCr%20Freie%20Software%20finden-Dateien/pfeil-weiss.png" alt=""></a>
-			</p>
-			<section>
-				<div>
-					<header>
-						<h2><a onclick="mehr(this);" title="mehr Infos anzeigen"><img src="freie.it%20%E2%80%93%20Support%20f%C3%BCr%20Freie%20Software%20finden-Dateien/f5.jpg" alt="Herrmann Kopic">Herrmann Ludvig Kopic</a></h2>
-					</header>
-					<p><strong>Grafik, Webdesign und Suchmaschinenoptimierung</strong><br>
-						1100 Wien</p>
-					<dl>
-						<dt>Telefon</dt>
-						<dd>0668 201 83 25</dd>
-						<dt>E-Mail</dt>
-						<dd><a href="mailto:herrmann.kopic@fsfe.org" title="E-Mail senden">herrmann.kopic@fsfe.org</a></dd>
-						<dt>Jabber</dt>
-						<dd><a href="">Herrmann_Kopic</a></dd>
-						<dt>Zeit</dt>
-						<dd>Montag - Samstag 10-22 Uhr</dd>
-						<dt>Kosten</dt>
-						<dd>EUR 50/h (Kundenbesuche), Pauschalen nach Vereinbarung</dd>
-					</dl>
-				</div>
-				<div>
-					<header>
-						<h2><a onclick="mehr(this);" title="mehr Infos anzeigen"><img src="freie.it%20%E2%80%93%20Support%20f%C3%BCr%20Freie%20Software%20finden-Dateien/f2.jpg" alt="Robert Fiedler">Robert Fiedler</a></h2>
-					</header>
-					<p><strong>Konfiguration und Administration von GNU/Linux Computern, Problemlösungs-Hotline und online Support</strong><br>
-						8581 Prädobl</p>
-					<dl>
-						<dt>Telefon</dt>
-						<dd><a href="">0660 766 09 12</a></dd>
-						<dt>E-Mail</dt>
-						<dd><a href="mailto:r.fiedler@fit-system.at" title="E-Mail senden">r.fiedler@fit-system.at</a></dd>
-						<dt>Jabber</dt>
-						<dd><a href="#">RobertoFidel</a></dd>
-						<dt>Zeit</dt>
-						<dd>Montag - Freitag 10-18 Uhr</dd>
-						<dt>Kosten</dt>
-						<dd>EUR 70/h plus Anfahrt (EUR 0,5 pro Kilometer)</dd>
-					</dl>
-				</div>
-				<div>
-					<header>
-						<h2><a onclick="mehr(this);" title="mehr Infos anzeigen"><img src="freie.it%20%E2%80%93%20Support%20f%C3%BCr%20Freie%20Software%20finden-Dateien/f3.jpg" alt="Camille Javal">Camille Javal</a></h2>
-					</header>
-					<p><strong>Datenbanken und Netzwerkadministration</strong><br>
-						9252 Kleinbichl</p>
-					<dl>
-						<dt>Telefon</dt>
-						<dd>0676 502 00 14</dd>
-						<dt>E-Mail</dt>
-						<dd><a href="mailto:javalie@conefest.com" title="E-Mail senden">javalie@conefest.com</a></dd>
-						<dt>Webseite</dt>
-						<dd><a href="http://www.conefest.com/" title="Homepage">conefest.com</a></dd>
-						<dt>Jabber</dt>
-						<dd><a href="">Javalie</a></dd>
-						<dt>Zeit</dt>
-						<dd>Montag - Samstag 10-18 Uhr</dd>
-						<dt>Kosten</dt>
-						<dd>EUR 45/h, Pauschalen nach Vereinbarung, auch gerne div. Regionalwährungen</dd>
-					</dl>
-				</div>
-				<div>
-					<header>
-						<h2><a onclick="mehr(this);" title="mehr Infos anzeigen"><img src="freie.it%20%E2%80%93%20Support%20f%C3%BCr%20Freie%20Software%20finden-Dateien/f4.jpg" alt="Josef Göblitz">Josef Göblitz</a></h2>
-					</header>
-					<p><strong>Systemadministration, Datenwiederherstellung, Backup, Office-Programm-Support</strong><br>
-						5020 Salzburg</p>
-					<dl>
-						<dt>Telefon</dt>
-						<dd><a href="">0660 120 44 09</a></dd>
-						<dt>E-Mail</dt>
-						<dd><a href="mailto:josefg@gmail.com" title="E-Mail senden">josefg@gmail.com</a></dd>
-						<dt>Webseite</dt>
-						<dd><a href="http://www.josefg.at/" title="Homepage">josefg.at</a></dd>
-						<dt>Zeit</dt>
-						<dd>frei nach Vereinbarung</dd>
-						<dt>Kosten</dt>
-						<dd>EUR 60/h, variable Pauschalen für Standardpakete (EUR 0,5 pro Kilometer)</dd>
-					</dl>
-				</div>
-				<div>
-					<header>
-						<h2><a onclick="mehr(this);" title="mehr Infos anzeigen"><img src="freie.it%20%E2%80%93%20Support%20f%C3%BCr%20Freie%20Software%20finden-Dateien/f1.jpg" alt="Heinz Blüddemann">Heinz Blüddemann</a></h2>
-					</header>
-					<p><strong>3D-Video, Fotografie und Bildbearbeitung, Datensicherung, Kaufberatung</strong><br>
-						1140 Wien</p>
-					<dl>
-						<dt>Telefon</dt>
-						<dd><a href="">0650 871 21 18</a></dd>
-						<dt>E-Mail</dt>
-						<dd><a href="mailto:blueddemann_heinz@mitzunge.at" title="E-Mail senden">blueddemann_heinz@mitzunge.at</a></dd>
-						<dt>Webseite</dt>
-						<dd><a href="http://www.mitzunge.at/" title="Homepage">mitzunge.at</a></dd>
-						<dt>Jabber</dt>
-						<dd><a href="#">Büddemann-Heinz</a></dd>
-						<dt>Zeit</dt>
-						<dd>Montag - Donnerstag 14-2 Uhr</dd>
-						<dt>Kosten</dt>
-						<dd>EUR 50/h, Gegenleistungsgeschäfte möglich</dd>
-					</dl>
-				</div>
-
-
-	
+	<div>
+		<header>
+			<h2><a onclick="mehr(this);" title="mehr Infos anzeigen"><img src="{% static "img/fit/f5.jpg" %}" alt="Herrmann Kopic">Herrmann Ludvig Kopic</a></h2>
+		</header>
+		<p><strong>Grafik, Webdesign und Suchmaschinenoptimierung</strong><br>
+			1100 Wien</p>
+		<dl>
+			<dt>Telefon</dt>
+			<dd>0668 201 83 25</dd>
+			<dt>E-Mail</dt>
+			<dd><a href="mailto:herrmann.kopic@fsfe.org" title="E-Mail senden">herrmann.kopic@fsfe.org</a></dd>
+			<dt>Jabber</dt>
+			<dd><a href="">Herrmann_Kopic</a></dd>
+			<dt>Zeit</dt>
+			<dd>Montag - Samstag 10-22 Uhr</dd>
+			<dt>Kosten</dt>
+			<dd>EUR 50/h (Kundenbesuche), Pauschalen nach Vereinbarung</dd>
+		</dl>
+	</div>
+	<div>
+		<header>
+			<h2><a onclick="mehr(this);" title="mehr Infos anzeigen"><img src="{% static "img/fit/f2.jpg" %}" alt="Robert Fiedler">Robert Fiedler</a></h2>
+		</header>
+		<p><strong>Konfiguration und Administration von GNU/Linux Computern, Problemlösungs-Hotline und online Support</strong><br>
+			8581 Prädobl</p>
+		<dl>
+			<dt>Telefon</dt>
+			<dd><a href="">0660 766 09 12</a></dd>
+			<dt>E-Mail</dt>
+			<dd><a href="mailto:r.fiedler@fit-system.at" title="E-Mail senden">r.fiedler@fit-system.at</a></dd>
+			<dt>Jabber</dt>
+			<dd><a href="#">RobertoFidel</a></dd>
+			<dt>Zeit</dt>
+			<dd>Montag - Freitag 10-18 Uhr</dd>
+			<dt>Kosten</dt>
+			<dd>EUR 70/h plus Anfahrt (EUR 0,5 pro Kilometer)</dd>
+		</dl>
+	</div>
+	<div>
+		<header>
+			<h2><a onclick="mehr(this);" title="mehr Infos anzeigen"><img src="{% static "img/fit/f3.jpg" %}" alt="Camille Javal">Camille Javal</a></h2>
+		</header>
+		<p><strong>Datenbanken und Netzwerkadministration</strong><br>
+			9252 Kleinbichl</p>
+		<dl>
+			<dt>Telefon</dt>
+			<dd>0676 502 00 14</dd>
+			<dt>E-Mail</dt>
+			<dd><a href="mailto:javalie@conefest.com" title="E-Mail senden">javalie@conefest.com</a></dd>
+			<dt>Webseite</dt>
+			<dd><a href="http://www.conefest.com/" title="Homepage">conefest.com</a></dd>
+			<dt>Jabber</dt>
+			<dd><a href="">Javalie</a></dd>
+			<dt>Zeit</dt>
+			<dd>Montag - Samstag 10-18 Uhr</dd>
+			<dt>Kosten</dt>
+			<dd>EUR 45/h, Pauschalen nach Vereinbarung, auch gerne div. Regionalwährungen</dd>
+		</dl>
+	</div>
+	<div>
+		<header>
+			<h2><a onclick="mehr(this);" title="mehr Infos anzeigen"><img src="{% static "img/fit/f4.jpg" %}" alt="Josef Göblitz">Josef Göblitz</a></h2>
+		</header>
+		<p><strong>Systemadministration, Datenwiederherstellung, Backup, Office-Programm-Support</strong><br>
+			5020 Salzburg</p>
+		<dl>
+			<dt>Telefon</dt>
+			<dd><a href="">0660 120 44 09</a></dd>
+			<dt>E-Mail</dt>
+			<dd><a href="mailto:josefg@gmail.com" title="E-Mail senden">josefg@gmail.com</a></dd>
+			<dt>Webseite</dt>
+			<dd><a href="http://www.josefg.at/" title="Homepage">josefg.at</a></dd>
+			<dt>Zeit</dt>
+			<dd>frei nach Vereinbarung</dd>
+			<dt>Kosten</dt>
+			<dd>EUR 60/h, variable Pauschalen für Standardpakete (EUR 0,5 pro Kilometer)</dd>
+		</dl>
+	</div>
+	<div>
+		<header>
+			<h2><a onclick="mehr(this);" title="mehr Infos anzeigen"><img src="{% static "img/fit/f1.jpg" %}" alt="Heinz Blüddemann">Heinz Blüddemann</a></h2>
+		</header>
+		<p><strong>3D-Video, Fotografie und Bildbearbeitung, Datensicherung, Kaufberatung</strong><br>
+			1140 Wien</p>
+		<dl>
+			<dt>Telefon</dt>
+			<dd><a href="">0650 871 21 18</a></dd>
+			<dt>E-Mail</dt>
+			<dd><a href="mailto:blueddemann_heinz@mitzunge.at" title="E-Mail senden">blueddemann_heinz@mitzunge.at</a></dd>
+			<dt>Webseite</dt>
+			<dd><a href="http://www.mitzunge.at/" title="Homepage">mitzunge.at</a></dd>
+			<dt>Jabber</dt>
+			<dd><a href="#">Büddemann-Heinz</a></dd>
+			<dt>Zeit</dt>
+			<dd>Montag - Donnerstag 14-2 Uhr</dd>
+			<dt>Kosten</dt>
+			<dd>EUR 50/h, Gegenleistungsgeschäfte möglich</dd>
+		</dl>
+	</div>
 </section>
+
+<p class="nav">
+	<span>Seite: <strong id="pg">6/12</strong></span>
+	<a id="pm" class="bleft" onclick="blaettern(false);">
+		<img src="{% static "img/fit/pfeil-weiss.png" %}" alt="">
+	</a>
+	<a id="pp" class="bright" onclick="blaettern(true);">
+	<img src="{% static "img/fit/pfeil-weiss.png" %}" alt="">
+	</a>
+</p>
 {% endblock content %}
 
