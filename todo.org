@@ -61,16 +61,18 @@
 ** DONE Über uns						   :wolfgang:
 ** [#B] Tipps & Tricks 						      :franz:
 ** DONE Expertenseitentext			      :franz:wolfgang:gregor:
-   
+** TODO Prüfen Zustimmung zur Veröffentlichung im Expertentext?   
+
 * Weitere Features
 ** Sichtbarkeit
    Einschränkung Experte ist nur von Experten sichtbar
 * Deployment 							     :kelvan:
 ** Für die geschlossene Betaphase statischer Login über htaccess
 ** DONE fab file
-** Installation Server
+** TODO Installation Testumgebung Server   
 ** DONE Datenbank
    postgresql (später auch postgis)
 * Rechtliches
-** DVR Nummer beantragen					     :gregor:
+** DVR Nummer beantragen				       :gregor:chris:
+   vermutlich nicht notwendig, weil alle Daten öffentlich sind
 ** Domain -> Verein						      :franz:
