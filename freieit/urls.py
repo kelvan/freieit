@@ -6,7 +6,8 @@ from registration.forms import RegistrationFormTermsOfService
 from django.views.generic.simple import direct_to_template
 from django.contrib.staticfiles.urls import staticfiles_urlpatterns
 from views.home import IndexSearchView
-from haystack.forms import SearchForm
+# from haystack.forms import SearchForm
+from forms.search import ExpertSearchForm
 
 # Uncomment the next two lines to enable the admin:
 from django.contrib import admin
@@ -40,7 +41,7 @@ urlpatterns += patterns('',
 )
 
 urlpatterns += patterns('',
-  url(r'^$', IndexSearchView(form_class=SearchForm, template="home.html"), name='haystack_search'),
+  url(r'^$', IndexSearchView(form_class=ExpertSearchForm, template="home.html"), name='haystack_search'),
 
   # url(r'^$', 'freieit.views.home.show'),
   url(r'^login$',                       'freieit.views.login.show'),

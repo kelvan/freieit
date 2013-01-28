@@ -31,13 +31,7 @@
 		 alt="{% trans "freie.it: Freie Software Support" %}"/>
 	  </a>
 	</div>
-
-        <h1>{% trans "Finden Sie Fachkräfte für"%} 
-	  <a href="http://fsfe.org/about/basics/freesoftware.de.html" 
-	     title="{% trans "Was ist Freie Software?" %}">
-	    {% trans "Freie Software" %}
-	  </a>! 
-	</h1>
+	{% block header %}{% endblock header %}
       </header>
 
       {% block content %}
