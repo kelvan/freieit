@@ -27,6 +27,12 @@ class IndexSearchView(SearchView):
       tag = data.get('tagname', None)
       if tag and not tag in data['q']:
         data['q'] = data['q'] + " " + re.sub(r'[^\w ]', '', tag) 
+
+      pagin = filter(lambda k:k.startswith('pagin_'), data.keys())
+      if pagin:
+        assert len(pagin) == 1
+        self.results_per_page = int(pagin[0].split('pagin_')[1])
+
         
     if self.searchqueryset is not None:
       kwargs['searchqueryset'] = self.searchqueryset
@@ -34,9 +40,12 @@ class IndexSearchView(SearchView):
     return self.form_class(data, **kwargs)
 
   def extra_context(self):
-    return dict(tags=Tag.objects.all())
+    return dict(tags=Tag.objects.all(),
+                paginate_down = self.results_per_page - 5 if self.results_per_page > 5  else 0,
+                paginate_up= self.results_per_page + 5)
 
 
 
 def show(request):
+
   return render_to_response('home.html')

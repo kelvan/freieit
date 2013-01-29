@@ -287,16 +287,13 @@ section > div h2 a {
 section > div h2 > a:hover, section > div h2 > a:focus {
 	text-decoration:none;
 }
-section > div h2 > a:after {
-	content:"mehr...";
+section > div h2 a div.labelmore {
 	float:right;
 	margin:-15px -60px 0em 0em;
 	font-size:small;
 	text-align:right;
 }
-section > div.mehr h2 > a:after {
-	content:"weniger";
-}
+
 section > div > header, section > div > p {
 	margin-left:70px;
 }

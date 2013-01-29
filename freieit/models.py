@@ -37,8 +37,10 @@ class ExpertProfile(AuditedModel):
     time = models.CharField(max_length=1024, help_text=_('"opening hours"'))
 
     # charges for this expert
-    charges = models.PositiveIntegerField(null=True, blank=True, help_text=_('per hout incl. VAT'))
-    currency = models.CharField(max_length=3, choices=CURRENCIES, null=True, blank=True)
+    charges = models.PositiveIntegerField(null=True, blank=True,
+                                          help_text=_('per hout incl. VAT'))
+    currency = models.CharField(max_length=3, choices=CURRENCIES,
+                                null=True, blank=True)
     charges_details = models.TextField(null=True, blank=True)
 
     # tags for this expert
@@ -72,6 +74,8 @@ class Link(AuditedModel):
     label = models.CharField(max_length=20, choices=LABELS)
     url = models.CharField(max_length=200)
 
+        
+        
 class TagAdmin(admin.ModelAdmin):
     list_display = ['name']
     list_filter = ['parent__name']
