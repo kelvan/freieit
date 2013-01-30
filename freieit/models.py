@@ -59,6 +59,10 @@ class ExpertProfile(AuditedModel):
             return self.user.get_full_name()
 
     @property
+    def taglist(self):
+        return ", ".join(map(lambda t: t[1], self.keywords.values_list()))
+    
+    @property
     def address(self):
         return "%s %s, %s %s, %s" % (self.street, self.number, self.postcode, self.city, self.country)
 

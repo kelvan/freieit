@@ -137,14 +137,37 @@
           {% endif %}	  
 	  </dd>
 	{% endfor %}
-	
+
+	<dt>{% trans "Stundensatz" %}</dt><dd>{{ result.object.price }}</dd>
+	<dt>{% trans "Nebenkosten" %}</dt><dd>{{ result.object.charges_details }}</dd>
+	<dt>{% trans "Verfügbarkeit" %}</dt><dd>{{ result.object.time }}</dd>
+	<dt>{% trans "Adresse" %}</dt><dd>{{ result.object.address }}</dd>
+	<dt>{% trans "Schlagwörter" %}</dt><dd>{{ result.object.taglist }}</dd>
+
+
       </dl>
     </div>
 
 
   {% endfor %}
+    </section>
+    {% if page.has_previous or page.has_next %}
+    <p class="nav">
+      <span>{% trans "Seite:" %}<strong id="pg">{{ page.number }}/{{ page.paginator.num_pages }}</strong></span>
 
-
+      {% if page.has_previous %}
+      <a id="pm" class="bleft" href="?q={{ query }}&amp;page={{ page.previous_page_number }}">
+	<img src="{% static "pfeil-weiss.png" %}" alt="{% trans "&laquo; Zurück" %}"/>
+      </a>
+      {% endif %}
+      
+      {% if page.has_next %}
+      <a id="pp" class="bright" href="?q={{ query }}&amp;page={{ page.next_page_number }}">{% endif %}
+	<img src="{% static "pfeil-weiss.png" %}" alt="{% trans "Vor &raquo;" %}"/>
+      </a>
+    </p>
+    {% endif %}
+  
 <script type="text/javascript">
   do_by_class("mehr", function (e){e.className = "";});
   do_by_class("labelmore", function (e){e.innerHTML = "{% trans "mehr..." %}";});
@@ -155,7 +178,7 @@
   <p>{% trans "Nichts gefunden." %}</p>
 {% endif %}
 
-</section>
+
 
 {% endblock content %}
 
