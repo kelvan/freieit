@@ -28,10 +28,8 @@ class IndexSearchView(SearchView):
       if tag and not tag in data['q']:
         data['q'] = data['q'] + " " + re.sub(r'[^\w ]', '', tag) 
 
-      pagin = filter(lambda k:k.startswith('pagin_'), data.keys())
-      if pagin:
-        assert len(pagin) == 1
-        self.results_per_page = int(pagin[0].split('pagin_')[1])
+      if "results_per_page" in data:
+        self.results_per_page = int(data['results_per_page'])
 
         
     if self.searchqueryset is not None:

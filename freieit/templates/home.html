@@ -57,7 +57,7 @@
     <input type="submit" value="{{tag}}" name="tagname" />
     {% endfor %}
   </div>
-
+</form>
   <header>
     <h2><strong>{{ page.paginator.count }}</strong> 
       {% trans "Passende Fachkräfte:" %}
@@ -69,22 +69,20 @@
       <strong id="anzahl">{{ page.paginator.per_page }}</strong>
     </span>    
     {% if paginate_down > 0 %}
-    <button id="adown" class="bdown" type="submit" 
-	    value="pagin_{{ paginate_down }}" 
-	    name="pagin_{{ paginate_down }}" 
-	    title="{% trans "weniger Treffer pro Seite zeigen" %}">
+    <a id="adown" class="bdown" 
+       href="?q={{ query }}&amp;results_per_page={{ paginate_down }}"
+       title="{% trans "weniger Treffer pro Seite zeigen" %}">
       <img src="{% static "pfeil-weiss.png" %}" a
 	   alt="{% trans "weniger Treffer pro Seite zeigen" %}" />
-    </button>
+    </a>
     {% endif %}
-    <button id="aup" class="bup" type="submit" 
-	    value="pagin_{{ paginate_up }}" 
-	    name="pagin_{{ paginate_up }}" 
-	    title="{% trans "mehr Treffer pro Seite zeigen" %}">
+    <a id="aup" class="bup" 
+       href="?q={{ query }}&amp;results_per_page={{ paginate_up }}"
+       title="{% trans "mehr Treffer pro Seite zeigen" %}">
       <img src="{% static "pfeil-weiss.png" %}" 
 	   alt="{% trans "mehr Treffer pro Seite zeigen" %}" />
-    </button>
-</form>
+    </a>
+  </p>
 
 <section>
 {% if query %}
