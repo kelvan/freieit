@@ -26,6 +26,11 @@
 *** TODO Url							     :albert:
     validator
 
+** TODO Definition Tags
+   Vorschläge: Internet, Mail, Tabellenkalkulation, Chat, Datenbanken,
+               Entwicklung, Textverarbeitung, Präsentationen,
+               Fotobearbeitung, Videobearbeitung, Server ....
+
 ** TODO Hierarchische Tags					     :kelvan:
 
 * Templates
