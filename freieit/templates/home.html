@@ -85,7 +85,7 @@
   </p>
 
 <section>
-{% if query %}
+
   {% for result in page %}
     <div class="mehr">
       <header>
@@ -171,10 +171,6 @@
   do_by_class("labelmore", function (e){e.innerHTML = "{% trans "mehr..." %}";});
   
 </script>
-
-{% else %}
-  <p>{% trans "Nichts gefunden." %}</p>
-{% endif %}
 
 
 

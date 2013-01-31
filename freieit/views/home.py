@@ -8,7 +8,7 @@ from django.core.context_processors import csrf
 
 from haystack.views import SearchView
 from copy import copy
-from taggit.models import Tag
+from freieit.models import Tag
 
 class IndexSearchView(SearchView):
   def build_form(self, form_kwargs=None):
