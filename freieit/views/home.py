@@ -10,7 +10,11 @@ from haystack.views import SearchView
 from copy import copy
 from freieit.models import Tag
 
+PER_PAGES = [5,10,25,50,100,250,500,1000]
+
 class IndexSearchView(SearchView):
+  results_per_page = 50
+  
   def build_form(self, form_kwargs=None):
     """
     Instantiates the form the class should use to process the search query.
@@ -29,18 +33,29 @@ class IndexSearchView(SearchView):
         data['q'] = data['q'] + " " + re.sub(r'[^\w ]', '', tag) 
 
       if "results_per_page" in data:
-        self.results_per_page = int(data['results_per_page'])
-
+        self.results_per_page = int(data['results_per_page'])        
         
     if self.searchqueryset is not None:
       kwargs['searchqueryset'] = self.searchqueryset
           
     return self.form_class(data, **kwargs)
 
+  @property
+  def results_per_page_ix(self):
+    return PER_PAGES.index(self.results_per_page)
+  
   def extra_context(self):
+    def ix(delta):
+      newix = self.results_per_page_ix + delta
+      if newix < 0: newix = 0
+      if newix > len(PER_PAGES)-1: newix = len(PER_PAGES) - 1 
+      return PER_PAGES[newix]
     return dict(tags=Tag.objects.all(),
-                paginate_down = self.results_per_page - 5 if self.results_per_page > 5  else 0,
-                paginate_up= self.results_per_page + 5)
+                paginate_down = ix(-1), 
+                paginate_up = ix(1),
+                clsup = "off" if self.results_per_page_ix == len(PER_PAGES) - 1 else "",
+                clsdown = "off" if self.results_per_page_ix == 0 else ""                
+                )
 
 
 

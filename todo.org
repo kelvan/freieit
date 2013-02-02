@@ -75,6 +75,7 @@
 ** Für die geschlossene Betaphase statischer Login über htaccess
 ** DONE fab file
 ** TODO Installation Testumgebung Server   
+   cron job für haystack manage.py refresh_index
 ** DONE Datenbank
    postgresql (später auch postgis)
 * Rechtliches
