@@ -7,7 +7,7 @@
 *** TODO Flag derzeit nicht verfügbar
 *** TODO Referenzen
     freies Textfeld
-*** TODO Kurztext
+*** DONE Kurztext
     max. 160 Zeichen 
 *** TODO Langtext
 *** DONE Stundensatz numerisch,  freie Eingabe für Nebenkosten, Kommentare, Pauschale etc.
@@ -34,15 +34,19 @@
 ** TODO Hierarchische Tags					     :kelvan:
 
 * Templates
+** TODO Suchvorschläge ein/ausblenden				     :gregor:
 ** Base Template 						:franz:michi:
    bootstrap?
-** DONE zukünftige Startseite 					      :franz:
+** DONE zukünftige Startseite					      :franz:
    Franz macht statische Prototyp Inkscape Seite
-** TODO Startseite als Template				:franz:gregor:albert:
+** DONE Startseite als Template				:franz:gregor:albert:
 ** TODO Kontaktformular 					      :franz:
 ** [#B] Experte eintragen
 
 * Controller / View
+** TODO Reihenfolge Tags nach Häufigkeit der Verwendung		     :gregor:
+** TODO Reihenfolge der Experten				     :gregor:
+   Zufällig?
 ** DONE Tagfilter					      :albert:gregor:
 ** DONE Suche						      :albert:gregor:
 ** [#B] Erweiterte Suche
