@@ -40,7 +40,7 @@
 ** DONE zukünftige Startseite					      :franz:
    Franz macht statische Prototyp Inkscape Seite
 ** DONE Startseite als Template				:franz:gregor:albert:
-** TODO Kontaktformular 					      :franz:
+** TODO [#B] Kontaktformular 					      :franz:
 ** [#B] Experte eintragen
 
 * Controller / View
