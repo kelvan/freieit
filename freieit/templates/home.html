@@ -110,8 +110,13 @@
       <p>
 	<strong>{{ result.object.services }}</strong>
 	</br>
-	{{ result.object.postcode }} {{ result.object.city }}
+	{{ result.object.postcode }} {{ result.object.city }}, {{ result.object.country }}
       </p>
+      {% if result.object.description %}
+      <p class="descr">
+        {{ result.object.description|linebreaksbr }}
+      </p>
+      {% endif %}
       <dl>
 	{% for link in result.object.link_set.all %}
 	  <dt>{{ link.label }}</dt>
@@ -143,11 +148,18 @@
 	{% endfor %}
 
 	<dt>{% trans "Stundensatz" %}</dt><dd>{{ result.object.price }}</dd>
-	<dt>{% trans "Nebenkosten" %}</dt><dd>{{ result.object.charges_details }}</dd>
-	<dt>{% trans "Verfügbarkeit" %}</dt><dd>{{ result.object.time }}</dd>
-	<dt>{% trans "Adresse" %}</dt><dd>{{ result.object.address }}</dd>
-	<dt>{% trans "Schlagwörter" %}</dt><dd>{{ result.object.taglist }}</dd>
-
+	{% if result.object.charges_details %}
+	  <dt>{% trans "Nebenkosten" %}</dt><dd>{{ result.object.charges_details }}</dd>
+	{% endif %}
+	{% if result.object.time %}
+	  <dt>{% trans "Verfügbarkeit" %}</dt><dd>{{ result.object.time }}</dd>
+	{% endif %}
+	{% if result.object.address %}
+	  <dt>{% trans "Adresse" %}</dt><dd>{{ result.object.address }}</dd>
+	{% endif %}
+	{% if result.object.taglist %}
+  	  <dt>{% trans "Schlagwörter" %}</dt><dd>{{ result.object.taglist }}</dd>
+	{% endif %}
 
       </dl>
     </div>

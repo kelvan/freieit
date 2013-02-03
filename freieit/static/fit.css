@@ -313,7 +313,13 @@ section > div > p {
 section > div > dl {
 	display:none;
 }
+section > div > p.descr {
+	display:none;
+}
 section > div.mehr > dl {
+	display:block;
+}
+section > div.mehr > p.descr {
 	display:block;
 }
 section > div > dl > dt {

@@ -44,9 +44,9 @@
 ** [#B] Experte eintragen
 
 * Controller / View
-** TODO Reihenfolge Tags nach Häufigkeit der Verwendung		     :gregor:
-** TODO Reihenfolge der Experten				     :gregor:
+** TODO [#B] Reihenfolge der Experten ohne Suchstring 		     :gregor:
    Zufällig?
+** DONE Available Flag berücksichtigen
 ** DONE Tagfilter					      :albert:gregor:
 ** DONE Suche						      :albert:gregor:
 ** [#B] Erweiterte Suche

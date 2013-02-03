@@ -76,11 +76,16 @@ class ExpertProfile(AuditedModel):
     
     @property
     def address(self):
-        return "%s %s, %s %s, %s" % (self.street, self.number,
-                                     self.postcode, self.city, self.country)
+        if self.street:
+            return "%s %s, %s %s, %s" % (self.street, self.number,
+                                         self.postcode, self.city, self.country)
 
     @property
     def price(self):
+        if self.charges == None:
+            return _("nach Vereinbarung")
+        if self.charges == 0:
+            return _("ehrenamtlich")
         return "%s %s" % (self.currency, self.charges)
 
     def get_absolute_url(self):
