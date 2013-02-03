@@ -26,6 +26,14 @@
      }
   }
   
+  function tags () {
+    var f = document.getElementById("suche");
+    if (f.className == "") {
+      f.className = "min";
+    } else {
+      f.className = "";
+    }
+  }
 
 </script>
 {% endblock html_header %}
@@ -44,7 +52,7 @@
 <form id="suche" action="." method="get">
   {{ form.as_plain }}      
   
-  <a href="#" id="suchpfeil" onclick="tags();" 
+  <a href="#" id="suchpfeil" onclick="tags();" class="displaynone"  
      title="{% trans "Suchvorschläge ein-ausblenden" %}"></a>
     
   <button type="submit" title="{% trans "jetzt suchen" %}">
@@ -174,6 +182,7 @@
 <script type="text/javascript">
   do_by_class("mehr", function (e){e.className = "";});
   do_by_class("labelmore", function (e){e.innerHTML = "{% trans "mehr..." %}";});
+  document.getElementById("suchpfeil").className = "displayblock";
   
 </script>
 

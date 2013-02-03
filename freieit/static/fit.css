@@ -9,6 +9,12 @@ body {
 article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, section { 
     display:block;
 }
+.displaynone {
+        display:none;
+}
+.displayblock {
+        display:block;
+}
 img {
 	border:none;
 }
@@ -193,7 +199,6 @@ article > header > h2 > strong {
 	position:absolute;
 	right:57px;
 	top:10px;
-	display:block;
 	width:20px;
 	height:14px;
 	background-image:url(img/fit/suchpfeil.png);

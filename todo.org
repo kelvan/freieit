@@ -71,7 +71,7 @@
 ** [#B] Tipps & Tricks 						      :franz:
 ** DONE Expertenseitentext			      :franz:wolfgang:gregor:
 ** TODO Prüfen Zustimmung zur Veröffentlichung im Expertentext?   
-
+** TODO Text für Vereinsmitgliedschaft
 * Weitere Features
 ** Sichtbarkeit
    Einschränkung Experte ist nur von Experten sichtbar
