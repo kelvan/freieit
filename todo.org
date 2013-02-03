@@ -4,12 +4,12 @@
    Installsripte?
 ** Experten
    gibt es mehrer Adressen werden mehrere Experten angelegt
-*** TODO Flag derzeit nicht verfügbar
-*** TODO Referenzen
+*** DONE Flag derzeit nicht verfügbar
+*** DONE Referenzen
     freies Textfeld
 *** DONE Kurztext
     max. 160 Zeichen 
-*** TODO Langtext
+*** DONE Langtext
 *** DONE Stundensatz numerisch,  freie Eingabe für Nebenkosten, Kommentare, Pauschale etc.
     0 = ehrenamtlich, Null = Unbekannt (nach Vereinbarung)
 *** Location
@@ -34,7 +34,7 @@
 ** TODO Hierarchische Tags					     :kelvan:
 
 * Templates
-** TODO Suchvorschläge ein/ausblenden				     :gregor:
+** DONE Suchvorschläge ein/ausblenden				     :gregor:
 ** Base Template 						:franz:michi:
    bootstrap?
 ** DONE zukünftige Startseite					      :franz:

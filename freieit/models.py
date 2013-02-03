@@ -8,7 +8,8 @@ from choices import LABELS, COUNTRIES, CURRENCIES
 
 class Tag(models.Model):
     name = models.CharField(max_length=50, unique=True)
-    parent = models.ManyToManyField('self', null=True, blank=True, related_name='children')
+    parent = models.ManyToManyField('self', null=True, blank=True,
+                                    related_name='children')
 
     def __unicode__(self):
         return self.name
@@ -18,34 +19,45 @@ class ExpertProfile(AuditedModel):
     user = models.ForeignKey(User)
 
     # the experts name
-    name = models.CharField(max_length=512, null=True, blank=True)
+    name = models.CharField(max_length=512)
 
     # experts image
-    image = models.ImageField(upload_to="expert_images")
+    image = models.ImageField(upload_to="expert_images", null=True,
+                              default=None, blank=True,)
 
     # the services this expert offers
-    services = models.CharField(max_length=2048)
-
+    services = models.CharField(max_length=512)
+    description = models.TextField(max_length=2048, blank=True, default="")
+    
     # location of expert
-    street = models.CharField(max_length=50)
-    number = models.CharField(max_length=15)
+    street = models.CharField(max_length=50, blank=True, default="")
+    number = models.CharField(max_length=15, blank=True, default="")
     city = models.CharField(max_length=30)
     postcode = models.CharField(max_length=10)
-    country = models.CharField(max_length=2, choices=COUNTRIES)
+    country = models.CharField(max_length=2, choices=COUNTRIES, default="AT")
 
     # time when the services can be offered
-    time = models.CharField(max_length=1024, help_text=_('"opening hours"'))
+    time = models.CharField(max_length=1024, blank=True, default="",
+                            help_text=_('"opening hours"'))
 
     # charges for this expert
-    charges = models.PositiveIntegerField(null=True, blank=True,
-                                          help_text=_('per hout incl. VAT'))
+    charges = models.DecimalField(null=True,
+                                  default=None,
+                                  blank=True,
+                                  decimal_places=2,
+                                  max_digits=5,
+                                  help_text=_('per hour incl. VAT'))
     currency = models.CharField(max_length=3, choices=CURRENCIES,
-                                null=True, blank=True)
-    charges_details = models.TextField(null=True, blank=True)
+                                blank=True, default="EUR")
+    charges_details = models.CharField(blank=True, default="",
+                                       max_length=512)
 
     # tags for this expert
     keywords = models.ManyToManyField(Tag, null=True, blank=True)
 
+    references = models.CharField(max_length=512, blank=True, default="")
+    available = models.BooleanField(default=True)
+    
     class Meta:
             #unique_together = (("user", "name"),)
             verbose_name = _('Expert Profile')
@@ -64,7 +76,8 @@ class ExpertProfile(AuditedModel):
     
     @property
     def address(self):
-        return "%s %s, %s %s, %s" % (self.street, self.number, self.postcode, self.city, self.country)
+        return "%s %s, %s %s, %s" % (self.street, self.number,
+                                     self.postcode, self.city, self.country)
 
     @property
     def price(self):
