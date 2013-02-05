@@ -1,8 +1,7 @@
-import datetime
-from haystack import indexes
+from haystack import indexes, site
 from freieit.models import ExpertProfile
 
-class ExpertProfileIndex(indexes.SearchIndex, indexes.Indexable):
+class ExpertProfileIndex(indexes.SearchIndex):
     text = indexes.CharField(document=True, use_template=True)
     #name = indexes.CharField(model_attr='name')
     #location = indexes.CharField(model_attr='location')
@@ -16,3 +15,4 @@ class ExpertProfileIndex(indexes.SearchIndex, indexes.Indexable):
         return self.get_model().objects.filter(available=True)
 
 
+site.register(ExpertProfile, ExpertProfileIndex)
