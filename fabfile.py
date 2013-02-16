@@ -35,7 +35,7 @@ def make_venv():
         env.run('virtualenv --system-site-packages -p %s env' % (env.pyexecutable, ))
 
 def vars():
-    env.app= 'freieit'
+    env.app = 'freieit'
 
 def install_req():
     prep()
@@ -65,15 +65,14 @@ def fixtures():
 
 def prepare_migration():
     prep()
-    with env.cd(env.directory):
-        with virtualenv():
-            vars()
-            env.warn_only = True
-            env.run('python manage.py schemamigration %s --auto' % env.app)
-            env.warn_only = False
-            env.run('hg add %s/migrations' % env.app)
+    with virtualenv():
+        vars()
+        env.warn_only = True
+        env.run('python manage.py schemamigration %s --auto' % env.app)
+        env.warn_only = False
+        env.run('hg add %s/migrations' % env.app)
 
-def pull_update():
+def update():
     prep()
     with env.cd(env.directory):
         env.run('hg pull')
@@ -81,7 +80,7 @@ def pull_update():
 
 def deploy():
     prep()
-    pull_update()
+    update()
     with virtualenv():
         env.run('python manage.py syncdb --noinput')
         env.run('python manage.py migrate freieit')
