@@ -10,6 +10,8 @@ def virtualenv():
         with prefix(env.activate):
             yield
 
+if not env.hosts:
+    raise Exception('no hosts defined')
 
 def prep():
     if env.host_string == 'localhost':
