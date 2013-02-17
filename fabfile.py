@@ -16,6 +16,7 @@ def virtualenv():
 class CustomTask(WrappedCallableTask):
     def __init__(self, callable, *args, **kwargs):
         super(CustomTask, self).__init__(callable, *args, **kwargs)
+        env.use_ssh_config = True
         if env.host_string == 'localhost' or not env.hosts:
             env.pyexecutable = sys_executable
             env.cd = lcd
@@ -24,7 +25,7 @@ class CustomTask(WrappedCallableTask):
         else:
             env.cd = cd
             env.run = run
-            if env.production:
+            if 'production' in env and env.production:
                 error('TBD')
             else:
                 conffile = 'testenv.json'
@@ -37,10 +38,12 @@ class CustomTask(WrappedCallableTask):
 
         env.update(d)
 
+        env.activate = ''.join(['. ', env.venvpath, '/bin/activate'])
+
 @task(task_class=CustomTask)
 def make_venv():
     with env.cd(env.directory):
-        env.run('virtualenv --system-site-packages -p %s env' % (env.pyexecutable, ))
+        env.run('virtualenv --system-site-packages -p %s %s' % (env.pyexecutable, env.venvpath))
 
 def vars():
     env.app = 'freieit'

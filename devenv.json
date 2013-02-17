@@ -1,4 +1,4 @@
 {
  "directory": ".", 
- "activate": ". env/bin/activate"
+ "venvpath": ". /srv/freieit-test/virtualenv", 
 }

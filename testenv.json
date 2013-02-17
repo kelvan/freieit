@@ -1,5 +1,5 @@
 {
  "directory": "/srv/freieit-test/dynamic", 
- "activate": ". /src/freieit-test/virtualenv/bin/activate", 
+ "venvpath": "/srv/freieit-test/virtualenv",
  "pyexecutable": "python"
 }
