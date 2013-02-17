@@ -1,0 +1,7 @@
+{
+ "directory": "freieit", 
+ "activate": ". /home/kelvan/.virtualenvs/freieit/bin/activate", 
+ "user": "kelvan", 
+ "deploy_user": "kelvan",
+ "pyexecutable": "python"
+}

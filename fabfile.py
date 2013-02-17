@@ -1,10 +1,11 @@
 #!/usr/bin/env python
 
-from fabric.api import env, run, task, cd, lcd, local, prefix, execute
+from fabric.api import env, run, task, cd, lcd, local, prefix, execute, settings
 from fabric.tasks import WrappedCallableTask
 from fabric.utils import error
 from contextlib import contextmanager as _contextmanager
 from sys import executable as sys_executable
+from json import load as json_load
 
 @_contextmanager
 def virtualenv():
@@ -16,22 +17,25 @@ class CustomTask(WrappedCallableTask):
     def __init__(self, callable, *args, **kwargs):
         super(CustomTask, self).__init__(callable, *args, **kwargs)
         if env.host_string == 'localhost' or not env.hosts:
-            env.directory = '.'
-            env.activate = '. env/bin/activate'
             env.pyexecutable = sys_executable
             env.cd = lcd
             env.run = local
+            conffile = 'testenv.json'
         else:
+            env.cd = cd
+            env.run = run
             if env.production:
                 error('TBD')
             else:
-                env.directory = 'freieit'
-                env.user = 'kelvan'
-                env.deploy_user = 'kelvan'
-                env.activate = '. /home/kelvan/.virtualenvs/freieit/bin/activate'
-                env.cd = cd
-                env.run = run
-                env.pyexecutable = 'python'
+                conffile = 'testenv.json'
+
+        if 'conffile' in env:
+            conffile = env.conffile
+
+        with open(conffile) as f:
+            d = json_load(f)
+
+        env.update(d)
 
 @task(task_class=CustomTask)
 def make_venv():
@@ -71,9 +75,8 @@ def fixtures():
 def prepare_migration():
     with virtualenv():
         vars()
-        env.warn_only = True
-        env.run('python manage.py schemamigration %s --auto' % env.app)
-        env.warn_only = False
+        with settings(warn_only=True):
+            env.run('python manage.py schemamigration %s --auto' % env.app)
         env.run('hg add %s/migrations' % env.app)
 
 @task(task_class=CustomTask)

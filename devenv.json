@@ -1,0 +1,4 @@
+{
+ "directory": ".", 
+ "activate": ". env/bin/activate",
+}
