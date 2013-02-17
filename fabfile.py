@@ -6,11 +6,23 @@ from fabric.utils import error
 from contextlib import contextmanager as _contextmanager
 from sys import executable as sys_executable
 from json import load as json_load
+from functools import partial
 
 @_contextmanager
 def virtualenv():
     with env.cd(env.directory):
         with prefix(env.activate):
+            yield
+
+@_contextmanager
+def umask(new_mask):
+    with prefix('umask %s' % (new_mask, )):
+        yield
+
+@_contextmanager
+def custom_cd(cdfunction, mask, path):
+    with umask(mask):
+        with cdfunction(path):
             yield
 
 class CustomTask(WrappedCallableTask):
@@ -19,11 +31,11 @@ class CustomTask(WrappedCallableTask):
         env.use_ssh_config = True
         if env.host_string == 'localhost' or not env.hosts:
             env.pyexecutable = sys_executable
-            env.cd = lcd
+            env.cd = partial(custom_cd, lcd, 002)
             env.run = local
             conffile = 'devenv.json'
         else:
-            env.cd = cd
+            env.cd = partial(custom_cd, cd, 002)
             env.run = run
             if 'production' in env and env.production:
                 error('TBD')
@@ -104,3 +116,10 @@ def shell():
 def test_venv():
     with virtualenv():
         env.run('python -c "import sys; print sys.path"')
+
+@task(task_class=CustomTask)
+def rebuild_venv():
+    run('rm -rf %s' % (env.venvpath, ))
+    execute(update)
+    execute(make_venv)
+    execute(install_req)
