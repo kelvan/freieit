@@ -119,7 +119,7 @@ def test_venv():
 
 @task(task_class=CustomTask)
 def rebuild_venv():
-    run('rm -rf %s' % (env.venvpath, ))
+    env.run('rm -rf %s' % (env.venvpath, ))
     execute(update)
     execute(make_venv)
     execute(install_req)
