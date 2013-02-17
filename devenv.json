@@ -1,4 +1,4 @@
 {
  "directory": ".", 
- "venvpath": ". /srv/freieit-test/virtualenv", 
+ "venvpath": "env"
 }
