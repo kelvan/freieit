@@ -1,4 +1,4 @@
 {
  "directory": ".", 
- "activate": ". env/bin/activate",
+ "activate": ". env/bin/activate"
 }

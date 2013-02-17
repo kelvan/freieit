@@ -20,7 +20,7 @@ class CustomTask(WrappedCallableTask):
             env.pyexecutable = sys_executable
             env.cd = lcd
             env.run = local
-            conffile = 'testenv.json'
+            conffile = 'devenv.json'
         else:
             env.cd = cd
             env.run = run

@@ -1,7 +1,5 @@
 {
- "directory": "freieit", 
- "activate": ". /home/kelvan/.virtualenvs/freieit/bin/activate", 
- "user": "kelvan", 
- "deploy_user": "kelvan",
+ "directory": "/srv/freieit-test/dynamic", 
+ "activate": ". /src/freieit-test/virtualenv/bin/activate", 
  "pyexecutable": "python"
 }
