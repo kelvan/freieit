@@ -1,0 +1,8 @@
+* TODO django als daemon						     :albert:
+* DONE apache log permissions					     :albert:
+* postgres permissions						     :albert:
+* DONE virtualenv						     :albert:
+* DONE fs permissions			:albert:
+* doku					:albert:
+** wer is fuer was zustand					     :albert:
+** wer braucht zugriff			:albert:
