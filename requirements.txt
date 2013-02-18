@@ -1,4 +1,5 @@
 django>=1.4
+django-threaded-multihost
 #pysqlite
 #pil
 #haystack
