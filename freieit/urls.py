@@ -42,7 +42,8 @@ urlpatterns += patterns('',
 
 urlpatterns += patterns('',
   url(r'^$', IndexSearchView(form_class=ExpertSearchForm, template="home.html"), name='haystack_search'),
-
+  url(r'^newexpert$',                    'freieit.views.newexpert.show'),
+  
   # url(r'^$', 'freieit.views.home.show'),
 #  url(r'^login$',                       'freieit.views.login.show'),
 #  url(r'^login$',                       login, name='login'),

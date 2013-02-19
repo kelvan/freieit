@@ -177,9 +177,13 @@ HAYSTACK_SITECONF = 'freieit.search_indexes'
 HAYSTACK_SEARCH_ENGINE = 'whoosh'
 HAYSTACK_WHOOSH_PATH = os.path.join(APPDIR, 'whoosh_index')
 
-EMAIL_HOST = 'localhost'
-EMAIL_PORT = 2525
-EMAIL_USE_TLS = True
+# Don't send emails, just print them
+EMAIL_BACKEND = 'django.core.mail.backends.filebased.EmailBackend'
+EMAIL_FILE_PATH = '/tmp/app-messages'
+
+#EMAIL_HOST = 'localhost'
+#EMAIL_PORT = 2525
+#EMAIL_USE_TLS = True
 DEFAULT_FROM_EMAIL = "freie.it <freie-it@logic.at>"
 
 INVITE_MODE = True

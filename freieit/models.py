@@ -23,10 +23,10 @@ class ExpertProfile(AuditedModel):
 
     # experts image
     image = models.ImageField(upload_to="expert_images", null=True,
-                              default=None, blank=True,)
+                              default=None, blank=True)
 
     # the services this expert offers
-    services = models.CharField(max_length=512)
+    services = models.CharField(max_length=512, help_text=_("short description of the services"))
     description = models.TextField(max_length=2048, blank=True, default="")
     
     # location of expert
@@ -50,13 +50,14 @@ class ExpertProfile(AuditedModel):
     currency = models.CharField(max_length=3, choices=CURRENCIES,
                                 blank=True, default="EUR")
     charges_details = models.CharField(blank=True, default="",
-                                       max_length=512)
+                                       max_length=512,
+                                       help_text=_("eg traveling costs"))
 
     # tags for this expert
     keywords = models.ManyToManyField(Tag, null=True, blank=True)
 
     references = models.CharField(max_length=512, blank=True, default="")
-    available = models.BooleanField(default=True)
+    available = models.BooleanField(default=True, help_text=_("disable eg if you are on holidays"))
     
     class Meta:
             #unique_together = (("user", "name"),)
