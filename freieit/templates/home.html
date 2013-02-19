@@ -56,7 +56,7 @@
      title="{% trans "Suchvorschläge ein-ausblenden" %}"></a>
     
   <button type="submit" title="{% trans "jetzt suchen" %}">
-    <img src="{% static "lupe.png" %}" alt="{% trans "lupe" %}" />
+    <img src="{% static "img/fit/lupe.png" %}" alt="{% trans "lupe" %}" />
   </button>
 
   <div>
@@ -79,13 +79,13 @@
     <a id="adown" class="bdown {{ clsdown }}" 
        href="?q={{ query }}&amp;results_per_page={{ paginate_down }}"
        title="{% trans "weniger Treffer pro Seite zeigen" %}">
-      <img src="{% static "pfeil-weiss.png" %}" a
+      <img src="{% static "img/fit/pfeil-weiss.png" %}" a
 	   alt="{% trans "weniger Treffer pro Seite zeigen" %}" />
     </a>
     <a id="aup" class="bup {{ clsup }}" 
        href="?q={{ query }}&amp;results_per_page={{ paginate_up }}"
        title="{% trans "mehr Treffer pro Seite zeigen" %}">
-      <img src="{% static "pfeil-weiss.png" %}" 
+      <img src="{% static "img/fit/pfeil-weiss.png" %}" 
 	   alt="{% trans "mehr Treffer pro Seite zeigen" %}" />
     </a>
   </p>
@@ -177,7 +177,7 @@
 	 {% endif %} 
 	 >
 	 
-	<img src="{% static "pfeil-weiss.png" %}" alt="{% trans "&laquo; Zurück" %}"/>
+	<img src="{% static "img/fit/pfeil-weiss.png" %}" alt="{% trans "&laquo; Zurück" %}"/>
       </a>
       
       <a id="pp" 
@@ -186,7 +186,7 @@
 	 href="?q={{ query }}&amp;page={{ page.next_page_number }}"
 	 {% endif %}
 	 >
-	<img src="{% static "pfeil-weiss.png" %}" alt="{% trans "Vor &raquo;" %}"/>
+	<img src="{% static "img/fit/pfeil-weiss.png" %}" alt="{% trans "Vor &raquo;" %}"/>
       </a>
     </p>
     
