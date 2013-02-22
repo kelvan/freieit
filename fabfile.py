@@ -123,3 +123,8 @@ def rebuild_venv():
     execute(update)
     execute(make_venv)
     execute(install_req)
+
+@task(task_class=CustomTask)
+def collectstatic():
+    with virtualenv():
+        env.run('python manage.py collectstatic --noinput')
