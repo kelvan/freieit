@@ -1,5 +1,7 @@
 {
  "directory": "/srv/freieit-test/dynamic", 
  "venvpath": "/srv/freieit-test/virtualenv",
- "pyexecutable": "python"
+ "pyexecutable": "python",
+ "PYTHONPATH": "/srv/freieit-test/config",
+ "django_settings": "settings_test"
 }

@@ -1,4 +1,6 @@
 {
  "directory": ".", 
- "venvpath": "env"
+ "venvpath": "env",
+ "PYTHONPATH": "",
+ "django_settings": "freieit.settings"
 }

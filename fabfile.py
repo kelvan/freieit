@@ -25,6 +25,16 @@ def custom_cd(cdfunction, mask, path):
         with cdfunction(path):
             yield
 
+@_contextmanager
+def shell_env(**ENVS):
+    with prefix(' && '.join('export %s=%s' % (k, v) for k,v in ENVS.items())):
+        yield
+
+def manage_django(command):
+    with virtualenv():
+        with shell_env(PYTHONPATH=env['PYTHONPATH']):
+            env.run('python manage.py %s --settings=%s' % (command, env.django_settings))
+
 class CustomTask(WrappedCallableTask):
     def __init__(self, callable, *args, **kwargs):
         super(CustomTask, self).__init__(callable, *args, **kwargs)
@@ -67,14 +77,12 @@ def install_req():
 
 @task(task_class=CustomTask)
 def runserver():
-    with virtualenv():
-        env.run('python manage.py runserver')
+    manage_django('runserver')
 
 @task(task_class=CustomTask)
 def syncdb():
-    with virtualenv():
-        env.run('python manage.py syncdb')
-        env.run('python manage.py migrate freieit')
+    manage_django('syncdb')
+    manage_django('migrate freieit')
 
 @task(task_class=CustomTask)
 def clean():
@@ -88,11 +96,10 @@ def fixtures():
 
 @task(task_class=CustomTask)
 def prepare_migration():
-    with virtualenv():
-        vars()
-        with settings(warn_only=True):
-            env.run('python manage.py schemamigration %s --auto' % env.app)
-        env.run('hg add %s/migrations' % env.app)
+    vars()
+    with settings(warn_only=True):
+        manage_django('schemamigration %s --auto' % env.app)
+    env.run('hg add %s/migrations' % env.app)
 
 @task(task_class=CustomTask)
 def update():
@@ -103,19 +110,16 @@ def update():
 @task(task_class=CustomTask)
 def deploy():
     execute(update)
-    with virtualenv():
-        env.run('python manage.py syncdb --noinput')
-        env.run('python manage.py migrate freieit')
+    manage_django('syncdb --noinput')
+    manage_django('migrate freieit')
 
 @task(task_class=CustomTask)
 def shell():
-    with virtualenv():
-        env.run('python manage.py shell')
+    manage_django('shell')
 
 @task(task_class=CustomTask)
 def test_venv():
-    with virtualenv():
-        env.run('python -c "import sys; print sys.path"')
+    env.run('python -c "import sys; print sys.path"')
 
 @task(task_class=CustomTask)
 def rebuild_venv():
@@ -126,5 +130,10 @@ def rebuild_venv():
 
 @task(task_class=CustomTask)
 def collectstatic():
+    manage_django('collectstatic --noinput')
+
+@task(task_class=CustomTask)
+def test():
     with virtualenv():
-        env.run('python manage.py collectstatic --noinput')
+        with shell_env(PYTHONPATH='/srv/freieit-test/config'):
+            env.run('set')
