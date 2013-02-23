@@ -118,10 +118,6 @@ def shell():
     manage_django('shell')
 
 @task(task_class=CustomTask)
-def test_venv():
-    env.run('python -c "import sys; print sys.path"')
-
-@task(task_class=CustomTask)
 def rebuild_venv():
     env.run('rm -rf %s' % (env.venvpath, ))
     execute(update)
@@ -131,9 +127,3 @@ def rebuild_venv():
 @task(task_class=CustomTask)
 def collectstatic():
     manage_django('collectstatic --noinput')
-
-@task(task_class=CustomTask)
-def test():
-    with virtualenv():
-        with shell_env(PYTHONPATH='/srv/freieit-test/config'):
-            env.run('set')
