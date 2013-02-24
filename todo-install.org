@@ -3,6 +3,6 @@
 * postgres permissions						     :albert:
 * DONE virtualenv						     :albert:
 * DONE fs permissions			:albert:
-* doku					:albert:
+* DONE doku							     :albert:
 ** wer is fuer was zustand					     :albert:
-** wer braucht zugriff			:albert:
+** wer braucht zugriff						     :albert:
