@@ -27,7 +27,7 @@ def custom_cd(cdfunction, mask, path):
 
 @_contextmanager
 def shell_env(**ENVS):
-    with prefix(' && '.join('export %s=%s' % (k, v) for k,v in ENVS.items())):
+    with prefix(' && '.join('export %s="%s"' % (k, v) for k,v in ENVS.items())):
         yield
 
 def manage_django(command):
