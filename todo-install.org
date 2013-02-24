@@ -1,4 +1,4 @@
-* TODO django als daemon						     :albert:
+* DONE django als daemon					     :albert:
 * DONE apache log permissions					     :albert:
 * postgres permissions						     :albert:
 * DONE virtualenv						     :albert:
