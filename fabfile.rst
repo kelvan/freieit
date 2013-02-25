@@ -39,11 +39,11 @@ COMMANDS
 
 clean                   remove development db & media files
 
-collectstatic           ???
+collectstatic           merge all static file sources into the target static folder
 
 deploy                  update code & db to current revision
 
-fixtures                ???
+fixtures                load testdata
 
 install_req             install/update requirements in the virtualenv
 
