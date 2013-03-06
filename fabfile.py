@@ -5,6 +5,7 @@ from fabric.tasks import WrappedCallableTask
 from fabric.utils import error
 from contextlib import contextmanager as _contextmanager
 from sys import executable as sys_executable
+import os
 from json import load as json_load
 from functools import partial
 
@@ -38,7 +39,8 @@ def manage_django(command):
 class CustomTask(WrappedCallableTask):
     def __init__(self, callable, *args, **kwargs):
         super(CustomTask, self).__init__(callable, *args, **kwargs)
-        env.use_ssh_config = True
+        if env.ssh_config_path and os.path.isfile(os.path.expanduser(env.ssh_config_path)):
+            env.use_ssh_config = True
         if env.host_string == 'localhost' or not env.hosts:
             env.pyexecutable = sys_executable
             env.cd = partial(custom_cd, lcd, 002)
@@ -127,3 +129,14 @@ def rebuild_venv():
 @task(task_class=CustomTask)
 def collectstatic():
     manage_django('collectstatic --noinput')
+
+@task(task_class=CustomTask)
+def createsuperuser():
+    manage_django('createsuperuser')
+
+@task(task_class=CustomTask)
+def updateindex():
+    "updates the haystack search index"
+    manage_django('update_index')
+
+
