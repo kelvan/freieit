@@ -20,21 +20,11 @@
   function do_by_class(classname, func) {
     var elems = document.getElementsByTagName('*'), i;
     for (i in elems) {
-        if ((' ' + elems[i].className + ' ').indexOf(' ' + classname + ' ') > -1) {
+      if ((' ' + elems[i].className + ' ').indexOf(' ' + classname + ' ') > -1) {
             func(elems[i]);
-        }
-     }
-  }
-  
-  function tags () {
-    var f = document.getElementById("suche");
-    if (f.className == "") {
-      f.className = "min";
-    } else {
-      f.className = "";
+      }
     }
   }
-
 </script>
 {% endblock html_header %}
 
@@ -52,9 +42,6 @@
 <form id="suche" action="." method="get">
   {{ form.as_plain }}      
   
-  <a href="#" id="suchpfeil" onclick="tags();" class="displaynone"  
-     title="{% trans "Suchvorschläge ein-ausblenden" %}"></a>
-    
   <button type="submit" title="{% trans "jetzt suchen" %}">
     <img src="{% static "img/fit/lupe.png" %}" alt="{% trans "lupe" %}" />
   </button>
@@ -198,7 +185,6 @@
 <script type="text/javascript">
   do_by_class("mehr", function (e){e.className = "";});
   do_by_class("labelmore", function (e){e.innerHTML = "{% trans "mehr..." %}";});
-  document.getElementById("suchpfeil").className = "displayblock";
 </script>
 
 
