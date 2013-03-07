@@ -37,9 +37,22 @@ class IndexSearchView(SearchView):
         
     if self.searchqueryset is not None:
       kwargs['searchqueryset'] = self.searchqueryset
-          
+      
+    try:
+      self.seed = self.request.COOKIES['seed']
+    except KeyError:
+      self.seed = "-".join(map(self.request.META.get,
+                               ['HTTP_USER_AGENT',     
+                                'REMOTE_ADDR',
+                                'REMOTE_HOST']))
+    kwargs['seed'] = self.seed      
     return self.form_class(data, **kwargs)
 
+  def create_response(self):
+    response = super(IndexSearchView,self).create_response()
+    response.set_cookie("seed", self.seed)
+    return response
+  
   @property
   def results_per_page_ix(self):
     return PER_PAGES.index(self.results_per_page)
@@ -60,5 +73,4 @@ class IndexSearchView(SearchView):
 
 
 def show(request):
-
   return render_to_response('home.html')

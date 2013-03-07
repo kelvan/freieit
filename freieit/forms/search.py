@@ -1,12 +1,19 @@
 from haystack.forms import SearchForm
 from django import forms
-
+import random
 
 class ExpertSearchForm(SearchForm):
     q = forms.CharField(required=False,
                         label='', 
-                        widget=forms.TextInput(attrs={'placeholder': 'Wobei brauchen Sie Hilfe?',
-                                                      'id':'suchfeld'}))
+                        widget=forms.TextInput(
+                            attrs={'placeholder': 'Wobei brauchen Sie Hilfe?',
+                                   'id':'suchfeld'}))
+    
+    def __init__(self, *args, **kwargs):
+        self.seed = kwargs.pop("seed")
+        super(ExpertSearchForm, self).__init__(*args, **kwargs)
+        
+        
     def as_plain(self):
         "Returns this form rendered as HTML <div>s."
         return self._html_output(
@@ -17,4 +24,7 @@ class ExpertSearchForm(SearchForm):
             errors_on_separate_row = True)
 
     def no_query_found(self):
-        return self.searchqueryset.all()
+        all_ = list(self.searchqueryset.all())        
+        random.seed(self.seed)
+        all_.sort(key=lambda o:random.random())
+        return all_

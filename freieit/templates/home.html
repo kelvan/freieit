@@ -97,11 +97,13 @@
       <header>
 	<h2><a class="person" onclick="mehr(this);" 
 	       title="{% trans "mehr Infos anzeigen" %}">
-	    
+	    {% if result.object.image %}
 	    <img src="{{ result.object.image.url }}" 
 		 alt="{{ result.object.name }}" 
 		 width="60" height="60"/>
+	    {% endif %}
 	    {{ result.object.name }}
+
 	    <div class="labelmore"></div>
 	   </a>
 	  
