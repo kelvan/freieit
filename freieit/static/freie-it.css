@@ -85,7 +85,12 @@ section > nav {
 	margin-top:.8em;
 	font-size:1.6em;
 	font-weight:bold;
-	text-align:right;
+}
+right {	
+    text-align:right;
+}
+left {	
+    text-align:left;
 }
 a {
 	color:#00709f;

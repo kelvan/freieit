@@ -72,23 +72,6 @@
     </h2>
   </header>
 
-  <p class="nav">
-    <span>{% trans "Treffer/Seite:" %}
-      <strong id="anzahl">{{ page.paginator.per_page }}</strong>
-    </span>    
-    <a id="adown" class="bdown {{ clsdown }}" 
-       href="?q={{ query }}&amp;results_per_page={{ paginate_down }}"
-       title="{% trans "weniger Treffer pro Seite zeigen" %}">
-      <img src="{% static "img/fit/pfeil-weiss.png" %}" a
-	   alt="{% trans "weniger Treffer pro Seite zeigen" %}" />
-    </a>
-    <a id="aup" class="bup {{ clsup }}" 
-       href="?q={{ query }}&amp;results_per_page={{ paginate_up }}"
-       title="{% trans "mehr Treffer pro Seite zeigen" %}">
-      <img src="{% static "img/fit/pfeil-weiss.png" %}" 
-	   alt="{% trans "mehr Treffer pro Seite zeigen" %}" />
-    </a>
-  </p>
 
 <section>
 
@@ -168,36 +151,54 @@
 
 
   {% endfor %}
-    </section>
-    <p class="nav">
-      <span>{% trans "Seite:" %}<strong id="pg">{{ page.number }}/{{ page.paginator.num_pages }}</strong></span>
-      
-      <a id="pm" 
-	 class="bleft {% if not page.has_previous %}off{% endif %} "
-	 {% if page.has_previous %}
-	 href="?q={{ query }}&amp;page={{ page.previous_page_number }}"
-	 {% endif %} 
-	 >
-	 
-	<img src="{% static "img/fit/pfeil-weiss.png" %}" alt="{% trans "&laquo; Zurück" %}"/>
-      </a>
-      
-      <a id="pp" 
-	 class="bright {% if not page.has_next %}off{% endif %}" 
-	 {% if page.has_next %}
-	 href="?q={{ query }}&amp;page={{ page.next_page_number }}"
-	 {% endif %}
-	 >
-	<img src="{% static "img/fit/pfeil-weiss.png" %}" alt="{% trans "Vor &raquo;" %}"/>
-      </a>
-    </p>
+</section>
+
+<p class="nav navleft">
+  <span>{% trans "Treffer/Seite:" %}
+    <strong id="anzahl">{{ page.paginator.per_page }}</strong>
+  </span>    
+  <a id="adown" class="bdown {{ clsdown }}" 
+     href="?q={{ query }}&amp;results_per_page={{ paginate_down }}"
+     title="{% trans "weniger Treffer pro Seite zeigen" %}">
+    <img src="{% static "img/fit/pfeil-weiss.png" %}" a
+	 alt="{% trans "weniger Treffer pro Seite zeigen" %}" />
+  </a>
+  <a id="aup" class="bup {{ clsup }}" 
+     href="?q={{ query }}&amp;results_per_page={{ paginate_up }}"
+     title="{% trans "mehr Treffer pro Seite zeigen" %}">
+    <img src="{% static "img/fit/pfeil-weiss.png" %}" 
+	 alt="{% trans "mehr Treffer pro Seite zeigen" %}" />
+  </a>
+</p>
+
+<p class="nav navright">
+  <span>{% trans "Seite:" %}<strong id="pg">{{ page.number }}/{{ page.paginator.num_pages }}</strong></span>
+  
+  <a id="pm" 
+     class="bleft {% if not page.has_previous %}off{% endif %} "
+     {% if page.has_previous %}
+     href="?q={{ query }}&amp;page={{ page.previous_page_number }}"
+     {% endif %} 
+     >
     
+    <img src="{% static "img/fit/pfeil-weiss.png" %}" alt="{% trans "&laquo; Zurück" %}"/>
+  </a>
+  
+  <a id="pp" 
+     class="bright {% if not page.has_next %}off{% endif %}" 
+     {% if page.has_next %}
+     href="?q={{ query }}&amp;page={{ page.next_page_number }}"
+     {% endif %}
+     >
+    <img src="{% static "img/fit/pfeil-weiss.png" %}" alt="{% trans "Vor &raquo;" %}"/>
+  </a>
+</p>
+
   
 <script type="text/javascript">
   do_by_class("mehr", function (e){e.className = "";});
   do_by_class("labelmore", function (e){e.innerHTML = "{% trans "mehr..." %}";});
   document.getElementById("suchpfeil").className = "displayblock";
-  
 </script>
 
 

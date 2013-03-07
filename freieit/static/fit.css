@@ -60,9 +60,16 @@ article > aside strong {
 }
 article > .nav {
 	margin-top:0em;
-	float:right;
-	text-align:right;
+}	
+article > .navright {
+        float:right;	
 	padding-right:10px;
+	text-align:right;
+}
+article > .navleft {
+	float:left;	
+	padding-left:10px;
+	text-align:left;
 }
 article > .nav span {
 	display:block;
