@@ -62,7 +62,7 @@
   <div>
     <strong>Suchvorschläge:</strong>
     {% for tag in tags %}
-    <input type="submit" value="{{tag}}" name="tagname" />
+    <a  href="/?q={{tag}}">{{tag}}</a>
     {% endfor %}
   </div>
 </form>

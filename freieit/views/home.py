@@ -28,10 +28,6 @@ class IndexSearchView(SearchView):
       
     if len(self.request.GET):
       data = self.request.GET.copy()
-      tag = data.get('tagname', None)
-      if tag and not tag in data['q']:
-        data['q'] = data['q'] + " " + re.sub(r'[^\w ]', '', tag) 
-
       if "results_per_page" in data:
         self.results_per_page = int(data['results_per_page'])        
         
