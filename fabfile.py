@@ -139,4 +139,9 @@ def updateindex():
     "updates the haystack search index"
     manage_django('update_index')
 
+@task(task_class=CustomTask)
+def restart():
+    "restarts the apache django daemon"
+    with env.cd(env.directory):
+        env.run('touch ./freieit/apache2/django.wsgi')
 

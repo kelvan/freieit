@@ -37,10 +37,11 @@ class IndexSearchView(SearchView):
     try:
       self.seed = self.request.COOKIES['seed']
     except KeyError:
-      self.seed = "-".join(map(self.request.META.get,
-                               ['HTTP_USER_AGENT',     
-                                'REMOTE_ADDR',
-                                'REMOTE_HOST']))
+      self.seed = "-".join(map(filter(None,
+                                      self.request.META.get,
+                                      ['HTTP_USER_AGENT',     
+                                       'REMOTE_ADDR',
+                                       'REMOTE_HOST'])))
     kwargs['seed'] = self.seed      
     return self.form_class(data, **kwargs)
 
