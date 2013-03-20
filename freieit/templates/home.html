@@ -129,6 +129,9 @@
 	{% if result.object.address %}
 	  <dt>{% trans "Adresse" %}</dt><dd>{{ result.object.address }}</dd>
 	{% endif %}
+	{% if result.object.references %}
+	  <dt>{% trans "Referenzen" %}</dt><dd>{{ result.object.references }}</dd>
+	{% endif %}
 	{% if result.object.taglist %}
   	  <dt>{% trans "Schlagwörter" %}</dt><dd>{{ result.object.taglist }}</dd>
 	{% endif %}
