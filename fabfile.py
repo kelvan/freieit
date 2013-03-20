@@ -140,7 +140,7 @@ def updateindex():
     manage_django('update_index')
 
 @task(task_class=CustomTask)
-def updateindex():
+def rebuildindex():
     "rebuilds the complete haystack search index"
     manage_django('rebuild_index')
 
