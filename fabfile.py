@@ -138,6 +138,7 @@ def createsuperuser():
 def updateindex():
     "updates the haystack search index"
     manage_django('update_index')
+    execute(restart)
 
 @task(task_class=CustomTask)
 def rebuildindex():
