@@ -334,6 +334,8 @@ section > div.mehr > header, section > div.mehr > p {
 }
 section > div.mehr > header img {
 	width:120px;
+	height:120px;
+
 }
 section > div.mehr > dl {
 	clear:both;
