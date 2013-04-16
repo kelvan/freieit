@@ -151,14 +151,13 @@ article > header > h1 {
 	margin:140px 0em .3em 7px;
 }
 h1 > a {
-	color:inherit;
 	white-space:nowrap;
+	text-decoration:underline;
 }
 article > header > h2 {
 	float:left;
 	margin:0em 10px 0em 10px;
 	padding-bottom:1em;
-	color:#00709f;
 	font-size:1.6em;
 }
 article > header > h2 > strong {
@@ -287,6 +286,10 @@ section > div img {
 	margin:0px 0em 0em -70px;
 	cursor:pointer;
 }
+section > div.mehr img {
+	margin-left:-130px;
+	cursor:pointer;
+}
 section > div > header, section > div h2 {
 	margin:0em;
 	padding:0em;
@@ -309,6 +312,9 @@ section > div h2 a div.labelmore {
 section > div > header, section > div > p {
 	margin-left:70px;
 }
+section > div > header img {
+	width:60px;
+}
 section > div > p {
 	margin-top:.5em;
 	margin-right:20px;
@@ -323,8 +329,16 @@ section > div > dl {
 section > div > p.descr {
 	display:none;
 }
+section > div.mehr > header, section > div.mehr > p {
+	margin-left:130px;
+}
+section > div.mehr > header img {
+	width:120px;
+}
 section > div.mehr > dl {
+	clear:both;
 	display:block;
+	padding-top:10px;
 }
 section > div.mehr > p.descr {
 	display:block;
@@ -334,7 +348,7 @@ section > div > dl > dt {
 	font-size:smaller;
 }
 section > div > dl > dd {
-	margin:0em 20px .5em 70px;
+	margin:0em 20px .5em 130px;
 }
 section > dl {
 	padding:1em 3em;
@@ -378,7 +392,7 @@ footer > div {
 	-moz-border-radius:10px;
 	border-radius:10px;
 	font-style:italic;
-	font-size:x-small;
+	font-size:small;
 }
 footer > div > a {
 	display:block;
