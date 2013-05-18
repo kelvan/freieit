@@ -4,6 +4,7 @@ from freieit.models import ExpertProfile
 
 class ExpertProfileForm(ModelForm):
     email = forms.EmailField()
+    terms = forms.BooleanField()
     
     class Meta:
         model = ExpertProfile
