@@ -56,7 +56,7 @@ USE_TZ = True
 
 # Absolute filesystem path to the directory that will hold user-uploaded files.
 # Example: "/home/media/media.lawrence.com/media/"
-MEDIA_ROOT = os.path.join(PROJDIR, '/_media')
+MEDIA_ROOT = os.path.join(PROJDIR, '_media')
 
 # URL that handles the media served from MEDIA_ROOT. Make sure to use a
 # trailing slash.
@@ -184,7 +184,7 @@ EMAIL_FILE_PATH = '/tmp/app-messages'
 #EMAIL_HOST = 'localhost'
 #EMAIL_PORT = 2525
 #EMAIL_USE_TLS = True
-DEFAULT_FROM_EMAIL = "freie.it <freie-it@logic.at>"
+DEFAULT_FROM_EMAIL = "freie.it <info@freie.it>"
 
 INVITE_MODE = True
 ACCOUNT_INVITATION_DAYS = 14
