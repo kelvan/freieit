@@ -23,10 +23,13 @@ class ExpertProfile(AuditedModel):
 
     # experts image
     image = models.ImageField(upload_to="expert_images", null=True,
-                              default=None, blank=True)
+                              default=None, blank=True,
+                              verbose_name = _('image'))
 
     # the services this expert offers
-    services = models.CharField(max_length=512, help_text=_("short description of the services"))
+    services = models.CharField(max_length=512,
+                                help_text=_("short description of the services"),
+                                verbose_name = _('services'))
     description = models.TextField(max_length=2048, blank=True, default="")
     
     # location of expert
@@ -38,7 +41,8 @@ class ExpertProfile(AuditedModel):
 
     # time when the services can be offered
     time = models.CharField(max_length=1024, blank=True, default="",
-                            help_text=_('"opening hours"'))
+                            help_text=_('"opening hours"'),
+                            verbose_name=_("business times"))
 
     # charges for this expert
     charges = models.DecimalField(null=True,
@@ -46,18 +50,22 @@ class ExpertProfile(AuditedModel):
                                   blank=True,
                                   decimal_places=2,
                                   max_digits=5,
-                                  help_text=_('per hour incl. VAT'))
+                                  help_text=_('per hour incl. VAT'),
+                                  verbose_name=_("charges"))
     currency = models.CharField(max_length=3, choices=CURRENCIES,
-                                blank=True, default="EUR")
+                                blank=True, default="EUR",
+                                verbose_name=_("currency"))
     charges_details = models.CharField(blank=True, default="",
                                        max_length=512,
-                                       help_text=_("eg traveling costs"))
+                                       help_text=_("eg traveling costs"),
+                                       verbose_name=_("charge details"))
 
     # tags for this expert
     keywords = models.ManyToManyField(Tag, null=True, blank=True)
 
     references = models.CharField(max_length=512, blank=True, default="",
-                                  help_text=_("Referenzkunden"))
+                                  help_text=_("Referenzkunden"),
+                                  verbose_name=_("references"))
     available = models.BooleanField(default=True, help_text=_("disable eg if you are on holidays"))
     
     class Meta:
