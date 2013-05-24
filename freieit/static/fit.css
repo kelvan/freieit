@@ -285,6 +285,11 @@ section > div img {
 	float:left;
 	margin:0px 0em 0em -70px;
 	cursor:pointer;
+	-moz-border-radius:3px;
+	border-radius:3px;
+	-moz-box-shadow:1px 1px 3px #555;
+	-webkit-box-shadow:1px 1px 3px #555;
+	box-shadow:1px 1px 3px #555;
 }
 section > div.mehr img {
 	margin-left:-130px;
