@@ -1,9 +1,72 @@
+{% extends "base.html" %}
+
+{% block html_header %}
+
+<style>
+    .newexpert {
+        margin:2em 0em -3em 0em;
+        padding:0px 1em 1em 20px;
+        background-color:#e2ebf7;
+        -moz-border-radius:10px;
+        border-radius:10px;
+        border:solid 1px #e2ebf7;
+    }
+    .newexpert p {
+        position:relative;
+        margin:1.7em 0 1.7em 10em;
+    }
+    .newexpert label {
+        position:absolute;
+        top:.3em;
+        left:-10em;
+    }
+    .newexpert input, .newexpert textarea, .newexpert select {
+        display:block;
+        margin-top:-1em;
+        width:55%;
+    }
+    .newexpert input.err {
+        background-color:#ffe3aa;
+    }
+    .newexpert .errorlist {
+        margin:-1em 20px -1em 10.5em;
+        padding:.2em .5em;
+        color:#e50;
+    }
+    .newexpert .errorlist li {
+        margin:0em;
+        padding:0em;
+        font-size:small;
+        line-height:1.2em;
+    }
+    .newexpert .helptext {
+        display:block;
+        font-size:small;
+    }
+    .newexpert .pflicht {
+        font-weight:bold;
+    }
+    .newexpert .pflicht:after {
+        content:"*";
+    }
+</style>
+
+{% endblock html_header %}
+
+{% block content %}
+
+<h1>Lass Dich als Fachkraft für <a href="http://fsfe.org/about/basics/freesoftware.de.html" title="Was ist Freie Software?">Freie Software</a> finden!</h1>
+
+<p>Nur Personen, die sich zu unserer <a href="dienste.htm">Selbstverpflichtung</a> bekennen, nehmen wir in dieses Verzeichnis auf.</p>
+
 {% if form.is_multipart %}
 <form enctype="multipart/form-data" method="POST" class="newexpert" action="">
 {% else %}
 <form class="newexpert" action="" method="POST">
 {% endif %}
     {% csrf_token %}
-    {{ form }}
-    <input type="submit">
+    {{ form.as_p }}
+    <input type="submit" value="Anmeldung abschicken">
 </form>
+
+{% endblock content %}
