@@ -13,8 +13,9 @@ def show(request):
         if form.is_valid():
             email = form.data['email']
 
-            u, created = User.objects.get_or_create(username=email, email=email)
+            u, created = User.objects.get_or_create(email=email)
             if created:
+                u.username = email
                 u.set_unusable_password()
                 u.save()
 
