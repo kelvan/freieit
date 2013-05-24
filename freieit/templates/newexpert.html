@@ -1,5 +1,7 @@
 {% extends "base.html" %}
 
+{% load i18n %}
+
 {% block html_header %}
 
 <style>
@@ -55,6 +57,16 @@
 
 {% block content %}
 
+{% if expert %}
+
+<h1>{% trans "Thank you!" %}</h1>
+
+<p>
+    {% blocktrans with name=expert.name %}New expert profile created for "{{ name }}".</br>Your profile will be checked and activated soon.{% endblocktrans %}
+</p>
+
+{% else %}
+
 <h1>Lass Dich als Fachkraft für <a href="http://fsfe.org/about/basics/freesoftware.de.html" title="Was ist Freie Software?">Freie Software</a> finden!</h1>
 
 <p>Nur Personen, die sich zu unserer <a href="dienste.htm">Selbstverpflichtung</a> bekennen, nehmen wir in dieses Verzeichnis auf.</p>
@@ -68,5 +80,7 @@
     {{ form.as_p }}
     <input type="submit" value="Anmeldung abschicken">
 </form>
+
+{% endif %}
 
 {% endblock content %}
