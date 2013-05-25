@@ -62,3 +62,11 @@ syncdb                  update db
 
 update                  update files
 
+EXAMPLES
+========
+
+fab -A -H neodym.buergernetzwerk.at update
+    run testserver update on neodym.buergernetzwerk.at
+
+fab -H neodym.buergernetzwerk.at restart
+    restart testserver instance on neodym.buergernetzwerk.at
