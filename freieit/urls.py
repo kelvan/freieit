@@ -5,6 +5,7 @@ from django.contrib.auth.views import login, logout
 from registration.forms import RegistrationFormTermsOfService
 from django.views.generic.simple import direct_to_template
 from django.contrib.staticfiles.urls import staticfiles_urlpatterns
+from django.http import HttpResponse
 from views.home import IndexSearchView
 # from haystack.forms import SearchForm
 from forms.search import ExpertSearchForm
@@ -38,6 +39,7 @@ urlpatterns += patterns('',
     url(r'^admin/',                 include(admin.site.urls)),
     # Uncomment the admin/doc line below to enable admin documentation:
     url(r'^admin/doc/', include('django.contrib.admindocs.urls')),
+    (r'^robots\.txt$', lambda r: HttpResponse("User-agent: *\nDisallow: /", mimetype="text/plain"))
 )
 
 urlpatterns += patterns('',
