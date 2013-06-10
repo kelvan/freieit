@@ -1,0 +1,15 @@
+Name: {{ expert.name }}
+
+Email: {{ expert.user.email }}
+
+Services:
+{{ expert.services }}
+
+Description:
+{{ expert.description }}
+
+View and accept (set available to True)
+http://test.freie.it/admin/freieit/expertprofile/{{ expert.id }}
+
+Yours sincerely,
+freie.it Notification Service
