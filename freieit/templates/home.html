@@ -29,7 +29,7 @@
 {% endblock html_header %}
 
 {% block header %}
-<h1>{% trans "Finden Sie Fachkräfte für"%} 
+<h1>{% trans "Finden Sie Fachkräfte für" %} 
   <a href="http://fsfe.org/about/basics/freesoftware.de.html" 
      title="{% trans "Was ist Freie Software?" %}">
     {% trans "Freie Software" %}
@@ -54,12 +54,12 @@
   </div>
 </form>
   <header>
-    <h2><strong>{{ page.paginator.count }}</strong>
-      {% if page.paginator.count == 1 %}
-        {% trans "passende Fachkraft:" %}
-      {% else %}
-        {% trans "passende Fachkräfte:" %}
-      {% endif %}
+    <h2>
+      {% blocktrans count page.paginator.count as count %}
+      <strong>{{ count }}</strong> passende Fachkraft:
+      {% plural %}
+      <strong>{{ count }}</strong> passende Fachkräfte:
+      {% endblocktrans %}
     </h2>
   </header>
 

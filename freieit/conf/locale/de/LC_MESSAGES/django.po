@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-05-25 00:08+0200\n"
+"POT-Creation-Date: 2013-06-10 23:02+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -159,59 +159,59 @@ msgid ""
 "privat vor Ort Besuch"
 msgstr ""
 
-#: templates/base.html:31
+#: templates/base.html:60
 msgid "freie.it: Freie Software Support"
 msgstr ""
 
-#: templates/base.html:44
+#: templates/base.html:73
 msgid "Über freie.it"
 msgstr ""
 
-#: templates/base.html:45
+#: templates/base.html:74
 msgid "Tipps &amp; Tricks"
 msgstr ""
 
-#: templates/base.html:46
+#: templates/base.html:75
 msgid "Dienste anbieten"
 msgstr ""
 
-#: templates/base.html:48
+#: templates/base.html:77
 msgid "Definition: Freie Software"
 msgstr ""
 
-#: templates/base.html:50
+#: templates/base.html:79
 msgid "Statuten"
 msgstr ""
 
-#: templates/base.html:51
+#: templates/base.html:80
 msgid "Impressum"
 msgstr ""
 
-#: templates/base.html:52
+#: templates/base.html:81
 msgid "Rückmeldung / Kontakt"
 msgstr ""
 
-#: templates/base.html:55
+#: templates/base.html:84
 msgid "Zuletzt aktualisiert am: "
 msgstr ""
 
-#: templates/base.html:56
+#: templates/base.html:85
 msgid "Validierung des HTML5 Web-Standards"
 msgstr ""
 
-#: templates/base.html:56
+#: templates/base.html:85
 msgid "Validierung der Design-Auszeichnungssprache-Standards"
 msgstr ""
 
-#: templates/base.html:56
+#: templates/base.html:85
 msgid "Erklärung von Web-Zugansoptimierungsrichtlinien"
 msgstr ""
 
-#: templates/home.html:11 templates/home.html.py:69
+#: templates/home.html:11 templates/home.html.py:73
 msgid "mehr Infos anzeigen"
 msgstr ""
 
-#: templates/home.html:12 templates/home.html.py:190
+#: templates/home.html:12 templates/home.html.py:194
 msgid "mehr..."
 msgstr ""
 
@@ -244,54 +244,63 @@ msgid "lupe"
 msgstr ""
 
 #: templates/home.html:58
-msgid "Passende Fachkräfte:"
-msgstr ""
+#, python-format
+msgid ""
+"\n"
+"      <strong>%(count)s</strong> passende Fachkraft:\n"
+"      "
+msgid_plural ""
+"\n"
+"      <strong>%(count)s</strong> passende Fachkräfte:\n"
+"      "
+msgstr[0] ""
+msgstr[1] ""
 
-#: templates/home.html:122
+#: templates/home.html:126
 msgid "Stundensatz"
 msgstr ""
 
-#: templates/home.html:124
+#: templates/home.html:128
 msgid "Nebenkosten"
 msgstr ""
 
-#: templates/home.html:127
+#: templates/home.html:131
 msgid "Verfügbarkeit"
 msgstr ""
 
-#: templates/home.html:130
+#: templates/home.html:134
 msgid "Adresse"
 msgstr ""
 
-#: templates/home.html:133
+#: templates/home.html:137
 msgid "Referenzen"
 msgstr ""
 
-#: templates/home.html:136
+#: templates/home.html:140
 msgid "Schlagwörter"
 msgstr ""
 
-#: templates/home.html:147
+#: templates/home.html:151
 msgid "Treffer/Seite:"
 msgstr ""
 
-#: templates/home.html:152 templates/home.html.py:154
+#: templates/home.html:156 templates/home.html.py:158
 msgid "weniger Treffer pro Seite zeigen"
 msgstr ""
 
-#: templates/home.html:158 templates/home.html.py:160
+#: templates/home.html:162 templates/home.html.py:164
 msgid "mehr Treffer pro Seite zeigen"
 msgstr ""
 
-#: templates/home.html:165
+#: templates/home.html:169
 msgid "Seite:"
 msgstr ""
 
-#: templates/home.html:174
+#: templates/home.html:178
 msgid "&laquo; Zurück"
 msgstr ""
 
-#: templates/home.html:183
+#: templates/home.html:187
 msgid "Vor &raquo;"
 msgstr ""
 
@@ -305,8 +314,8 @@ msgid ""
 "New expert profile created for \"%(name)s\".</br>Your profile will be "
 "checked and activated soon."
 msgstr ""
-"Neues Expertenprofil angelegt für \"{%(name)s\".</br>"
-"Ihr Profil wird in Kürze überprüft und aktiviert."
+"Neues Expertenprofil angelegt für \"{%(name)s\".</br>Ihr Profil wird in "
+"Kürze überprüft und aktiviert."
 
 #: templates/invitation/invitation_complete.html:6
 msgid "Invitation sent"

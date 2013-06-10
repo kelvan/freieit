@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-08-30 00:21+0200\n"
+"POT-Creation-Date: 2013-06-10 23:02+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,20 +17,140 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: models.py:39
+#: choices.py:5
+msgid "Website"
+msgstr ""
+
+#: choices.py:6
+msgid "Email"
+msgstr ""
+
+#: choices.py:7
+msgid "Phone"
+msgstr ""
+
+#: choices.py:8
+msgid "Mobile"
+msgstr ""
+
+#: choices.py:9
+msgid "Fax"
+msgstr ""
+
+#: choices.py:10
+msgid "Gpg-Key"
+msgstr ""
+
+#: choices.py:11
+msgid "Jabber"
+msgstr ""
+
+#: choices.py:12
+msgid "SIP"
+msgstr ""
+
+#: choices.py:13
+msgid "Xing"
+msgstr ""
+
+#: choices.py:14
+msgid "LinkedIn"
+msgstr ""
+
+#: choices.py:31
+msgid "Falkland Islands (Malvinas)"
+msgstr ""
+
+#: choices.py:70
+msgid "Euro"
+msgstr ""
+
+#: choices.py:71
+msgid "British Pound"
+msgstr ""
+
+#: choices.py:72
+msgid "US Dollar"
+msgstr ""
+
+#: choices.py:73
+msgid "Swiss franc"
+msgstr ""
+
+#: models.py:27
+msgid "image"
+msgstr ""
+
+#: models.py:31
+msgid "short description of the services"
+msgstr ""
+
+#: models.py:32
+msgid "services"
+msgstr ""
+
+#: models.py:44
+msgid "\"opening hours\""
+msgstr ""
+
+#: models.py:45
+msgid "business times"
+msgstr ""
+
+#: models.py:53
+msgid "per hour incl. VAT"
+msgstr ""
+
+#: models.py:54
+msgid "charges"
+msgstr ""
+
+#: models.py:57
+msgid "currency"
+msgstr ""
+
+#: models.py:60
+msgid "eg traveling costs"
+msgstr ""
+
+#: models.py:61
+msgid "charge details"
+msgstr ""
+
+#: models.py:67
+msgid "Referenzkunden"
+msgstr ""
+
+#: models.py:68
+msgid "references"
+msgstr ""
+
+#: models.py:69
+msgid "disable eg if you are on holidays"
+msgstr ""
+
+#: models.py:73
 msgid "Expert Profile"
 msgstr ""
 
-#: models.py:40
+#: models.py:74
 msgid "Expert Profiles"
 msgstr ""
 
+#: models.py:96
+msgid "nach Vereinbarung"
+msgstr ""
+
+#: models.py:98
+msgid "ehrenamtlich"
+msgstr ""
+
 #: templates/base.html:9
-msgid "free.it &ndash; Übersicht"
+msgid "freie.it – Support für Freie Software finden"
 msgstr ""
 
 #: templates/base.html:10
-msgid "Startseite: Das bietet der clc."
+msgid "Hier finden Sie Support für Freie Software"
 msgstr ""
 
 #: templates/base.html:11
@@ -39,80 +159,216 @@ msgid ""
 "privat vor Ort Besuch"
 msgstr ""
 
-#: templates/base.html:28
-msgid "freie.it: Free Software Support"
+#: templates/base.html:60
+msgid "freie.it: Freie Software Support"
 msgstr ""
 
-#: templates/base.html:29
-msgid "Professionelle Unterstützung"
+#: templates/base.html:73
+msgid "Über freie.it"
 msgstr ""
 
-#: templates/base.html:29
-msgid "für"
+#: templates/base.html:74
+msgid "Tipps &amp; Tricks"
 msgstr ""
 
-#: templates/base.html:29
-msgid "Wieso Freie Software?"
+#: templates/base.html:75
+msgid "Dienste anbieten"
 msgstr ""
 
-#: templates/base.html:29
-msgid "Freie Software"
-msgstr ""
-
-#: templates/base.html:29
-msgid "finden."
-msgstr ""
-
-#: templates/base.html:41
-msgid "Invite an expert"
-msgstr ""
-
-#: templates/base.html:42
-msgid "logout"
-msgstr ""
-
-#: templates/base.html:47
-msgid "Geschäftsbedingungen"
-msgstr ""
-
-#: templates/base.html:48
-msgid "freie.it Expert_in werden"
-msgstr ""
-
-#: templates/base.html:49
-msgid "Kontakt"
-msgstr ""
-
-#: templates/base.html:52
+#: templates/base.html:77
 msgid "Definition: Freie Software"
 msgstr ""
 
-#: templates/base.html:53
-msgid "Tipps & Tricks"
+#: templates/base.html:79
+msgid "Statuten"
 msgstr ""
 
-#: templates/base.html:54
-msgid "Links"
+#: templates/base.html:80
+msgid "Impressum"
 msgstr ""
 
-#: templates/base.html:55
-msgid "FAQ"
+#: templates/base.html:81
+msgid "Rückmeldung / Kontakt"
 msgstr ""
 
-#: templates/base.html:59
+#: templates/base.html:84
 msgid "Zuletzt aktualisiert am: "
 msgstr ""
 
-#: templates/base.html:60
+#: templates/base.html:85
 msgid "Validierung des HTML5 Web-Standards"
 msgstr ""
 
-#: templates/base.html:60
+#: templates/base.html:85
 msgid "Validierung der Design-Auszeichnungssprache-Standards"
 msgstr ""
 
-#: templates/base.html:60
+#: templates/base.html:85
 msgid "Erklärung von Web-Zugansoptimierungsrichtlinien"
+msgstr ""
+
+#: templates/home.html:11 templates/home.html.py:73
+msgid "mehr Infos anzeigen"
+msgstr ""
+
+#: templates/home.html:12 templates/home.html.py:194
+msgid "mehr..."
+msgstr ""
+
+#: templates/home.html:15
+msgid "weniger Infos anzeigen"
+msgstr ""
+
+#: templates/home.html:16
+msgid "weniger"
+msgstr ""
+
+#: templates/home.html:32
+msgid "Finden Sie Fachkräfte für"
+msgstr ""
+
+#: templates/home.html:34
+msgid "Was ist Freie Software?"
+msgstr ""
+
+#: templates/home.html:35
+msgid "Freie Software"
+msgstr ""
+
+#: templates/home.html:45
+msgid "jetzt suchen"
+msgstr ""
+
+#: templates/home.html:46
+msgid "lupe"
+msgstr ""
+
+#: templates/home.html:58
+#, python-format
+msgid ""
+"\n"
+"      <strong>%(count)s</strong> passende Fachkraft:\n"
+"      "
+msgid_plural ""
+"\n"
+"      <strong>%(count)s</strong> passende Fachkräfte:\n"
+"      "
+msgstr[0] "\n<strong>%(count)s</strong> convenient expert:\n "
+msgstr[1] "\n<strong>%(count)s</strong> convenient experts:\n "
+
+#: templates/home.html:126
+msgid "Stundensatz"
+msgstr ""
+
+#: templates/home.html:128
+msgid "Nebenkosten"
+msgstr ""
+
+#: templates/home.html:131
+msgid "Verfügbarkeit"
+msgstr ""
+
+#: templates/home.html:134
+msgid "Adresse"
+msgstr ""
+
+#: templates/home.html:137
+msgid "Referenzen"
+msgstr ""
+
+#: templates/home.html:140
+msgid "Schlagwörter"
+msgstr ""
+
+#: templates/home.html:151
+msgid "Treffer/Seite:"
+msgstr ""
+
+#: templates/home.html:156 templates/home.html.py:158
+msgid "weniger Treffer pro Seite zeigen"
+msgstr ""
+
+#: templates/home.html:162 templates/home.html.py:164
+msgid "mehr Treffer pro Seite zeigen"
+msgstr ""
+
+#: templates/home.html:169
+msgid "Seite:"
+msgstr ""
+
+#: templates/home.html:178
+msgid "&laquo; Zurück"
+msgstr ""
+
+#: templates/home.html:187
+msgid "Vor &raquo;"
+msgstr ""
+
+#: templates/newexpert.html:62
+msgid "Thank you!"
+msgstr ""
+
+#: templates/newexpert.html:65
+#, python-format
+msgid ""
+"New expert profile created for \"%(name)s\".</br>Your profile will be "
+"checked and activated soon."
+msgstr ""
+
+#: templates/invitation/invitation_complete.html:6
+msgid "Invitation sent"
+msgstr ""
+
+#: templates/invitation/invitation_complete.html:8
+msgid "Your friend will receive an email with your invitation soon!"
+msgstr ""
+
+#: templates/invitation/invitation_email.txt:2
+#, python-format
+msgid "You have been invited by %(username)s to join %(sitename)s!"
+msgstr ""
+
+#: templates/invitation/invitation_email.txt:4
+#: templates/registration/activation_email.txt:4
+msgid "Go to"
+msgstr ""
+
+#: templates/invitation/invitation_email.txt:6
+msgid "to join!"
+msgstr ""
+
+#: templates/invitation/invitation_email.txt:8
+#: templates/registration/activation_email.txt:8
+#, python-format
+msgid ""
+"All the best,\n"
+"\n"
+"The %(sitename)s Team"
+msgstr ""
+
+#: templates/invitation/invitation_email_subject.txt:2
+#, python-format
+msgid "Invitation from %(username)s to join %(sitename)s"
+msgstr ""
+
+#: templates/invitation/invitation_form.html:6
+msgid "Invite a friend"
+msgstr ""
+
+#: templates/invitation/invitation_form.html:9
+msgid "You currently have no invitations to send."
+msgstr ""
+
+#: templates/invitation/invitation_form.html:17
+msgid "Send Invitation"
+msgstr ""
+
+#: templates/invitation/invited.html:6
+msgid "You have been invited!"
+msgstr ""
+
+#: templates/invitation/invited.html:8
+msgid "proceed to registration"
 msgstr ""
 
 #: templates/registration/activation_complete.html:5
@@ -123,20 +379,8 @@ msgstr ""
 msgid "Just one more step to activate your account on"
 msgstr ""
 
-#: templates/registration/activation_email.txt:4
-msgid "Go to"
-msgstr ""
-
 #: templates/registration/activation_email.txt:6
 msgid "to activate!"
-msgstr ""
-
-#: templates/registration/activation_email.txt:8
-#, python-format
-msgid ""
-"All the best,\n"
-"\n"
-"The %(sitename)s Team"
 msgstr ""
 
 #: templates/registration/registration_complete.html:5
