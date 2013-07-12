@@ -31,7 +31,7 @@ class ExpertProfile(AuditedModel):
                                 help_text=_("short description of the services"),
                                 verbose_name = _('services'))
     description = models.TextField(max_length=2048, blank=True, default="")
-    
+
     # location of expert
     street = models.CharField(max_length=50, blank=True, default="")
     number = models.CharField(max_length=15, blank=True, default="")
@@ -50,7 +50,7 @@ class ExpertProfile(AuditedModel):
                                   blank=True,
                                   decimal_places=2,
                                   max_digits=5,
-                                  help_text=_('per hour incl. VAT'),
+                                  help_text=_('per hour incl. VAT, leave blank if variable'),
                                   verbose_name=_("charges"))
     currency = models.CharField(max_length=3, choices=CURRENCIES,
                                 blank=True, default="EUR",
@@ -67,7 +67,7 @@ class ExpertProfile(AuditedModel):
                                   help_text=_("Referenzkunden"),
                                   verbose_name=_("references"))
     available = models.BooleanField(default=True, help_text=_("disable eg if you are on holidays"))
-    
+
     class Meta:
             #unique_together = (("user", "name"),)
             verbose_name = _('Expert Profile')
@@ -83,7 +83,7 @@ class ExpertProfile(AuditedModel):
     @property
     def taglist(self):
         return ", ".join(map(lambda t: t[1], self.keywords.values_list()))
-    
+
     @property
     def address(self):
         if self.street:
@@ -100,14 +100,14 @@ class ExpertProfile(AuditedModel):
 
     def get_absolute_url(self):
         return "/expert/%s" % self.user.username
-        
+
 class Link(AuditedModel):
     expert = models.ForeignKey(ExpertProfile)
     label = models.CharField(max_length=20, choices=LABELS)
     url = models.CharField(max_length=200)
 
-        
-        
+
+
 class TagAdmin(admin.ModelAdmin):
     list_display = ['name']
     list_filter = ['parent__name']
