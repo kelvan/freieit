@@ -38,11 +38,11 @@ def show(request):
             #if 'image' in request.FILES:
             #    img = request.FILES['image']
             #    email.attach(img.name, img.read(), img.content_type)
-            
+
             email.send(fail_silently=False)
 
             return render(request, 'newexpert.html', {'expert': expert})
     else:
         form = ExpertProfileForm()
-        
+
     return render(request, 'newexpert.html', {'form': form})
