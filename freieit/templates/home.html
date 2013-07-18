@@ -4,7 +4,7 @@
 
 {% block html_header %}
 <script type="text/javascript">
-  function mehr (e) {    
+  function mehr (e) {
     var p = e.parentNode.parentNode.parentNode;
     if (p.className == "mehr") {
       p.className = "";
@@ -29,19 +29,19 @@
 {% endblock html_header %}
 
 {% block header %}
-<h1>{% trans "Finden Sie Fachkräfte für" %} 
-  <a href="http://fsfe.org/about/basics/freesoftware.de.html" 
+<h1>{% trans "Finden Sie Fachkräfte für" %}
+  <a href="http://fsfe.org/about/basics/freesoftware.de.html"
      title="{% trans "Was ist Freie Software?" %}">
     {% trans "Freie Software" %}
-  </a>! 
+  </a>!
 </h1>
 {% endblock header %}
 
 {% block content %}
 
 <form id="suche" action="." method="get">
-  {{ form.as_plain }}      
-  
+  {{ form.as_plain }}
+
   <button type="submit" title="{% trans "jetzt suchen" %}">
     <img src="{% static "img/fit/lupe.png" %}" alt="{% trans "lupe" %}" />
   </button>
@@ -69,18 +69,18 @@
   {% for result in page %}
     <div class="mehr">
       <header>
-	<h2><a class="person" onclick="mehr(this);" 
+	<h2><a class="person" onclick="mehr(this);"
 	       title="{% trans "mehr Infos anzeigen" %}">
 	    {% if result.object.image %}
-	    <img src="{{ result.object.image.url }}" 
-		 alt="{{ result.object.name }}" 
+	    <img src="{{ result.object.image.url }}"
+		 alt="{{ result.object.name }}"
 		 width="60" height="60"/>
 	    {% endif %}
 	    {{ result.object.name }}
 
 	    <div class="labelmore"></div>
 	   </a>
-	  
+
 	</h2>
       </header>
       <p>
@@ -97,11 +97,11 @@
 	{% for link in result.object.link_set.all %}
 	  <dt>{{ link.label }}</dt>
 	  <dd>
-	    
+
 	  {% if link.label == "WWW" %}<a href="{{ link.url }}" target="new_"> {{ link.url }}</a>
-	  {% else%}	      
+	  {% else%}
 	    {% if link.label == "MAIL" %}<a href="mailto:{{ link.url }}"> {{ link.url }}</a>
-	    {% else%}	      
+	    {% else%}
 	      {% if link.label == "MOBILE" or link.label == "TEL" %}<a href="tel:{{ link.url }}"> {{ link.url }}</a>
               {% else%}
   	        {% if link.label == "XING" %}<a href="http://www.xing.com/profile/{{ link.url }}" target="new_"> {{ link.url }}</a>
@@ -109,7 +109,7 @@
 		  {% if link.label == "LINKEDIN" %}<a href="https://www.linkedin.com/pub/{{ link.url }}" target="new_"> {{ link.url }}</a>
 		  {% else%}
 		    {% if link.label == "XMPP" %}<a href="xmpp:{{ link.url }}">{{ link.url }}</a>
-         	    {% else%}	
+         	    {% else%}
           	      {% if link.label == "SIP" %}<a href="sip:{{ link.url }}">{{ link.url }}</a>
 		      {% else%}
  		         {{ link.url }}
@@ -119,7 +119,7 @@
 		{% endif %}
 	      {% endif %}
             {% endif %}
-          {% endif %}	  
+          {% endif %}
 	  </dd>
 	{% endfor %}
 
@@ -134,7 +134,7 @@
 	  <dt>{% trans "Adresse" %}</dt><dd>{{ result.object.address }}</dd>
 	{% endif %}
 	{% if result.object.references %}
-	  <dt>{% trans "Referenzen" %}</dt><dd>{{ result.object.references }}</dd>
+	  <dt>{% trans "Referenzen" %}</dt><dd>{{ result.object.references|linebreaksbr }}</dd>
 	{% endif %}
 	{% if result.object.taglist %}
   	  <dt>{% trans "Schlagwörter" %}</dt><dd>{{ result.object.taglist }}</dd>
@@ -150,36 +150,36 @@
 <p class="nav navleft">
   <span>{% trans "Treffer/Seite:" %}
     <strong id="anzahl">{{ page.paginator.per_page }}</strong>
-  </span>    
-  <a id="adown" class="bdown {{ clsdown }}" 
+  </span>
+  <a id="adown" class="bdown {{ clsdown }}"
      href="?q={{ query }}&amp;results_per_page={{ paginate_down }}"
      title="{% trans "weniger Treffer pro Seite zeigen" %}">
     <img src="{% static "img/fit/pfeil-weiss.png" %}" a
 	 alt="{% trans "weniger Treffer pro Seite zeigen" %}" />
   </a>
-  <a id="aup" class="bup {{ clsup }}" 
+  <a id="aup" class="bup {{ clsup }}"
      href="?q={{ query }}&amp;results_per_page={{ paginate_up }}"
      title="{% trans "mehr Treffer pro Seite zeigen" %}">
-    <img src="{% static "img/fit/pfeil-weiss.png" %}" 
+    <img src="{% static "img/fit/pfeil-weiss.png" %}"
 	 alt="{% trans "mehr Treffer pro Seite zeigen" %}" />
   </a>
 </p>
 
 <p class="nav navright">
   <span>{% trans "Seite:" %}<strong id="pg">{{ page.number }}/{{ page.paginator.num_pages }}</strong></span>
-  
-  <a id="pm" 
+
+  <a id="pm"
      class="bleft {% if not page.has_previous %}off{% endif %} "
      {% if page.has_previous %}
      href="?q={{ query }}&amp;page={{ page.previous_page_number }}"
-     {% endif %} 
+     {% endif %}
      >
-    
+
     <img src="{% static "img/fit/pfeil-weiss.png" %}" alt="{% trans "&laquo; Zurück" %}"/>
   </a>
-  
-  <a id="pp" 
-     class="bright {% if not page.has_next %}off{% endif %}" 
+
+  <a id="pp"
+     class="bright {% if not page.has_next %}off{% endif %}"
      {% if page.has_next %}
      href="?q={{ query }}&amp;page={{ page.next_page_number }}"
      {% endif %}
@@ -188,7 +188,7 @@
   </a>
 </p>
 
-  
+
 <script type="text/javascript">
   do_by_class("mehr", function (e){e.className = "";});
   do_by_class("labelmore", function (e){e.innerHTML = "{% trans "mehr..." %}";});
