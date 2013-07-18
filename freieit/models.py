@@ -22,8 +22,7 @@ class ExpertProfile(AuditedModel):
     name = models.CharField(max_length=512)
 
     # experts image
-    image = models.ImageField(upload_to="expert_images", null=True,
-                              default=None, blank=True,
+    image = models.ImageField(upload_to="expert_images",
                               verbose_name = _('image'))
 
     # the services this expert offers

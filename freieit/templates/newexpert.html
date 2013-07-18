@@ -45,10 +45,13 @@
         display:block;
         font-size:small;
     }
-    .newexpert .pflicht {
+    .newexpert .error input {
+            background-color:#ffe3aa;
+        }
+    .newexpert .required label {
         font-weight:bold;
     }
-    .newexpert .pflicht:after {
+    .newexpert .required label:after, .newexpert .required strong:after {
         content:"*";
     }
 </style>
@@ -76,6 +79,7 @@
 {% else %}
 <form class="newexpert" action="" method="POST">
 {% endif %}
+    <p style="margin-top:1em;"><span class="helptext required">Feldnamen der <strong>Pflichtfelder</strong> sind fett gedruckt und mit einem Stern gekennzeichnet.</span></p>
     {% csrf_token %}
     {{ form.as_p }}
     <input type="submit" value="Anmeldung abschicken">
