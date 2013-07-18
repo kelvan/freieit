@@ -62,7 +62,7 @@ class ExpertProfile(AuditedModel):
     # tags for this expert
     keywords = models.ManyToManyField(Tag, null=True, blank=True)
 
-    references = models.CharField(max_length=512, blank=True, default="",
+    references = models.TextField(blank=True, default="",
                                   help_text=_("Referenzkunden"),
                                   verbose_name=_("references"))
     available = models.BooleanField(default=True, help_text=_("disable eg if you are on holidays"))
