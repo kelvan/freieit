@@ -82,7 +82,12 @@
     <p style="margin-top:1em;"><span class="helptext required">Feldnamen der <strong>Pflichtfelder</strong> sind fett gedruckt und mit einem Stern gekennzeichnet.</span></p>
     {% csrf_token %}
     {{ form.as_p }}
-    <input type="submit" value="Anmeldung abschicken">
+    <div class="newexpert">
+        {{ formset.management_form }}
+        {{ formset.as_p }}
+    </div>
+    <br/><br/>
+    <p><input type="submit" value="Anmeldung abschicken"></p>
 </form>
 
 {% endif %}
