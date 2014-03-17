@@ -11,3 +11,4 @@
 
 ^_dev_venv/.*$
 ^env/.*$
+^freieit/settings_test.py$
