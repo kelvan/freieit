@@ -6,14 +6,12 @@
 
 <section>
 
-  <header>
-    <h2>Anmelden</h2>
-  </header>
+  <h2>Anmelden</h2>
 
   <div>
 
     {% if login_error %}
-      Benutzername und Passwort stimmen nicht überein. Bitte versuchen sie es erneut.<br /><br />
+      Benutzername und Passwort stimmen nicht überein. Bitte versuche es erneut.<br /><br />
     {% endif %}
 
     <form method="post" action="{% url freieit.views.login.show %}">
@@ -24,9 +22,9 @@
     </form>
     
     {% if INVITE_ONLY %}
-        Um einen neuen Account anzulegen benötigen sie eine Einladung eines Mitglieds.
+        Um einen neuen Account anzulegen benötigst du die Einladung eines Mitglieds.
     {% else %}
-        Falls Sie noch kein Benutzerkonto haben können sie sich <a href="/accounts/register">hier registieren</a>.
+        Falls du noch kein Benutzerkonto hast kannst du dich <a href="/accounts/register">hier registieren</a>.
     {% endif %}
   </div>
 

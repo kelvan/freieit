@@ -147,20 +147,20 @@ h1 {
 	font-size:1.6em;
 	line-height:1.1em;
 }
-article > header > h1 {
+article > h1 {
 	margin:140px 0em .3em 7px;
 }
 h1 > a {
 	white-space:nowrap;
 	text-decoration:underline;
 }
-article > header > h2 {
+article > h2 {
 	float:left;
 	margin:0em 10px 0em 10px;
 	padding-bottom:1em;
 	font-size:1.6em;
 }
-article > header > h2 > strong {
+article > h2 > strong {
 	color:#000;
 }
 #suche {
@@ -325,7 +325,7 @@ section > div > p {
 	margin-right:20px;
 	line-height:1.4em;
 }
-.txt > p, .txt > header {
+.txt > p, .txt > h2 {
 	margin:1em;
 }
 section > div > dl {

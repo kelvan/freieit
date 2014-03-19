@@ -8,13 +8,12 @@
 <section>
 
     <h2>{{ num_experts }} ExpertIn{{ experts|length|pluralize:"nen" }} {% if tag %}mit Schlagwort "{{ tag }}"{% endif %} gefunden</h2>
-  <header>
+
     <form action="." method="get">
       {% csrf_token %}
       <input type="text" name="suche" placeholder="Ergebnis über Schlagworte einschränken" value=""/>
       <input type="submit" value="&gt;"/>
     </form>
-  </header>
 
   {% for e in page %}
   <div>
