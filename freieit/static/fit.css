@@ -325,8 +325,8 @@ section > div > p {
 	margin-right:20px;
 	line-height:1.4em;
 }
-.txt > p, .txt > h2 {
-	margin:1em;
+.txt > * + * {
+	margin:1em 0 0 0;
 }
 section > div > dl {
 	display:none;
