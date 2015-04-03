@@ -8,7 +8,7 @@ class ExpertSearchForm(SearchForm):
     q = forms.CharField(required=False,
                         label='', 
                         widget=forms.TextInput(
-                            attrs={'placeholder': 'Wobei brauchen Sie Hilfe?',
+                            attrs={'placeholder': 'Wobei brauchst Du Hilfe?',
                                    'id':'suchfeld'}))
     
     def __init__(self, *args, **kwargs):
