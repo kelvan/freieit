@@ -1,8 +1,11 @@
-django==1.4.5
-django-threaded-multihost
+django>=1.8,<1.9
+django-threaded-multihost<1.5
+django-extensions
+django-taggit
 #pysqlite
-#pil
+pillow
 #haystack
-django-haystack==1.2.7
+django-haystack>=2.4,<2.5
 whoosh
-south
+django-registration>=1.0,<1.1
+django-audited-models
