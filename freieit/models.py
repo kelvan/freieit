@@ -1,19 +1,25 @@
+from __future__ import unicode_literals
+
+from django.utils.encoding import python_2_unicode_compatible
 from django.db import models
 from django.contrib.auth.models import User
-from django.contrib import admin
 from django.utils.translation import ugettext_lazy as _
-from taggit.managers import TaggableManager
-from audited_models.models import AuditedModel
-from choices import LABELS, COUNTRIES, CURRENCIES
 
+from audited_models.models import AuditedModel
+
+from .choices import LABELS, COUNTRIES, CURRENCIES
+
+
+@python_2_unicode_compatible
 class Tag(models.Model):
     name = models.CharField(max_length=50, unique=True)
-    parent = models.ManyToManyField('self', null=True, blank=True,
-                                    related_name='children')
+    parent = models.ManyToManyField('self', blank=True, related_name='children')
 
-    def __unicode__(self):
+    def __str__(self):
         return self.name
 
+
+@python_2_unicode_compatible
 class ExpertProfile(AuditedModel):
     # the user this expert profile is associated with
     user = models.ForeignKey(User)
@@ -22,13 +28,13 @@ class ExpertProfile(AuditedModel):
     name = models.CharField(max_length=512)
 
     # experts image
-    image = models.ImageField(upload_to="expert_images",
-                              verbose_name = _('image'))
+    image = models.ImageField(upload_to='expert_images',
+                              verbose_name=_('image'))
 
     # the services this expert offers
     services = models.CharField(max_length=512,
                                 help_text=_("short description of the services"),
-                                verbose_name = _('services'))
+                                verbose_name=_('services'))
     description = models.TextField(max_length=2048, blank=True, default="")
 
     # location of expert
@@ -60,7 +66,7 @@ class ExpertProfile(AuditedModel):
                                        verbose_name=_("charge details"))
 
     # tags for this expert
-    keywords = models.ManyToManyField(Tag, null=True, blank=True)
+    keywords = models.ManyToManyField(Tag, blank=True)
 
     references = models.TextField(blank=True, default="",
                                   help_text=_("Referenzkunden"),
@@ -68,12 +74,12 @@ class ExpertProfile(AuditedModel):
     available = models.BooleanField(default=True, help_text=_("disable eg if you are on holidays"))
 
     class Meta:
-            #unique_together = (("user", "name"),)
+            # unique_together = (("user", "name"),)
             verbose_name = _('Expert Profile')
             verbose_name_plural = _('Expert Profiles')
             ordering = ['name']
 
-    def __unicode__(self):
+    def __str__(self):
         if self.name:
             return self.name
         else:
@@ -91,7 +97,7 @@ class ExpertProfile(AuditedModel):
 
     @property
     def price(self):
-        if self.charges == None:
+        if self.charges is None:
             return _("nach Vereinbarung")
         if self.charges == 0:
             return _("ehrenamtlich")
@@ -100,30 +106,8 @@ class ExpertProfile(AuditedModel):
     def get_absolute_url(self):
         return "/expert/%s" % self.user.username
 
+
 class Link(AuditedModel):
     expert = models.ForeignKey(ExpertProfile)
     label = models.CharField(max_length=20, choices=LABELS)
     url = models.CharField(max_length=200)
-
-
-
-class TagAdmin(admin.ModelAdmin):
-    list_display = ['name']
-    list_filter = ['parent__name']
-
-class LinkInline(admin.TabularInline):
-    model = Link
-
-class ExpertProfileAdmin(admin.ModelAdmin):
-    list_display = ('user', 'name', 'address', 'price')
-    list_filter = ('country', 'city', 'keywords__name')
-    search_fields = ('name', 'address', 'services')
-
-    inlines = [
-        LinkInline,
-    ]
-
-class LinkAdmin(admin.ModelAdmin):
-    list_display = ('expert', 'label', 'url')
-    list_filter = ('expert', 'label')
-    search_fields = ('expert', 'url')

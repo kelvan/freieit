@@ -1,9 +1,9 @@
-from django.http import HttpResponse
-from django.shortcuts import render_to_response
+from django.shortcuts import render
 
 
 def show(request):
-    return render_to_response('register.html')
+    return render(request, 'register.html')
+
 
 def invite(request):
-    return render_to_response('invite.html')
+    return render(request, 'invite.html')

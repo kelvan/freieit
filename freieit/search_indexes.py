@@ -1,5 +1,7 @@
 from haystack import indexes, site
-from freieit.models import ExpertProfile
+
+from .models import ExpertProfile
+
 
 class ExpertProfileIndex(indexes.SearchIndex):
     #text = indexes.CharField(document=True, use_template=True)

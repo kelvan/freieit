@@ -1,16 +1,15 @@
-from django.http import HttpResponse, HttpResponseRedirect
-from django.template import RequestContext
-from django.shortcuts import render_to_response, get_object_or_404
-from freieit.forms.expert import ExpertProfileForm
-from freieit.models import ExpertProfile
-from django.http import Http404
+from django.http import HttpResponseRedirect
+from django.shortcuts import render, get_object_or_404
+from django.contrib.auth.decorators import login_required
 
+from .forms.expert import ExpertProfileForm
+from .models import ExpertProfile
+
+
+@login_required
 def show(request):
-    if request.user.is_anonymous():
-        raise Http404
-
     e = get_object_or_404(ExpertProfile, user=request.user)
-    
+
     if request.method == 'POST':
         form = ExpertProfileForm(request.POST, request.FILES, instance=e)
         if form.is_valid():
@@ -20,6 +19,4 @@ def show(request):
         # check if logged in user has profile
         form = ExpertProfileForm(instance=e)
 
-    return render_to_response('profile.html', RequestContext(request, {
-        'form': form,
-    }))
+    return render(request, 'profile.html', {'form': form})

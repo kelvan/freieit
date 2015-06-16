@@ -13,15 +13,8 @@ MANAGERS = ADMINS
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3', # Add 'postgresql_psycopg2',
-                                                # 'mysql', 'sqlite3' or
-                                                # 'oracle'.
-        'NAME': '_freieit.db', # Or path to database file
-                               # if using sqlite3.
-        'USER': '',     # Not used with sqlite3.
-        'PASSWORD': '', # Not used with sqlite3.
-        'HOST': '', # Set to empty string for localhost. Not used with sqlite3.
-        'PORT': '', # Set to empty string for default. Not used with sqlite3.
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': '_freieit.db',
     }
 }
 
@@ -86,7 +79,7 @@ STATICFILES_DIRS = (
 STATICFILES_FINDERS = (
     'django.contrib.staticfiles.finders.FileSystemFinder',
     'django.contrib.staticfiles.finders.AppDirectoriesFinder',
-#    'django.contrib.staticfiles.finders.DefaultStorageFinder',
+    # 'django.contrib.staticfiles.finders.DefaultStorageFinder',
 )
 
 # Make this unique, and don't share it with anybody.
@@ -96,7 +89,7 @@ SECRET_KEY = '%e%(=_f#d8)%p77ycf5c@jl&amp;fggcxhiml!g&amp;k!&amp;wnr%qgc@6cd'
 TEMPLATE_LOADERS = (
     'django.template.loaders.filesystem.Loader',
     'django.template.loaders.app_directories.Loader',
-#     'django.template.loaders.eggs.Loader',
+    # 'django.template.loaders.eggs.Loader',
 )
 
 MIDDLEWARE_CLASSES = (
@@ -131,16 +124,12 @@ INSTALLED_APPS = (
     'django.contrib.sites',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    # Uncomment the next line to enable the admin:
     'django.contrib.admin',
-    # Uncomment the next line to enable admin documentation:
     'django.contrib.admindocs',
     'django.contrib.flatpages',
-    'south',
     'taggit',
     'haystack',
-    'registration',
-    'invitation',
+    #'registration',
     'freieit',
 )
 
@@ -173,9 +162,12 @@ LOGGING = {
     }
 }
 
-HAYSTACK_SITECONF = 'freieit.search_indexes'
-HAYSTACK_SEARCH_ENGINE = 'whoosh'
-HAYSTACK_WHOOSH_PATH = os.path.join(APPDIR, 'whoosh_index')
+HAYSTACK_CONNECTIONS = {
+    'default': {
+        'ENGINE': 'haystack.backends.whoosh_backend.WhooshEngine',
+        'PATH': os.path.join(PROJDIR, 'whoosh_index'),
+    },
+}
 
 # Don't send emails, just print them
 EMAIL_BACKEND = 'django.core.mail.backends.filebased.EmailBackend'
@@ -190,3 +182,5 @@ INVITE_MODE = True
 ACCOUNT_INVITATION_DAYS = 14
 ACCOUNT_ACTIVATION_DAYS = 14
 INVITATIONS_PER_USER = 999
+
+EXPERTS_PER_PAGE = 5

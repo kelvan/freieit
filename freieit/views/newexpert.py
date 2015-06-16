@@ -1,12 +1,12 @@
 from django.shortcuts import render
-from django.http import HttpResponseRedirect
 from django.core.mail import EmailMessage
 from django.contrib.auth.models import User
 from django.template.loader import get_template
 from django.template import Context
+from django.conf import settings
 
-from freieit.forms.expert import ExpertProfileForm
-from freieit import settings
+from .forms.expert import ExpertProfileForm
+
 
 def show(request):
     if request.method == 'POST':
