@@ -5,9 +5,15 @@ from django.db import models
 from django.contrib.auth.models import User
 from django.utils.translation import ugettext_lazy as _
 
-from audited_models.models import AuditedModel
-
 from .choices import LABELS, COUNTRIES, CURRENCIES
+
+
+class AuditedModel(models.Model):
+    created_date = models.DateTimeField(auto_now_add=True)
+    modified_date = models.DateTimeField(auto_now=True)
+
+    class Meta:
+        abstract = True
 
 
 @python_2_unicode_compatible

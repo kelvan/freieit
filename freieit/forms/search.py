@@ -4,15 +4,16 @@ from django import forms
 from haystack.forms import SearchForm
 from haystack.models import SearchResult
 
-from .models import ExpertProfile
+from ..models import ExpertProfile
 
 
 class ExpertSearchForm(SearchForm):
-    q = forms.CharField(required=False,
-                        label='',
-                        widget=forms.TextInput(
-                            attrs={'placeholder': 'Wobei brauchst Du Hilfe?',
-                                   'id': 'suchfeld'}))
+    q = forms.CharField(
+        required=False, label='',
+        widget=forms.TextInput(
+            attrs={'placeholder': 'Wobei brauchst Du Hilfe?', 'id': 'suchfeld'}
+        )
+    )
 
     def __init__(self, *args, **kwargs):
         self.seed = kwargs.pop("seed")
@@ -41,11 +42,12 @@ class ExpertSearchForm(SearchForm):
         random.seed(self.seed)
 
         def make_result(expert):
-            return SearchResult(app_label="freieit",
-                                pk=expert.id,
-                                model_name="expertprofile",
-                                score=random.random())
-        all_ = map(make_result,
-                   ExpertProfile.objects.filter(available=True))
+            return SearchResult(
+                app_label="freieit", pk=expert.id,
+                model_name="expertprofile", score=random.random()
+            )
+        all_ = [
+            make_result(s) for s in ExpertProfile.objects.filter(available=True)
+        ]
         all_.sort(key=lambda o: o.score)
         return all_

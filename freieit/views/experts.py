@@ -2,7 +2,7 @@ from django.shortcuts import render
 from django.core.paginator import Paginator
 from django.conf import settings
 
-from .models import ExpertProfile
+from ..models import ExpertProfile
 
 
 def show(request, page_num=1):

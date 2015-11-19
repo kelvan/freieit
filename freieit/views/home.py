@@ -1,7 +1,7 @@
 from django.shortcuts import render
 
 from haystack.views import SearchView
-from .models import Tag
+from ..models import Tag
 
 PER_PAGES = [5, 10, 25, 50]
 
