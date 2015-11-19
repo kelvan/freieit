@@ -1,5 +1,4 @@
-django>=1.8,<1.9
-django-threaded-multihost<1.5
+django==1.8.5
 django-extensions
 django-taggit
 #pysqlite
@@ -7,5 +6,4 @@ pillow
 #haystack
 django-haystack>=2.4,<2.5
 whoosh
-django-registration>=1.0,<1.1
-django-audited-models
+django-reversion
