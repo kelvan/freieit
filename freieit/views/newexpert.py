@@ -5,7 +5,7 @@ from django.template.loader import get_template
 from django.template import Context
 from django.conf import settings
 
-from .forms.expert import ExpertProfileForm
+from ..forms.expert import ExpertProfileForm
 
 
 def show(request):
