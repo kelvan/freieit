@@ -77,7 +77,7 @@ class ExpertProfile(AuditedModel):
     references = models.TextField(blank=True, default="",
                                   help_text=_("Referenzkunden"),
                                   verbose_name=_("references"))
-    available = models.BooleanField(default=True, help_text=_("disable eg if you are on holidays"))
+    available = models.BooleanField(default=False, help_text=_("disable eg if you are on holidays"))
 
     class Meta:
             # unique_together = (("user", "name"),)
@@ -98,8 +98,10 @@ class ExpertProfile(AuditedModel):
     @property
     def address(self):
         if self.street:
-            return "%s %s, %s %s, %s" % (self.street, self.number,
-                                         self.postcode, self.city, self.country)
+            return "%s %s, %s %s, %s" % (
+                self.street, self.number,
+                self.postcode, self.city, self.country
+            )
 
     @property
     def price(self):

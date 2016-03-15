@@ -1,10 +1,10 @@
 {% extends "base.html" %}
 
-{% load i18n %}
+{% load i18n staticfiles %}
 
 {% block html_header %}
-
-<style>
+{# XXX move to css file #}
+  <style>
     .newexpert {
         margin:2em 0em -3em 0em;
         padding:0px 1em 1em 20px;
@@ -54,42 +54,44 @@
     .newexpert .required label:after, .newexpert .required strong:after {
         content:"*";
     }
-</style>
-
+    #id_terms {
+      width: 1em;
+      position: relative;
+      top: 0.5em;
+    }
+  </style>
 {% endblock html_header %}
 
 {% block content %}
+  {% if expert %}
+    <h1>{% trans "Thank you!" %}</h1>
 
-{% if expert %}
+    <p>
+      {% blocktrans with name=expert.name %}New expert profile created for "{{ name }}".</br>Your profile will be checked and activated soon.{% endblocktrans %}
+    </p>
+  {% else %}
+    <h1>Lass dich als Fachkraft für <a href="http://fsfe.org/about/basics/freesoftware.de.html" title="Was ist Freie Software?">Freie Software</a> finden!</h1>
 
-<h1>{% trans "Thank you!" %}</h1>
+    <p>Nur Personen, die sich zu unserer <a href="/dienste">Selbstverpflichtung</a> bekennen, nehmen wir in dieses Verzeichnis auf.</p>
 
-<p>
-    {% blocktrans with name=expert.name %}New expert profile created for "{{ name }}".</br>Your profile will be checked and activated soon.{% endblocktrans %}
-</p>
-
-{% else %}
-
-<h1>Lass dich als Fachkraft für <a href="http://fsfe.org/about/basics/freesoftware.de.html" title="Was ist Freie Software?">Freie Software</a> finden!</h1>
-
-<p>Nur Personen, die sich zu unserer <a href="/dienste">Selbstverpflichtung</a> bekennen, nehmen wir in dieses Verzeichnis auf.</p>
-
-{% if form.is_multipart %}
-<form enctype="multipart/form-data" method="POST" class="newexpert" action="">
-{% else %}
-<form class="newexpert" action="" method="POST">
-{% endif %}
-    <p style="margin-top:1em;"><span class="helptext required">Feldnamen der <strong>Pflichtfelder</strong> sind fett gedruckt und mit einem Stern gekennzeichnet.</span></p>
-    {% csrf_token %}
-    {{ form.as_p }}
-    <div class="newexpert">
+    {% if form.is_multipart %}
+    <form enctype="multipart/form-data" method="POST" class="newexpert" action="">
+    {% else %}
+      <form class="newexpert" action="" method="POST">
+    {% endif %}
+      <p style="margin-top:1em;"><span class="helptext required">Feldnamen der <strong>Pflichtfelder</strong> sind fett gedruckt und mit einem Stern gekennzeichnet.</span></p>
+      {% csrf_token %}
+      {{ form.as_p }}
+      <br/><hr>
+      <h3>{% trans 'Contact' %}</h3>
+      <div class="newexpert">
         {{ formset.management_form }}
-        {{ formset.as_p }}
-    </div>
-    <br/><br/>
-    <p><input type="submit" value="Anmeldung abschicken"></p>
-</form>
-
-{% endif %}
-
+        <div class="links">
+          {{ formset.as_p }}
+        </div>
+      </div>
+      <br/><br/>
+      <p><input type="submit" value="Anmeldung abschicken"></p>
+    </form>
+  {% endif %}
 {% endblock content %}

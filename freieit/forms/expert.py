@@ -1,7 +1,8 @@
 from django import forms
+from django.forms.models import inlineformset_factory
 from django.forms import ModelForm
 
-from ..models import ExpertProfile
+from ..models import ExpertProfile, Link
 
 
 class ExpertProfileForm(ModelForm):
@@ -13,3 +14,16 @@ class ExpertProfileForm(ModelForm):
     class Meta:
         model = ExpertProfile
         exclude = ('user', 'editor', 'available')
+
+
+class LinkForm(ModelForm):
+    error_css_class = 'error'
+
+    class Meta:
+        model = Link
+        exclude = []
+
+
+LinkFormSet = inlineformset_factory(
+    ExpertProfile, Link, form=LinkForm, can_delete=False
+)

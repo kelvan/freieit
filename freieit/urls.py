@@ -6,23 +6,23 @@ from django.http import HttpResponse
 from django.contrib import admin
 
 from .views.home import IndexSearchView
+from .views import NewExpertView
 from .forms.search import ExpertSearchForm
 
 
 urlpatterns = [
-    url(r'^admin/',
-        include(admin.site.urls)),
-    url(r'^admin/doc/',
-        include('django.contrib.admindocs.urls')),
-    url(r'^robots\.txt$', lambda r: HttpResponse(
-        "User-agent: *\nDisallow: /", mimetype="text/plain")),
+    url(r'^admin/', include(admin.site.urls)),
+    url(r'^admin/doc/', include('django.contrib.admindocs.urls')),
+    url(
+        r'^robots\.txt$', lambda r: HttpResponse(
+            "User-agent: *\nDisallow: /", mimetype="text/plain")
+        ),
     url(
         r'^$', IndexSearchView(
             form_class=ExpertSearchForm, template='home.html'
         ), name='haystack_search'
     ),
-    url(r'^newexpert$',
-        'freieit.views.newexpert.show'),
+    url(r'^newexpert$', NewExpertView.as_view()),
 ]
 
 urlpatterns += patterns('',
