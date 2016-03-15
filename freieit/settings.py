@@ -171,12 +171,12 @@ HAYSTACK_CONNECTIONS = {
 
 # Don't send emails, just print them
 EMAIL_BACKEND = 'django.core.mail.backends.filebased.EmailBackend'
-EMAIL_FILE_PATH = '/tmp/app-messages'
+EMAIL_FILE_PATH = '/tmp/freieit-messages'
 
 #EMAIL_HOST = 'localhost'
 #EMAIL_PORT = 2525
 #EMAIL_USE_TLS = True
-DEFAULT_FROM_EMAIL = "freie.it <info@freie.it>"
+DEFAULT_FROM_EMAIL = 'freie.it <info@freie.it>'
 
 INVITE_MODE = True
 ACCOUNT_INVITATION_DAYS = 14
