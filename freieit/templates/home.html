@@ -68,24 +68,24 @@
   {% for result in page %}
     <div class="mehr">
       <header>
-	<h2><a class="person" onclick="mehr(this);"
-	       title="{% trans "mehr Infos anzeigen" %}">
-	    {% if result.object.image %}
-	    <img src="{{ result.object.image.url }}"
-		 alt="{{ result.object.name }}"
-		 width="60" height="60"/>
-	    {% endif %}
-	    {{ result.object.name }}
+      <h2><a class="person" onclick="mehr(this);"
+         title="{% trans "mehr Infos anzeigen" %}">
+      {% if result.object.image %}
+      <img src="{{ result.object.image.url }}"
+	   alt="{{ result.object.name }}"
+	   width="60" height="60"/>
+      {% endif %}
+      {{ result.object.name }}
 
-	    <div class="labelmore"></div>
-	   </a>
+      <div class="labelmore"></div>
+     </a>
 
-	</h2>
+  </h2>
       </header>
       <p>
-	<strong>{{ result.object.services }}</strong>
-	</br>
-	{{ result.object.postcode }} {{ result.object.city }}, {{ result.object.country }}
+  <strong>{{ result.object.services }}</strong>
+  </br>
+  {{ result.object.postcode }} {{ result.object.city }}, {{ result.object.country }}
       </p>
       {% if result.object.description %}
       <p class="descr">
@@ -93,34 +93,37 @@
       </p>
       {% endif %}
       <dl>
-	{% for link in result.object.link_set.all %}
-	  <dt>{{ link.label }}</dt>
-	  <dd>
+  {% for link in result.object.link_set.all %}
+    <dt>{{ link.label }}</dt>
+    <dd>
 
-	  {% if link.label == "WWW" %}<a href="{{ link.url }}" target="new_"> {{ link.url }}</a>
+    {% if link.label == "WWW" %}
+      <a href="{{ link.url }}" target="new_"> {{ link.url }}</a>
+    {% else%}
+      {% if link.label == "MAIL" %}
+        <a href="mailto:{{ link.url }}"> {{ link.url }}</a>
+      {% else%}
+        {% if link.label == "MOBILE" or link.label == "TEL" %}
+          <a href="tel:{{ link.url }}"> {{ link.url }}</a>
+        {% else%}
+          {% if link.label == "XING" %}<a href="http://www.xing.com/profile/{{ link.url }}" target="new_"> {{ link.url }}</a>
 	  {% else%}
-	    {% if link.label == "MAIL" %}<a href="mailto:{{ link.url }}"> {{ link.url }}</a>
+	    {% if link.label == "LINKEDIN" %}<a href="https://www.linkedin.com/pub/{{ link.url }}" target="new_"> {{ link.url }}</a>
 	    {% else%}
-	      {% if link.label == "MOBILE" or link.label == "TEL" %}<a href="tel:{{ link.url }}"> {{ link.url }}</a>
-              {% else%}
-  	        {% if link.label == "XING" %}<a href="http://www.xing.com/profile/{{ link.url }}" target="new_"> {{ link.url }}</a>
-		{% else%}
-		  {% if link.label == "LINKEDIN" %}<a href="https://www.linkedin.com/pub/{{ link.url }}" target="new_"> {{ link.url }}</a>
-		  {% else%}
-		    {% if link.label == "XMPP" %}<a href="xmpp:{{ link.url }}">{{ link.url }}</a>
+	      {% if link.label == "XMPP" %}<a href="xmpp:{{ link.url }}">{{ link.url }}</a>
          	    {% else%}
           	      {% if link.label == "SIP" %}<a href="sip:{{ link.url }}">{{ link.url }}</a>
-		      {% else%}
- 		         {{ link.url }}
+	        {% else%}
+	           {{ link.url }}
                       {% endif %}
-		    {% endif %}
-                  {% endif %}
-		{% endif %}
 	      {% endif %}
+                  {% endif %}
+	  {% endif %}
+        {% endif %}
             {% endif %}
           {% endif %}
-	  </dd>
-	{% endfor %}
+    </dd>
+  {% endfor %}
 
 	<dt>{% trans "Stundensatz" %}</dt><dd>{{ result.object.price }}</dd>
 	{% if result.object.charges_details %}
