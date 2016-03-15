@@ -131,6 +131,7 @@ INSTALLED_APPS = (
     'haystack',
     #'registration',
     'freieit',
+    'debug_toolbar',
 )
 
 # A sample logging configuration. The only tangible logging
