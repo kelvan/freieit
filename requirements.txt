@@ -1,5 +1,5 @@
-django==1.8.5
 django-extensions
+django<1.9
 django-taggit
 #pysqlite
 pillow
