@@ -2,6 +2,7 @@
 {% load static %}
 {% load url from future %}
 
+{# XXX Unused?? #}
 
 {% block content %}
 
@@ -18,7 +19,7 @@
   {% for e in page %}
   <div>
     <div>
-      <img src="{{ e.image.url }}" alt="Foto von {{ e }}"/>
+      <img src="{{ e.image.avatar.url }}" alt="Foto von {{ e }}"/>
       <table>
         <tr>
           <th>Aufträge</th>
@@ -41,7 +42,7 @@
       <dt>Zeit</dt>
       <dd>{{e.time}}</dd>
       <dt>Kosten</dt>
-      <dd>{{e.charges}}</dd>
+      <dd>{{ e.price }}</dd>
       <dt>Schlagworte</dt>
       <dd>{% for tag in e.keywords.all %}
       <a href=/tag/{{ tag.slug }}>{{ tag }}</a> 

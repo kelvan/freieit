@@ -23,7 +23,7 @@ urlpatterns = [
             form_class=ExpertSearchForm, template='home.html'
         ), name='haystack_search'
     ),
-    url(r'^newexpert$', NewExpertView.as_view()),
+    url(r'^newexpert$', NewExpertView.as_view(), name='new_expert'),
 ]
 
 # static templates

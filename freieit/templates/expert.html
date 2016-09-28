@@ -1,14 +1,28 @@
 {% extends "base.html" %}
 
+{% load i18n %}
+
 {% block content %}
-
-<p><h1><b>{{ expert }}</b></h1></p>
-<p>{{ expert.user }}</p>
-<p>{{ expert.services }}</p>
-<p>{{ expert.location }}</p>
-<p>{{ expert.time }}</p>
-<p>{{ expert.charges }}</p>
-<p>{{ expert.phone }}</p>
-<p>{{ expert.user.email }}</p>
-
+  <h1>{{ expert }}</h1>
+  <img src="{{ expert.image.avatar.url }}"></img>
+  <dl>
+    <dh>{% trans 'Email' %}</dh>
+    <dd>{{ expert.user.email }}</dd>
+    <dh>{% trans 'Services' %}</dh>
+    <dd>{{ expert.services }}</dd>
+    {% if expert.location %}
+      <dh>{% trans 'Location' %}</dh>
+      <dd>{{ expert.location }}</dd>
+    {% endif %}
+    {% if expert.time %}
+      <dh>{% trans 'Time' %}</dh>
+      <dd>{{ expert.time }}</dd>
+    {% endif %}
+    <dh>{% trans 'Price' %}</dh>
+    <dd>{{ expert.price }}</dd>
+    {% if expert.phone %}
+      <dh>{% trans 'Phone' %}</dh>
+      <dd>{{ expert.phone }}</dd>
+    {% endif %}
+  </dl>
 {% endblock content %}
