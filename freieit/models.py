@@ -2,6 +2,7 @@ from __future__ import unicode_literals
 
 from django.utils.encoding import python_2_unicode_compatible
 from django.db import models
+from django.core.urlresolvers import reverse
 from django.contrib.auth.models import User
 from django.utils.translation import ugettext_lazy as _
 
@@ -38,67 +39,68 @@ class ExpertProfile(AuditedModel):
                               verbose_name=_('image'))
 
     # the services this expert offers
-    services = models.CharField(max_length=512,
-                                help_text=_("short description of the services"),
-                                verbose_name=_('services'))
-    description = models.TextField(max_length=2048, blank=True, default="")
+    services = models.CharField(
+        max_length=512, help_text=_('short description of the services'),
+        verbose_name=_('services')
+    )
+    description = models.TextField(max_length=2048, blank=True, default='')
 
     # location of expert
-    street = models.CharField(max_length=50, blank=True, default="")
-    number = models.CharField(max_length=15, blank=True, default="")
+    street = models.CharField(max_length=50, blank=True, default='')
+    number = models.CharField(max_length=15, blank=True, default='')
     city = models.CharField(max_length=30)
     postcode = models.CharField(max_length=10)
-    country = models.CharField(max_length=2, choices=COUNTRIES, default="AT")
+    country = models.CharField(max_length=2, choices=COUNTRIES, default='AT')
 
     # time when the services can be offered
-    time = models.CharField(max_length=1024, blank=True, default="",
-                            help_text=_('"opening hours"'),
-                            verbose_name=_("business times"))
+    time = models.CharField(
+        max_length=1024, blank=True, default="",
+        help_text=_('"opening hours"'), verbose_name=_("business times")
+    )
 
     # charges for this expert
-    charges = models.DecimalField(null=True,
-                                  default=None,
-                                  blank=True,
-                                  decimal_places=2,
-                                  max_digits=5,
-                                  help_text=_('per hour incl. VAT, leave blank if variable'),
-                                  verbose_name=_("charges"))
-    currency = models.CharField(max_length=3, choices=CURRENCIES,
-                                blank=True, default="EUR",
-                                verbose_name=_("currency"))
-    charges_details = models.CharField(blank=True, default="",
-                                       max_length=512,
-                                       help_text=_("eg traveling costs"),
-                                       verbose_name=_("charge details"))
+    charges = models.DecimalField(
+        null=True, blank=True, decimal_places=2, max_digits=5,
+        help_text=_('per hour incl. VAT, leave blank if variable'),
+        verbose_name=_('charges')
+    )
+    currency = models.CharField(
+        max_length=3, choices=CURRENCIES, blank=True, default="EUR",
+        verbose_name=_("currency")
+    )
+    charges_details = models.CharField(
+        blank=True, default='', max_length=512,
+        help_text=_('eg traveling costs'), verbose_name=_('charge details')
+    )
 
     # tags for this expert
     keywords = models.ManyToManyField(Tag, blank=True)
 
-    references = models.TextField(blank=True, default="",
-                                  help_text=_("Referenzkunden"),
-                                  verbose_name=_("references"))
-    available = models.BooleanField(default=False, help_text=_("disable eg if you are on holidays"))
+    references = models.TextField(
+        blank=True, default="", help_text=_('Referenzkunden'),
+        verbose_name=_('references')
+    )
+    available = models.BooleanField(
+        default=False, help_text=_('disable eg if you are on holidays')
+    )
 
     class Meta:
-            # unique_together = (("user", "name"),)
+            # unique_together = (('user', 'name'),)
             verbose_name = _('Expert Profile')
             verbose_name_plural = _('Expert Profiles')
             ordering = ['name']
 
     def __str__(self):
-        if self.name:
-            return self.name
-        else:
-            return self.user.get_full_name()
+        return self.name or self.user.get_full_name()
 
     @property
     def taglist(self):
-        return ", ".join(map(lambda t: t[1], self.keywords.values_list()))
+        return ', '.join([t[1] for t in self.keywords.values_list()])
 
     @property
     def address(self):
         if self.street:
-            return "%s %s, %s %s, %s" % (
+            return '%s %s, %s %s, %s' % (
                 self.street, self.number,
                 self.postcode, self.city, self.country
             )
@@ -106,13 +108,13 @@ class ExpertProfile(AuditedModel):
     @property
     def price(self):
         if self.charges is None:
-            return _("nach Vereinbarung")
+            return _('nach Vereinbarung')
         if self.charges == 0:
-            return _("ehrenamtlich")
-        return "%s %s" % (self.currency, self.charges)
+            return _('ehrenamtlich')
+        return '%s %s' % (self.currency, self.charges)
 
     def get_absolute_url(self):
-        return "/expert/%s" % self.user.username
+        return reverse('expert', kwargs={'pk': self.pk})
 
 
 class Link(AuditedModel):

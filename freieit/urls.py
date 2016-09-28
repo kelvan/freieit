@@ -26,9 +26,6 @@ urlpatterns = [
     url(r'^newexpert$', NewExpertView.as_view()),
 ]
 
-urlpatterns += patterns('',
-                        )
-
 # static templates
 urlpatterns += [
     # TODO replace with flatpages
