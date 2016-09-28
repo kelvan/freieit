@@ -1,12 +1,19 @@
 from django.shortcuts import render
 from django.core.mail import send_mail
-from django.views.generic.edit import CreateView
+from django.views.generic import CreateView, DetailView
 from django.contrib.auth.models import User
 from django.template.loader import render_to_string
 from django.template import Context
 from django.conf import settings
 
+from ..models import ExpertProfile
 from ..forms.expert import ExpertProfileForm, LinkFormSet
+
+
+class ExpertView(DetailView):
+    template_name='expert.html'
+    model = ExpertProfile
+    context_object_name = 'expert'
 
 
 class NewExpertView(CreateView):

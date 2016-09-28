@@ -6,7 +6,7 @@ from django.http import HttpResponse
 from django.contrib import admin
 
 from .views.home import IndexSearchView
-from .views import NewExpertView
+from .views import NewExpertView, ExpertView
 from .forms.search import ExpertSearchForm
 
 
@@ -16,7 +16,8 @@ urlpatterns = [
     url(
         r'^robots\.txt$', lambda r: HttpResponse(
             "User-agent: *\nDisallow: /", mimetype="text/plain")
-        ),
+    ),
+    url(r'expert/(?P<pk>\d+)', ExpertView.as_view(), name='expert'),
     url(
         r'^$', IndexSearchView(
             form_class=ExpertSearchForm, template='home.html'
