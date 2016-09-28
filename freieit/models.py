@@ -6,6 +6,8 @@ from django.core.urlresolvers import reverse
 from django.contrib.auth.models import User
 from django.utils.translation import ugettext_lazy as _
 
+from easy_thumbnails.fields import ThumbnailerImageField
+
 from .choices import LABELS, COUNTRIES, CURRENCIES
 
 
@@ -35,8 +37,9 @@ class ExpertProfile(AuditedModel):
     name = models.CharField(max_length=512)
 
     # experts image
-    image = models.ImageField(upload_to='expert_images',
-                              verbose_name=_('image'))
+    image = ThumbnailerImageField(
+        upload_to='expert_images', verbose_name=_('image')
+    )
 
     # the services this expert offers
     services = models.CharField(

@@ -178,3 +178,9 @@ ACCOUNT_ACTIVATION_DAYS = 14
 INVITATIONS_PER_USER = 999
 
 EXPERTS_PER_PAGE = 5
+
+THUMBNAIL_ALIASES = {
+    '': {
+        'avatar': {'size': (120, 120), 'crop': True},
+    },
+}
