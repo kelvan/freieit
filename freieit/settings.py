@@ -120,11 +120,12 @@ INSTALLED_APPS = (
     'django.contrib.admin',
     'django.contrib.admindocs',
     'django.contrib.flatpages',
+    'easy_thumbnails',
     'taggit',
     'haystack',
     #'registration',
     'freieit',
-    'debug_toolbar',
+    #'debug_toolbar',
 )
 
 # A sample logging configuration. The only tangible logging
